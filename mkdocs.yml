@@ -1,0 +1,7 @@
+site_name: ITU Connectivity Planning Platform
+nav:
+  - Home: index.md
+  - Scenarios: scenarios.md
+  - Models: models.md
+  - Datasets: datasets.md
+theme: mkdocs
