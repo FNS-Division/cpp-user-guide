@@ -37,7 +37,7 @@ Fiber is considered a feasible technology for a POI if the algorithm is able to 
 
 The fiber cost model is summarized below. The CAPEX cost for each POI is dependent on the amount of fiber required to connect that school.
 
-![fiber](diagrams\fiber-cost-model.drawio.svg)
+![fiber](diagrams/fiber-cost-model.drawio.svg)
 
 ## Cellular
 
@@ -67,7 +67,7 @@ Cellular is considered a feasible technology for a POI if it is within close eno
 
 The cellular cost model is summarized below.
 
-![p2area](diagrams\cellular-cost-model.drawio.svg)
+![p2area](diagrams/cellular-cost-model.drawio.svg)
 
 ## Point-to-point
 
@@ -105,7 +105,7 @@ Point-to-point microwave is considered a feasible technology for a POI if at lea
 
 The point-to-point cost model is summarized below. There are added complexities in this cost model due to the presence of additional physical infrastructure, such as retransmission towers and backhaul links - as well as additional one-time and annual license fees.
 
-![p2p](diagrams\p2p-cost-model.drawio.svg)
+![p2p](diagrams/p2p-cost-model.drawio.svg)
 
 ## Satellite
 
@@ -133,4 +133,4 @@ Satellite connections are always considered feasible.
 
 The satellite cost model is summarized below.
 
-![satellite](diagrams\satellite-cost-model.drawio.svg)
+![satellite](diagrams/satellite-cost-model.drawio.svg)

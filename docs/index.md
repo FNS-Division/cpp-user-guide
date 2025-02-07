@@ -1,6 +1,6 @@
 # Welcome to the ITU Connectivity Planning Platform
 
-The Connectivity Planning Toolkit (CPP) can be accessed [here](http://ec2-51-20-56-51.eu-north-1.compute.amazonaws.com/).
+The Connectivity Planning Platform (CPP) can be accessed [here](http://ec2-51-20-56-51.eu-north-1.compute.amazonaws.com/).
 
 ## About the ITU Connectivity Planning Platform
 
@@ -13,4 +13,4 @@ The platform evaluates the costs of each solution and provides a deployment plan
 - Before starting an analysis, you’ll need to select a **scenario**, such as "Minimize Total Cost of Ownership." Then, set up the **scenario parameters**, including details like the total budget and the planning period.
 - Each scenario is made up of multiple **models**—one for each technology option, and a demand module. These models serve two purposes: they evaluate whether the technology is feasible and calculate the cost of deploying it. Each model comes with its own **model parameters** that guide the analysis and uses **datasets** containing information about points of interest, ICT infrastructure, and mobile coverage.
 
-![cpt-model](diagrams\model.drawio.svg)
+![cpp-model](diagrams/model.drawio.svg)

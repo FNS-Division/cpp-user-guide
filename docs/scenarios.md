@@ -17,4 +17,4 @@ There are scenario-level parameters which need to be provided, as summarized in 
 
 The diagram below illustrates the "Minimize Total Cost of Ownership" scenario. This scenario focuses on connecting as many points of interest as possible while maximizing the operator's net revenue.
 
-![scenario](diagrams\scenario.drawio.svg)
+![scenario](diagrams/scenario.drawio.svg)
