@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Models - ITU Connectivity Planning Platform</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">ITU Connectivity Planning Platform</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../scenarios/" class="nav-link">Scenarios</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./" class="nav-link active" aria-current="page">Models</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../datasets/" class="nav-link">Datasets</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../scenarios/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../datasets/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#models" class="nav-link">Models</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#demand" class="nav-link">Demand</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#fiber" class="nav-link">Fiber</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#cellular" class="nav-link">Cellular</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#point-to-point" class="nav-link">Point-to-point</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#satellite" class="nav-link">Satellite</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="models">Models</h1>
+<h2 id="demand">Demand</h2>
+<p>The demand model estimates the internet demand for each point of interest by creating 1 km buffers around the location and counting the population living within those buffers. Population data is sourced from <a href="https://www.worldpop.org/">WorldPop</a>, a leading provider of high-resolution global population datasets. To estimate internet demand, the model multiplies the population within the buffer by the scenario parameter <code>Demand per user (Mbps)</code>.</p>
+<h2 id="fiber">Fiber</h2>
+<p>The fiber path model identifies the shortest and most cost-effective paths for connecting unconnected points of interest (POIs) to the existing optical fiber network using the road network. By minimizing the total length of fiber required, this model reduces overall deployment costs while efficiently extending connectivity.</p>
+<p>One of the key features of the model is economies of scale: POIs can act as relay points for neighboring POIs, enabling connectivity without each one needing to connect directly to a transmission node. This approach optimizes resource usage and simplifies network expansion.</p>
+<p>The model uses Kruskal's algorithm to compute a Minimum Spanning Tree (MST). The graph consists of the road network as edges and POIs as vertices. Connections between POIs and the road network are established using straight-line links. The MST ensures the minimal fiber path necessary to connect all relevant points while adhering to road network constraints.</p>
+<h3 id="feasibility">Feasibility</h3>
+<p>Fiber is considered a feasible technology for a POI if the algorithm is able to connect that POI to the fiber network, given the algorithm constraints - particularly the maximum length of fiber allowed per connection. In practice, fiber will not be feasible for POIs that are very far away from transmission nodes or other POIs.</p>
+<h3 id="required-data-inputs">Required data inputs</h3>
+<ul>
+<li>Points of interest</li>
+<li>Transmission nodes</li>
+</ul>
+<h3 id="model-parameters">Model parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Description</th>
+<th>Example value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Maximum connection length (meters)</td>
+<td>50,000</td>
+</tr>
+<tr>
+<td>Annual hardware maintenance and replacement costs (USD per year​, as a fraction of hardware CAPEX)</td>
+<td>0.1</td>
+</tr>
+<tr>
+<td>Access bandwidth cost (USD per Mbps per year)</td>
+<td>31.8</td>
+</tr>
+<tr>
+<td>Transit bandwidth cost (USD per Mbps per year)</td>
+<td>12</td>
+</tr>
+<tr>
+<td>Fiber cost (USD per km​)</td>
+<td>8,000</td>
+</tr>
+<tr>
+<td>Hardware setup cost (USD per POI​)</td>
+<td>500</td>
+</tr>
+<tr>
+<td>Hardware refresh after (Years)</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cost-model">Cost model</h3>
+<p>The fiber cost model is summarized below. The CAPEX cost for each POI is dependent on the amount of fiber required to connect that school.</p>
+<p><img alt="fiber" src="diagrams\fiber-cost-model.drawio.svg" /></p>
+<h2 id="cellular">Cellular</h2>
+<p>The cellular model relies on coverage analysis. In the current version of the platform, coverage is determined by the distance from a cell tower. Each tower is assumed to provide coverage within a specified maximum radius, which is controlled by the model parameter Coverage radius around cell tower (meters).</p>
+<h3 id="feasibility_1">Feasibility</h3>
+<p>Cellular is considered a feasible technology for a POI if it is within close enough distance to a cell site.</p>
+<h3 id="required-data-inputs_1">Required data inputs</h3>
+<ul>
+<li>Points of interest</li>
+<li>Cell sites</li>
+</ul>
+<h3 id="model-parameters_1">Model parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Description</th>
+<th>Example value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Coverage radius around cell tower (meters)</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td>Reinvest into hardware after (USD per year, as a fraction of hardware CAPEX)</td>
+<td>0.1</td>
+</tr>
+<tr>
+<td>Access ISP fees (USD per Mbps per year)</td>
+<td>24</td>
+</tr>
+<tr>
+<td>Annual traffic fee (USD per Mbps per year)</td>
+<td>12</td>
+</tr>
+<tr>
+<td>Hardware setup cost (USD per POI)</td>
+<td>80</td>
+</tr>
+<tr>
+<td>Reinvest into hardware after (Years)</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cost-model_1">Cost model</h3>
+<p>The cellular cost model is summarized below.</p>
+<p><img alt="p2area" src="diagrams\cellular-cost-model.drawio.svg" /></p>
+<h2 id="point-to-point">Point-to-point</h2>
+<p>The point-to-point model evaluates the feasibility of establishing radio links between points of interest (POIs) and cell sites using visibility analysis. This involves assessing whether the line of sight between a POI and a cell site is obstructed, ensuring that only feasible links are considered for deployment. The analysis uses open topography data from the <a href="https://www.earthdata.nasa.gov/data/instruments/srtm">Shuttle Radar Topography Mission</a> (SRTM), which provides 30-meter resolution elevation data. The maximum visibility limit is set at 35 kilometers.</p>
+<h3 id="feasibility_2">Feasibility</h3>
+<p>Point-to-point microwave is considered a feasible technology for a POI if at least one cell site (or another POI) is visible from the POI.</p>
+<h3 id="required-data-inputs_2">Required data inputs</h3>
+<ul>
+<li>Points of interest</li>
+<li>Cell sites</li>
+</ul>
+<h3 id="model-parameters_2">Model parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Description</th>
+<th>Example value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bandwidth per access link (MHz)</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Access link cost (USD per hop)</td>
+<td>831.59</td>
+</tr>
+<tr>
+<td>Annual hardware maintenance and replacement costs (USD per year, as a fraction of hardware CAPEX)</td>
+<td>0.004</td>
+</tr>
+<tr>
+<td>Access ISP fees (USD per Mbps per year)</td>
+<td>24</td>
+</tr>
+<tr>
+<td>Annual recurring license fee for 1MHz (USD per MHz per year)</td>
+<td>100</td>
+</tr>
+<tr>
+<td>Annual traffic fee (USD per Mbps per year)</td>
+<td>12</td>
+</tr>
+<tr>
+<td>Bandwidth per backhaul link (MHz)</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Backhaul links (Links)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Backhaul links cost (USD per hop)</td>
+<td>2,825.07</td>
+</tr>
+<tr>
+<td>Hardware setup cost (USD per POI)</td>
+<td>500</td>
+</tr>
+<tr>
+<td>One time license fee for 1MHz (USD per MHz)</td>
+<td>500</td>
+</tr>
+<tr>
+<td>Reinvest into hardware after (Years)</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Retransmission towers cost (USD per tower)</td>
+<td>13,000</td>
+</tr>
+<tr>
+<td>Retransmission towers (Towers)</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cost-model_2">Cost model</h3>
+<p>The point-to-point cost model is summarized below. There are added complexities in this cost model due to the presence of additional physical infrastructure, such as retransmission towers and backhaul links - as well as additional one-time and annual license fees.</p>
+<p><img alt="p2p" src="diagrams\p2p-cost-model.drawio.svg" /></p>
+<h2 id="satellite">Satellite</h2>
+<p>There is no specific analysis used to assess the feasibility of satellite connections. They are considered always feasible in this version of the platform.</p>
+<h3 id="feasibility_3">Feasibility</h3>
+<p>Satellite connections are always considered feasible.</p>
+<h3 id="required-data-inputs_3">Required data inputs</h3>
+<ul>
+<li>Points of interest</li>
+</ul>
+<h3 id="model-parameters_3">Model parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Description</th>
+<th>Example value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Annual hardware maintenance and replacement costs (USD per year, as a fraction of hardware CAPEX)</td>
+<td>0.04</td>
+</tr>
+<tr>
+<td>Access ISP fees (USD per Mbps per year)</td>
+<td>24</td>
+</tr>
+<tr>
+<td>Annual traffic fee (USD per Mbps per year)</td>
+<td>12</td>
+</tr>
+<tr>
+<td>Hardware setup cost (USD per POI)</td>
+<td>3,000</td>
+</tr>
+<tr>
+<td>Reinvest into hardware after (Years)</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cost-model_3">Cost model</h3>
+<p>The satellite cost model is summarized below.</p>
+<p><img alt="satellite" src="diagrams\satellite-cost-model.drawio.svg" /></p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
