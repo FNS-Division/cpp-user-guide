@@ -1,7 +1,5 @@
 # Welcome to the ITU Connectivity Planning Platform
 
-The Connectivity Planning Platform (CPP) can be accessed [here](http://ec2-51-20-56-51.eu-north-1.compute.amazonaws.com/).
-
 ## About the ITU Connectivity Planning Platform
 
 The Connectivity Planning Platform is an easy-to-use mapping and analysis tool designed to help planners connect schools, hospitals, residential buildings, and other places to the internet. By assessing various technology options like fiber, cellular networks, point-to-point microwave, and satellite, the platform identifies the best way to bring connectivity to unconnected areas.
