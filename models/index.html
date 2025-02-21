@@ -117,7 +117,7 @@
 <p>This approach enables economies of scale: POIs can act as relay points for neighboring POIs, enabling connectivity without each one needing to connect directly to a transmission node. This approach optimizes resource usage and simplifies network expansion.</p>
 <p>In practice, this model is an application of Kruskal's algorithm to find a Minimum Spanning Tree (MST) in a network graph, where the edges are the road network and the vertices are POIs and fiber nodes. The MST ensures the minimal fiber path necessary to connect all relevant points while adhering to road network constraints related to distance.</p>
 <p><em>Figure: Output of fiber path algorithm</em></p>
-<p><img src="images/nam-fiber-lines.png" width="70%" alt="algorithm-output"></p>
+<p><img alt="nam-fiber-lines" src="../images/nam-fiber-lines.png" /></p>
 <h3 id="feasibility">Feasibility</h3>
 <p>Fiber is considered a feasible technology for a POI if the algorithm is able to connect that POI to the fiber network, given the algorithm constraints - particularly the maximum length of fiber allowed per connection. In practice, fiber will not be feasible for POIs that are very far away from transmission nodes or other POIs.</p>
 <h3 id="required-data-inputs">Required data inputs</h3>
@@ -172,7 +172,7 @@
 <h2 id="cellular">Cellular</h2>
 <p>The cellular model relies on cellular coverage analysis. If mobile coverage contours are provided, such as in the Figure below, then the coverage status is determined by overlaying the POIs over this layer.</p>
 <p><em>Figure: Mobile coverage contours</em></p>
-<p><img src="images/4g-coverage-small.png" width="50%" alt="algorithm-output"></p>
+<p><img alt="4g-coverage-small" src="../images/4g-coverage-small.png" /></p>
 <p>If no mobile coverage contours are provided, then the locations of cell sites have to be provided and mobile coverage is determined by the distance from a cell site. Each site is assumed to provide coverage within a specified maximum radius, which is controlled by the model parameter <code>Coverage radius around cell tower</code>.</p>
 <h3 id="feasibility_1">Feasibility</h3>
 <p>Cellular is considered a feasible technology for a POI if it is within the cellular coverage area.</p>
@@ -223,9 +223,9 @@
 <h2 id="point-to-point">Point-to-point</h2>
 <p>The point-to-point model evaluates the feasibility of establishing radio links between points of interest (POIs) and cell sites using visibility analysis. This involves assessing whether the line of sight between a POI and a cell site is obstructed, ensuring that only feasible links are considered for deployment. The analysis uses open topography data from the <a href="https://www.earthdata.nasa.gov/data/instruments/srtm">Shuttle Radar Topography Mission</a> (SRTM), which provides 30-meter resolution elevation data. The maximum visibility limit is set at 35 kilometers, meaning that cell sites beyond this distance are not considered visible or feasible for point-to-point connectivity.</p>
 <p><em>Figure: Visible cell site</em></p>
-<p><img src="images/visible-cell-site.png" width="75%" alt="algorithm-output"></p>
+<p><img alt="visible-cell-site" src="../images/visible-cell-site.png" /></p>
 <p><em>Figure: Obstructed cell site</em></p>
-<p><img src="images/not-visible-cell-site.png" width="75%" alt="algorithm-output"></p>
+<p><img alt="not-visible-cell-site" src="../images/not-visible-cell-site.png" /></p>
 <h3 id="feasibility_2">Feasibility</h3>
 <p>Point-to-point microwave is considered a feasible technology for a POI if at least one cell site (or another POI) is visible from the POI.</p>
 <h3 id="required-data-inputs_2">Required data inputs</h3>
