@@ -1,16 +1,24 @@
 # Models
 
-## Demand
-
-The demand model estimates the internet demand for each point of interest by creating 1 km buffers around the location and counting the population living within those buffers. Population data is sourced from [WorldPop](https://www.worldpop.org/), a leading provider of high-resolution global population datasets. To estimate internet demand, the model multiplies the population within the buffer by the scenario parameter `Demand per user (Mbps)`.
-
 ## Fiber
 
 The fiber path model identifies the shortest and most cost-effective paths for connecting unconnected points of interest (POIs) to the existing optical fiber network using the road network. By minimizing the total length of fiber required, this model reduces overall deployment costs while efficiently extending connectivity.
 
-One of the key features of the model is economies of scale: POIs can act as relay points for neighboring POIs, enabling connectivity without each one needing to connect directly to a transmission node. This approach optimizes resource usage and simplifies network expansion.
+To start with, the model connects POIs and fiber nodes to the existing road network using straight lines (unless they are already on the road network). Then, for each unconnected POI, it computes the shortest path to all fiber nodes. POIs that are already connected to the fiber network can also act as fiber nodes, from which the fiber network can be extended.
 
-The model uses Kruskal's algorithm to compute a Minimum Spanning Tree (MST). The graph consists of the road network as edges and POIs as vertices. Connections between POIs and the road network are established using straight-line links. The MST ensures the minimal fiber path necessary to connect all relevant points while adhering to road network constraints.
+_Figure: Graph initialization and fiber path algorithm_
+
+![graph-initialization](images/graph-initialization.png)
+
+At each step of the algorithm, new connections are made between connected and unconnected points as long as the length of the new connection is below a specified threshold. For example, it can be specified that no single fiber line should be longer than 5 kilometers.
+
+This approach enables economies of scale: POIs can act as relay points for neighboring POIs, enabling connectivity without each one needing to connect directly to a transmission node. This approach optimizes resource usage and simplifies network expansion.
+
+In practice, this model is an application of Kruskal's algorithm to find a Minimum Spanning Tree (MST) in a network graph, where the edges are the road network and the vertices are POIs and fiber nodes. The MST ensures the minimal fiber path necessary to connect all relevant points while adhering to road network constraints.
+
+_Figure: Output of fiber path algorithm_
+
+<img src="images/nam-fiber-lines.png" width="70%" alt="algorithm-output">
 
 ### Feasibility
 
@@ -20,6 +28,8 @@ Fiber is considered a feasible technology for a POI if the algorithm is able to 
 
 - Points of interest
 - Transmission nodes
+
+The data on the road network is automatically fetched by the model from OpenStreetMap.
 
 ### Model parameters
 
@@ -37,20 +47,28 @@ Fiber is considered a feasible technology for a POI if the algorithm is able to 
 
 The fiber cost model is summarized below. The CAPEX cost for each POI is dependent on the amount of fiber required to connect that school.
 
+_Figure: Fiber cost model_
+
 ![fiber](diagrams/fiber-cost-model.drawio.svg)
 
 ## Cellular
 
-The cellular model relies on coverage analysis. In the current version of the platform, coverage is determined by the distance from a cell tower. Each tower is assumed to provide coverage within a specified maximum radius, which is controlled by the model parameter Coverage radius around cell tower (meters).
+The cellular model relies on cellular coverage analysis. If mobile coverage contours are provided, such as in the Figure below, then the coverage status is determined by overlaying the POIs over this layer.
+
+_Figure: Mobile coverage contours_
+
+<img src="images/4g-coverage-small.png" width="50%" alt="algorithm-output">
+
+If no mobile coverage contours are provided, then the locations of cell sites have to be provided and mobile coverage is determined by the distance from a cell site. Each site is assumed to provide coverage within a specified maximum radius, which is controlled by the model parameter `Coverage radius around cell tower`.
 
 ### Feasibility
 
-Cellular is considered a feasible technology for a POI if it is within close enough distance to a cell site.
+Cellular is considered a feasible technology for a POI if it is within the cellular coverage area.
 
 ### Required data inputs
 
 - Points of interest
-- Cell sites
+- Cell sites or Mobile coverage contours
 
 ### Model parameters
 
@@ -67,11 +85,21 @@ Cellular is considered a feasible technology for a POI if it is within close eno
 
 The cellular cost model is summarized below.
 
+_Figure: Cellular cost model_
+
 ![p2area](diagrams/cellular-cost-model.drawio.svg)
 
 ## Point-to-point
 
-The point-to-point model evaluates the feasibility of establishing radio links between points of interest (POIs) and cell sites using visibility analysis. This involves assessing whether the line of sight between a POI and a cell site is obstructed, ensuring that only feasible links are considered for deployment. The analysis uses open topography data from the [Shuttle Radar Topography Mission](https://www.earthdata.nasa.gov/data/instruments/srtm) (SRTM), which provides 30-meter resolution elevation data. The maximum visibility limit is set at 35 kilometers.
+The point-to-point model evaluates the feasibility of establishing radio links between points of interest (POIs) and cell sites using visibility analysis. This involves assessing whether the line of sight between a POI and a cell site is obstructed, ensuring that only feasible links are considered for deployment. The analysis uses open topography data from the [Shuttle Radar Topography Mission](https://www.earthdata.nasa.gov/data/instruments/srtm) (SRTM), which provides 30-meter resolution elevation data. The maximum visibility limit is set at 35 kilometers, meaning that cell sites beyond this distance are not considered visible or feasible for point-to-point connectivity.
+
+_Figure: Visible cell site_
+
+<img src="images/visible-cell-site.png" width="75%" alt="algorithm-output">
+
+_Figure: Obstructed cell site_
+
+<img src="images/not-visible-cell-site.png" width="75%" alt="algorithm-output">
 
 ### Feasibility
 
@@ -105,6 +133,8 @@ Point-to-point microwave is considered a feasible technology for a POI if at lea
 
 The point-to-point cost model is summarized below. There are added complexities in this cost model due to the presence of additional physical infrastructure, such as retransmission towers and backhaul links - as well as additional one-time and annual license fees.
 
+_Figure: Point to point cost model_
+
 ![p2p](diagrams/p2p-cost-model.drawio.svg)
 
 ## Satellite
@@ -132,5 +162,7 @@ Satellite connections are always considered feasible.
 ### Cost model
 
 The satellite cost model is summarized below.
+
+_Figure: Satellite cost model_
 
 ![satellite](diagrams/satellite-cost-model.drawio.svg)

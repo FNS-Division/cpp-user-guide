@@ -11,10 +11,12 @@ There are scenario-level parameters which need to be provided, as summarized in 
 | Description | Example value |
 |------------|---------------|
 | Country name | Spain |
-| Capital Expenditure Budget (USD) | 1E+11 |
+| Capital Expenditure Budget (USD) | 10,000,000 |
 | Project planning period (years) | 10 |
 | Demand per user (Mbps) | 10 |
 
-The diagram below illustrates the "Minimize Total Cost of Ownership" scenario. This scenario focuses on connecting as many points of interest as possible while maximizing the operator's net revenue.
+The diagram below illustrates the _Minimize Total Cost of Ownership_ scenario. This scenario focuses on connecting as many points of interest as possible while maximizing the operator's net revenue.
+
+_Figure: Minimize Total Cost of Ownership Scenario_
 
 ![scenario](diagrams/scenario.drawio.svg)

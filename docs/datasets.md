@@ -14,8 +14,8 @@ This page summarizes the data user-provided required by the toolkit. The provide
 | is_public | boolean | | True | No | Whether the POI is public or private |
 | poi_subtype | string | | primary school | No | Specific subtype of the POI |
 | country_code | string | | DZA | Yes | ISO 3166-1 alpha-3 country code |
-| is_connected | boolean | | True | No | Whether the POI has connectivity |
-| connectivity_type | string | | 4G | No | Type of internet connectivity |
+| is_connected | boolean | | True | Yes | Whether the POI has connectivity |
+| connectivity_type | string | | 4G | Yes | Type of internet connectivity |
 
 ## Cell sites
 
