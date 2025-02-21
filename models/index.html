@@ -115,7 +115,7 @@
 <p><img alt="graph-initialization" src="../images/graph-initialization.png" /></p>
 <p>At each step of the algorithm, new connections are made between connected and unconnected points as long as the length of the new connection is below a specified threshold. For example, it can be specified that no single fiber line should be longer than 5 kilometers.</p>
 <p>This approach enables economies of scale: POIs can act as relay points for neighboring POIs, enabling connectivity without each one needing to connect directly to a transmission node. This approach optimizes resource usage and simplifies network expansion.</p>
-<p>In practice, this model is an application of Kruskal's algorithm to find a Minimum Spanning Tree (MST) in a network graph, where the edges are the road network and the vertices are POIs and fiber nodes. The MST ensures the minimal fiber path necessary to connect all relevant points while adhering to road network constraints.</p>
+<p>In practice, this model is an application of Kruskal's algorithm to find a Minimum Spanning Tree (MST) in a network graph, where the edges are the road network and the vertices are POIs and fiber nodes. The MST ensures the minimal fiber path necessary to connect all relevant points while adhering to road network constraints related to distance.</p>
 <p><em>Figure: Output of fiber path algorithm</em></p>
 <p><img src="images/nam-fiber-lines.png" width="70%" alt="algorithm-output"></p>
 <h3 id="feasibility">Feasibility</h3>
