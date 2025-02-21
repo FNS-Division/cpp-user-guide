@@ -95,11 +95,11 @@ The point-to-point model evaluates the feasibility of establishing radio links b
 
 _Figure: Visible cell site_
 
-![4g-coverage-small](images/images/visible-cell-site.png)
+![visible-cell-site](images/visible-cell-site.png)
 
 _Figure: Obstructed cell site_
 
-![4g-coverage-small](images/images/not-visible-cell-site.png)
+![not-visible-cell-site](images/not-visible-cell-site.png)
 
 ### Feasibility
 
