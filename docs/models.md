@@ -18,7 +18,7 @@ In practice, this model is an application of Kruskal's algorithm to find a Minim
 
 _Figure: Output of fiber path algorithm_
 
-<img src="images/nam-fiber-lines.png" width="70%" alt="algorithm-output">
+![nam-fiber-lines](images/nam-fiber-lines.png)
 
 ### Feasibility
 
@@ -57,7 +57,7 @@ The cellular model relies on cellular coverage analysis. If mobile coverage cont
 
 _Figure: Mobile coverage contours_
 
-<img src="images/4g-coverage-small.png" width="50%" alt="algorithm-output">
+![4g-coverage-small](images/4g-coverage-small.png)
 
 If no mobile coverage contours are provided, then the locations of cell sites have to be provided and mobile coverage is determined by the distance from a cell site. Each site is assumed to provide coverage within a specified maximum radius, which is controlled by the model parameter `Coverage radius around cell tower`.
 
@@ -95,11 +95,11 @@ The point-to-point model evaluates the feasibility of establishing radio links b
 
 _Figure: Visible cell site_
 
-<img src="images/visible-cell-site.png" width="75%" alt="algorithm-output">
+![4g-coverage-small](images/images/visible-cell-site.png)
 
 _Figure: Obstructed cell site_
 
-<img src="images/not-visible-cell-site.png" width="75%" alt="algorithm-output">
+![4g-coverage-small](images/images/not-visible-cell-site.png)
 
 ### Feasibility
 
