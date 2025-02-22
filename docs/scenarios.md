@@ -14,6 +14,7 @@ There are scenario-level parameters which need to be provided, as summarized in 
 | Capital Expenditure Budget (USD) | 10,000,000 |
 | Project planning period (years) | 10 |
 | Demand per user (Mbps) | 10 |
+| Catchment radius around each Point of Interest (km) | 1 |
 
 The diagram below illustrates the _Minimize Total Cost of Ownership_ scenario. This scenario focuses on connecting as many points of interest as possible while maximizing the operator's net revenue.
 
