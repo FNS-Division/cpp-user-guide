@@ -43,11 +43,11 @@ The data on the road network is automatically fetched by the model from OpenStre
 | Hardware setup cost (USD per POI​) | 500 |
 | Hardware refresh after (Years) | 3 |
 
-### Cost model
+### Fiber cost function
 
-The fiber cost model is summarized below. The CAPEX cost for each POI is dependent on the amount of fiber required to connect that school.
+The fiber cost function is summarized below. The CAPEX cost for each POI is dependent on the amount of fiber required to connect that school.
 
-_Figure: Fiber cost model_
+_Figure: Fiber cost function
 
 ![fiber](diagrams/fiber-cost-model.drawio.svg)
 
@@ -81,11 +81,11 @@ Cellular is considered a feasible technology for a POI if it is within the cellu
 | Hardware setup cost (USD per POI)                      | 80                |
 | Reinvest into hardware after (Years)                   | 3                 |
 
-### Cost model
+### Cellular cost function
 
-The cellular cost model is summarized below.
+The cellular cost function is summarized below.
 
-_Figure: Cellular cost model_
+_Figure: Cellular cost function_
 
 ![p2area](diagrams/cellular-cost-model.drawio.svg)
 
@@ -124,11 +124,11 @@ Point-to-point microwave is considered a feasible technology for a POI if at lea
 | One time license fee for 1MHz (USD per MHz)                                  | 500               |
 | Reinvest into hardware after (Years)                                         | 5                 |
 
-### Cost model
+### Point-to-point cost function
 
-The point-to-point cost model is summarized below. There are added complexities in this cost model due to the presence of additional physical infrastructure, such as retransmission towers and backhaul links - as well as additional one-time and annual license fees.
+The point-to-point cost function is summarized below. There are added complexities in this cost function due to the presence of additional physical infrastructure, such as retransmission towers and backhaul links - as well as additional one-time and annual license fees.
 
-_Figure: Point to point cost model_
+_Figure: Point to point cost function_
 
 ![p2p](diagrams/p2p-cost-model.drawio.svg)
 
@@ -154,10 +154,10 @@ Satellite connections are always considered feasible.
 | Hardware setup cost (USD per POI)                                               | 3,000              |
 | Reinvest into hardware after (Years)                                            | 5                 |
 
-### Cost model
+### Satllite cost function
 
-The satellite cost model is summarized below.
+The satellite cost function is summarized below.
 
-_Figure: Satellite cost model_
+_Figure: Satellite cost function_
 
 ![satellite](diagrams/satellite-cost-model.drawio.svg)
