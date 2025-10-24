@@ -12,7 +12,7 @@ There are scenario-level parameters which need to be provided, as summarized in 
 |------------|---------------|
 | Budget (USD) | 1,000,000 |
 | Project planning period (years) | 10 |
-| Demand per user (Mbps) | 10 |
+| Demand per user (Mbps) | 1.5 |
 
 The diagram below illustrates the _Maximize Operator Net Present Value (NPV)_ scenario. This scenario focuses on connecting as many points of interest as possible while maximizing the operator's net revenue.
 
