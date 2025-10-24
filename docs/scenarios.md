@@ -10,7 +10,6 @@ There are scenario-level parameters which need to be provided, as summarized in 
 
 | Description | Example value |
 |------------|---------------|
-| Country name | Spain |
 | Budget (USD) | 1,000,000 |
 | Project planning period (years) | 10 |
 | Demand per user (Mbps) | 10 |
