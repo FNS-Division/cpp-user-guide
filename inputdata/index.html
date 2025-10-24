@@ -44,7 +44,7 @@
                                 <a href="../models/" class="nav-link">Models</a>
                             </li>
                             <li class="nav-item">
-                                <a href="./" class="nav-link active" aria-current="page">Datasets</a>
+                                <a href="../datasets.md" class="nav-link">Datasets</a>
                             </li>
                         </ul>
 
@@ -54,16 +54,6 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li class="nav-item">
-                                <a rel="prev" href="../models/" class="nav-link">
-                                    <i class="fa fa-arrow-left"></i> Previous
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a rel="next" class="nav-link disabled">
-                                    Next <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
                     </ul>
                 </div>
             </div>
@@ -96,6 +86,10 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-bs-level="2"><a href="#mobile-coverage" class="nav-link">Mobile coverage</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -123,16 +117,16 @@
 <td>UUID</td>
 <td></td>
 <td>123e4567-e89b-12d3-a456-426614174000</td>
-<td>Yes</td>
-<td>Unique identifier for the POI</td>
+<td>No</td>
+<td>Unique identifier for the POI, automatically generated</td>
 </tr>
 <tr>
 <td>dataset_id</td>
 <td>UUID</td>
 <td></td>
 <td>987fcdeb-51a2-12d3-a456-426614174000</td>
-<td>Yes</td>
-<td>Unique identifier for the dataset</td>
+<td>No</td>
+<td>Unique identifier for the dataset, automatically generated</td>
 </tr>
 <tr>
 <td>lat</td>
@@ -151,35 +145,11 @@
 <td>Longitude coordinate</td>
 </tr>
 <tr>
-<td>poi_type</td>
-<td>string</td>
-<td></td>
-<td>school</td>
-<td>Yes</td>
-<td>Type of point of interest</td>
-</tr>
-<tr>
-<td>is_public</td>
-<td>boolean</td>
-<td></td>
-<td>True</td>
-<td>No</td>
-<td>Whether the POI is public or private</td>
-</tr>
-<tr>
-<td>poi_subtype</td>
-<td>string</td>
-<td></td>
-<td>primary school</td>
-<td>No</td>
-<td>Specific subtype of the POI</td>
-</tr>
-<tr>
 <td>country_code</td>
 <td>string</td>
 <td></td>
 <td>DZA</td>
-<td>Yes</td>
+<td>No</td>
 <td>ISO 3166-1 alpha-3 country code</td>
 </tr>
 <tr>
@@ -187,16 +157,40 @@
 <td>boolean</td>
 <td></td>
 <td>True</td>
-<td>Yes</td>
-<td>Whether the POI has connectivity</td>
+<td>No</td>
+<td>Whether the POI has connectivity. If this column is missing, the connectivits status will be inferred using <a href="https://www.ookla.com/ookla-for-good/open-data">speed test</a> measurements.</td>
 </tr>
 <tr>
 <td>connectivity_type</td>
 <td>string</td>
+<td>unknown, mobile, mobile_broadband, metro, fiber, wireless, satellite, wired</td>
+<td>fiber</td>
+<td>No</td>
+<td>Type of internet connectivity. If this column is missing, the connectivits status will be inferred using <a href="https://www.ookla.com/ookla-for-good/open-data">speed test</a> measurements.</td>
+</tr>
+<tr>
+<td>has_electricity</td>
+<td>boolean</td>
 <td></td>
-<td>4G</td>
-<td>Yes</td>
-<td>Type of internet connectivity</td>
+<td>True</td>
+<td>No</td>
+<td>Whether the POI has electricity. If missing, no electricity will be assumed.</td>
+</tr>
+<tr>
+<td>number_of_users</td>
+<td>boolean</td>
+<td></td>
+<td>True</td>
+<td>No</td>
+<td>Peak number of internet user at the POI. If missing, this will be estimated by the demand model using population data.</td>
+</tr>
+<tr>
+<td>poi_type</td>
+<td>string</td>
+<td></td>
+<td>school</td>
+<td>No</td>
+<td>Type of point of interest</td>
 </tr>
 </tbody>
 </table>
@@ -218,7 +212,7 @@
 <td>UUID</td>
 <td></td>
 <td>123e4567-e89b-12d3-a456-426614174000</td>
-<td>Yes</td>
+<td>No</td>
 <td>Cell tower identifier</td>
 </tr>
 <tr>
@@ -226,11 +220,11 @@
 <td>UUID</td>
 <td></td>
 <td>987fcdeb-51a2-12d3-a456-426614174000</td>
-<td>Yes</td>
+<td>No</td>
 <td>Unique identifier for the dataset</td>
 </tr>
 <tr>
-<td>latitude</td>
+<td>lat</td>
 <td>float</td>
 <td></td>
 <td>38.988755</td>
@@ -238,12 +232,28 @@
 <td>Cell tower geographical latitude</td>
 </tr>
 <tr>
-<td>longitude</td>
+<td>lon</td>
 <td>float</td>
 <td></td>
 <td>1.401938</td>
 <td>Yes</td>
 <td>Cell tower geographical longitude</td>
+</tr>
+<tr>
+<td>radio_type</td>
+<td>string</td>
+<td>2G, 3G, 4G, 5G</td>
+<td>4G</td>
+<td>Yes</td>
+<td>Type of radio transmission technology</td>
+</tr>
+<tr>
+<td>antenna_height</td>
+<td>float</td>
+<td></td>
+<td>25</td>
+<td>No</td>
+<td>Antenna height in meters from the ground, if missing a height of 25 meters will be assumed.</td>
 </tr>
 <tr>
 <td>operator_name</td>
@@ -252,22 +262,6 @@
 <td>TelOperator</td>
 <td>No</td>
 <td>Mobile network operator name</td>
-</tr>
-<tr>
-<td>radio_type</td>
-<td>string</td>
-<td>LTE, UMTS, GSM, CDMA</td>
-<td>LTE</td>
-<td>Yes</td>
-<td>Type of radio transmission technology</td>
-</tr>
-<tr>
-<td>antenna_height_m</td>
-<td>float</td>
-<td></td>
-<td>25</td>
-<td>Yes</td>
-<td>Antenna height on the tower or building</td>
 </tr>
 <tr>
 <td>backhaul_type</td>
@@ -305,7 +299,7 @@
 <td>UUID</td>
 <td></td>
 <td>123e4567-e89b-12d3-a456-426614174000</td>
-<td>Yes</td>
+<td>No</td>
 <td>Node identifier</td>
 </tr>
 <tr>
@@ -313,11 +307,11 @@
 <td>UUID</td>
 <td></td>
 <td>987fcdeb-51a2-12d3-a456-426614174000</td>
-<td>Yes</td>
+<td>No</td>
 <td>Unique identifier for the dataset</td>
 </tr>
 <tr>
-<td>latitude</td>
+<td>lat</td>
 <td>float</td>
 <td></td>
 <td>38.988755</td>
@@ -325,12 +319,28 @@
 <td>Geographical latitude</td>
 </tr>
 <tr>
-<td>longitude</td>
+<td>lon</td>
 <td>float</td>
 <td></td>
 <td>1.401938</td>
 <td>Yes</td>
 <td>Geographical longitude</td>
+</tr>
+<tr>
+<td>transmission_medium</td>
+<td>string</td>
+<td>fiber, microwave, other</td>
+<td>fiber</td>
+<td>No</td>
+<td>Transmission medium. If missing, 'fiber' will be assumed.</td>
+</tr>
+<tr>
+<td>node_status</td>
+<td>string</td>
+<td>operational, planned, under construction</td>
+<td>operational</td>
+<td>No</td>
+<td>Status of the node. If missing, 'operational' will be assumed.</td>
 </tr>
 <tr>
 <td>operator_name</td>
@@ -339,22 +349,6 @@
 <td>TelOperator</td>
 <td>No</td>
 <td>Name of the mobile operator</td>
-</tr>
-<tr>
-<td>infrastructure_type</td>
-<td>string</td>
-<td>fiber, microwave, other</td>
-<td>fiber</td>
-<td>Yes</td>
-<td>Type of Infrastructure</td>
-</tr>
-<tr>
-<td>node_status</td>
-<td>string</td>
-<td>operational, planned, under construction</td>
-<td>operational</td>
-<td>Yes</td>
-<td>Status of the node</td>
 </tr>
 <tr>
 <td>equipped_capacity_mbps</td>
@@ -371,6 +365,45 @@
 <td>2000</td>
 <td>No</td>
 <td>Total theoretical bandwidth available for subscriber connections</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mobile-coverage">Mobile coverage</h2>
+<table>
+<thead>
+<tr>
+<th>Column name</th>
+<th>Column type</th>
+<th>Levels</th>
+<th>Example</th>
+<th>Mandatory</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>geometry</td>
+<td>geometry</td>
+<td></td>
+<td>POLYGON((-74.0060 40.7128, -73.9857 40.7484, -73.9772 40.7516, -74.0060 40.7128))</td>
+<td>Yes</td>
+<td>Mobile coverage polygons</td>
+</tr>
+<tr>
+<td>radio_type</td>
+<td>str</td>
+<td>2G, 3G, 4G, 5G</td>
+<td>4G</td>
+<td>Yes</td>
+<td>Radio technology type</td>
+</tr>
+<tr>
+<td>fid</td>
+<td>str</td>
+<td></td>
+<td>123e4567-e89b-12d3-a456-426614174000</td>
+<td>No</td>
+<td>Unique identifier for polygons</td>
 </tr>
 </tbody>
 </table></div>

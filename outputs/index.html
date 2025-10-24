@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Point-level results - ITU Connectivity Planning Platform</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">ITU Connectivity Planning Platform</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../scenarios/" class="nav-link">Scenarios</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../models/" class="nav-link">Models</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../datasets.md" class="nav-link">Datasets</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#point-level-results" class="nav-link">Point-level results</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#output-file-metadata" class="nav-link">Output File Metadata</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#fiber-path-edge-level-results" class="nav-link">Fiber Path Edge-level results</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#output-file-metadata_1" class="nav-link">Output File Metadata</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#visibility-edge-level-results" class="nav-link">Visibility Edge-level results</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#output-file-metadata_2" class="nav-link">Output File Metadata</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="point-level-results">Point-level results</h1>
+<p><img alt="Points visualization" src="../images/results-points.png" /></p>
+<h2 id="output-file-metadata">Output File Metadata</h2>
+<table>
+<thead>
+<tr>
+<th>Analysis Source</th>
+<th>Indicator</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Input POI data</strong></td>
+<td><code>dataset_id</code></td>
+<td>Identifier for the source dataset containing this POI</td>
+</tr>
+<tr>
+<td></td>
+<td><code>geometry</code></td>
+<td>Geometric representation of POI location (point coordinates)</td>
+</tr>
+<tr>
+<td></td>
+<td><code>lat</code></td>
+<td>Latitude coordinate of the POI location</td>
+</tr>
+<tr>
+<td></td>
+<td><code>lon</code></td>
+<td>Longitude coordinate of the POI location</td>
+</tr>
+<tr>
+<td></td>
+<td><code>poi_id</code></td>
+<td>Unique identifier for each Point of Interest (POI)</td>
+</tr>
+<tr>
+<td></td>
+<td><code>poi_type</code></td>
+<td>Category/type of POI (e.g. school, health center, town hall)</td>
+</tr>
+<tr>
+<td><strong>Proximity</strong></td>
+<td><code>2g_cell_site_dist</code></td>
+<td>Distance in meters to nearest 2G cell site</td>
+</tr>
+<tr>
+<td></td>
+<td><code>3g_cell_site_dist</code></td>
+<td>Distance in meters to nearest 3G cell site</td>
+</tr>
+<tr>
+<td></td>
+<td><code>4g_cell_site_dist</code></td>
+<td>Distance in meters to nearest 4G cell site</td>
+</tr>
+<tr>
+<td></td>
+<td><code>5g_cell_site_dist</code></td>
+<td>Distance in meters to nearest 5G cell site</td>
+</tr>
+<tr>
+<td></td>
+<td><code>cell_site_dist</code></td>
+<td>Distance in meters to nearest cellular tower (any generation)</td>
+</tr>
+<tr>
+<td></td>
+<td><code>fiber_node_dist</code></td>
+<td>Distance in meters to nearest fiber optic network node</td>
+</tr>
+<tr>
+<td></td>
+<td><code>transmission_node_dist</code></td>
+<td>Distance in meters to nearest transmission infrastructure node</td>
+</tr>
+<tr>
+<td><strong>Coverage</strong></td>
+<td><code>2g_mobile_coverage</code></td>
+<td>Boolean indicating if POI has 2G mobile network coverage</td>
+</tr>
+<tr>
+<td></td>
+<td><code>3g_mobile_coverage</code></td>
+<td>Boolean indicating if POI has 3G mobile network coverage</td>
+</tr>
+<tr>
+<td></td>
+<td><code>4g_mobile_coverage</code></td>
+<td>Boolean indicating if POI has 4G mobile network coverage</td>
+</tr>
+<tr>
+<td></td>
+<td><code>5g_mobile_coverage</code></td>
+<td>Boolean indicating if POI has 5G mobile network coverage</td>
+</tr>
+<tr>
+<td><strong>Demand</strong></td>
+<td><code>mbps_demand_per_user</code></td>
+<td>Bandwidth demand per individual user in Mbps</td>
+</tr>
+<tr>
+<td></td>
+<td><code>number_of_users</code></td>
+<td>Estimated number of internet users at this POI</td>
+</tr>
+<tr>
+<td></td>
+<td><code>poi_count_10km</code></td>
+<td>Number of other POIs within 10km radius</td>
+</tr>
+<tr>
+<td></td>
+<td><code>poi_count_1km</code></td>
+<td>Number of other POIs within 1km radius</td>
+</tr>
+<tr>
+<td></td>
+<td><code>poi_count_2km</code></td>
+<td>Number of other POIs within 2km radius</td>
+</tr>
+<tr>
+<td></td>
+<td><code>poi_count_3km</code></td>
+<td>Number of other POIs within 3km radius</td>
+</tr>
+<tr>
+<td></td>
+<td><code>poi_count_4km</code></td>
+<td>Number of other POIs within 4km radius</td>
+</tr>
+<tr>
+<td></td>
+<td><code>poi_count_5km</code></td>
+<td>Number of other POIs within 5km radius</td>
+</tr>
+<tr>
+<td></td>
+<td><code>pop_within_10km</code></td>
+<td>Population count within 10km buffer around POI</td>
+</tr>
+<tr>
+<td></td>
+<td><code>pop_within_1km</code></td>
+<td>Population count within 1km buffer around POI</td>
+</tr>
+<tr>
+<td></td>
+<td><code>pop_within_3km</code></td>
+<td>Population count within 3km buffer around POI</td>
+</tr>
+<tr>
+<td></td>
+<td><code>pop_within_4km</code></td>
+<td>Population count within 4km buffer around POI</td>
+</tr>
+<tr>
+<td></td>
+<td><code>pop_within_5km</code></td>
+<td>Population count within 5km buffer around POI</td>
+</tr>
+<tr>
+<td></td>
+<td><code>total_mbps</code></td>
+<td>Total bandwidth demand in Mbps for this POI</td>
+</tr>
+<tr>
+<td><strong>Fiber Path</strong></td>
+<td><code>closest_node_distance</code></td>
+<td>Distance in meters to the closest fiber node</td>
+</tr>
+<tr>
+<td></td>
+<td><code>closest_node_id</code></td>
+<td>Identifier of the nearest fiber node</td>
+</tr>
+<tr>
+<td></td>
+<td><code>connected_node_dist</code></td>
+<td>Distance in meters to the connected fiber node</td>
+</tr>
+<tr>
+<td></td>
+<td><code>connected_node_id</code></td>
+<td>Identifier of the node this POI is connected to</td>
+</tr>
+<tr>
+<td></td>
+<td><code>fiber_path</code></td>
+<td>Route description for fiber optic connection to this POI</td>
+</tr>
+<tr>
+<td></td>
+<td><code>fiber_path_incl_poi</code></td>
+<td>Fiber connection path including this POI in the route</td>
+</tr>
+<tr>
+<td></td>
+<td><code>fiber_path_order</code></td>
+<td>Order/sequence number of this POI in the fiber deployment path</td>
+</tr>
+<tr>
+<td></td>
+<td><code>in_mst_solution</code></td>
+<td>Boolean indicating if POI is included in fiber path solution</td>
+</tr>
+<tr>
+<td></td>
+<td><code>max_dist_km</code></td>
+<td>Maximum allowable distance in km for fiber path solution</td>
+</tr>
+<tr>
+<td></td>
+<td><code>n_conns</code></td>
+<td>Number of network connections associated with this POI</td>
+</tr>
+<tr>
+<td></td>
+<td><code>upstream_node_distance</code></td>
+<td>Distance in meters to the upstream fiber node</td>
+</tr>
+<tr>
+<td></td>
+<td><code>upstream_node_id</code></td>
+<td>Identifier of the upstream network node in the connection path</td>
+</tr>
+<tr>
+<td><strong>Visibility</strong></td>
+<td><code>antenna_los_distance</code></td>
+<td>Line-of-sight distance in meters for antenna/radio connections</td>
+</tr>
+<tr>
+<td></td>
+<td><code>azimuth_angle</code></td>
+<td>Directional angle in degrees for point-to-point radio links</td>
+</tr>
+<tr>
+<td></td>
+<td><code>is_visible</code></td>
+<td>Boolean indicating if POI has line-of-sight to cellular infrastructure</td>
+</tr>
+<tr>
+<td></td>
+<td><code>is_visible_pois</code></td>
+<td>Boolean indicating if this POI is visible to other POIs</td>
+</tr>
+<tr>
+<td></td>
+<td><code>num_visible</code></td>
+<td>Count of visible cellular sites from this POI location</td>
+</tr>
+<tr>
+<td></td>
+<td><code>vis_geometry</code></td>
+<td>Geometric representation of visibility analysis</td>
+</tr>
+<tr>
+<td></td>
+<td><code>visible_cell_site_dist</code></td>
+<td>Distance in meters to the nearest visible cellular site</td>
+</tr>
+<tr>
+<td></td>
+<td><code>visible_cell_site_ict_id</code></td>
+<td>ID of the nearest visible cellular tower/base station</td>
+</tr>
+<tr>
+<td></td>
+<td><code>visible_cell_site_radio_type</code></td>
+<td>Type of radio technology at the nearest visible cell site</td>
+</tr>
+<tr>
+<td></td>
+<td><code>visible_pois</code></td>
+<td>List of other POIs visible from this location</td>
+</tr>
+<tr>
+<td><strong>Technology Assignment</strong></td>
+<td><code>fiber_feasible</code></td>
+<td>Whether fiber is feasible for this POI</td>
+</tr>
+<tr>
+<td></td>
+<td><code>number_of_periods</code></td>
+<td>Total number of time periods for the connection</td>
+</tr>
+<tr>
+<td></td>
+<td><code>p2area_feasible</code></td>
+<td>Whether p2area is feasible for this POI</td>
+</tr>
+<tr>
+<td></td>
+<td><code>p2p_feasible</code></td>
+<td>Whether p2p is feasible for this POI</td>
+</tr>
+<tr>
+<td></td>
+<td><code>satellite_feasible</code></td>
+<td>Whether satellite is feasible for this POI</td>
+</tr>
+<tr>
+<td></td>
+<td><code>technology</code></td>
+<td>Selected connectivity technology solution for this POI</td>
+</tr>
+<tr>
+<td><strong>Cost</strong></td>
+<td><code>annual_cost</code></td>
+<td>Annual cost of ownership (CAPEX and OPEX)</td>
+</tr>
+<tr>
+<td></td>
+<td><code>annual_revenue</code></td>
+<td>Annual operator revenue from ISP retail fees</td>
+</tr>
+<tr>
+<td></td>
+<td><code>init_capex</code></td>
+<td>Initial capital expenditure</td>
+</tr>
+<tr>
+<td></td>
+<td><code>pp_coo</code></td>
+<td>Total cost of ownership (CAPEX and OPEX) over project period</td>
+</tr>
+<tr>
+<td></td>
+<td><code>pp_profit</code></td>
+<td>Operator profits over project period (ISP retail fees minus cost of ownership)</td>
+</tr>
+<tr>
+<td></td>
+<td><code>pp_revenue</code></td>
+<td>Operator revenue over project period (ISP retail fees)</td>
+</tr>
+</tbody>
+</table>
+<h1 id="fiber-path-edge-level-results">Fiber Path Edge-level results</h1>
+<p><img alt="Fiber path edges visualization" src="../images/results-fiber-lines.png" /></p>
+<h2 id="output-file-metadata_1">Output File Metadata</h2>
+<table>
+<thead>
+<tr>
+<th>Analysis Source</th>
+<th>Indicator</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fiber Path</strong></td>
+<td><code>index</code></td>
+<td>Sequential row identifier for each road network edge/segment</td>
+</tr>
+<tr>
+<td></td>
+<td><code>u</code></td>
+<td>Source node identifier (starting point of road segment)</td>
+</tr>
+<tr>
+<td></td>
+<td><code>v</code></td>
+<td>Target node identifier (ending point of road segment)</td>
+</tr>
+<tr>
+<td></td>
+<td><code>key</code></td>
+<td>Unique key identifier for parallel edges between same nodes</td>
+</tr>
+<tr>
+<td></td>
+<td><code>osmid</code></td>
+<td>OpenStreetMap identifier for the original road segment</td>
+</tr>
+<tr>
+<td></td>
+<td><code>geometry</code></td>
+<td>Geometric representation of the road segment (linestring coordinates)</td>
+</tr>
+<tr>
+<td></td>
+<td><code>cluster</code></td>
+<td>Geographical cluster identifier for regional analysis grouping</td>
+</tr>
+</tbody>
+</table>
+<h1 id="visibility-edge-level-results">Visibility Edge-level results</h1>
+<p><img alt="Radio links visualization" src="../images/results-radio-links.png" /></p>
+<h2 id="output-file-metadata_2">Output File Metadata</h2>
+<table>
+<thead>
+<tr>
+<th>Analysis Source</th>
+<th>Indicator</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Visibility</strong></td>
+<td><code>poi_id</code></td>
+<td>Unique identifier for the Point of Interest being analyzed</td>
+</tr>
+<tr>
+<td></td>
+<td><code>ict_id</code></td>
+<td>Identifier for the cell site</td>
+</tr>
+<tr>
+<td></td>
+<td><code>radio_type</code></td>
+<td>Type of radio technology at the ICT node (e.g. 4G, 5G)</td>
+</tr>
+<tr>
+<td></td>
+<td><code>ground_distance</code></td>
+<td>Straight-line distance on ground between POI and cell site (2D)</td>
+</tr>
+<tr>
+<td></td>
+<td><code>antenna_los_distance</code></td>
+<td>Straight-line distance between two antennas in meters (3D)</td>
+</tr>
+<tr>
+<td></td>
+<td><code>azimuth_angle</code></td>
+<td>Directional bearing angle in degrees from POI to cell site infrastructure</td>
+</tr>
+<tr>
+<td></td>
+<td><code>geometry</code></td>
+<td>Geometric representation of the line-of-sight path between locations</td>
+</tr>
+<tr>
+<td></td>
+<td><code>is_visible</code></td>
+<td>Boolean indicating if clear line-of-sight exists for POI with at least one cell site</td>
+</tr>
+<tr>
+<td></td>
+<td><code>num_visible</code></td>
+<td>Total count of cell sites visible from this POI location</td>
+</tr>
+<tr>
+<td></td>
+<td><code>order</code></td>
+<td>Ranking order of this cell site by proximity from POI</td>
+</tr>
+<tr>
+<td></td>
+<td><code>visible_pois</code></td>
+<td>Array of other POI identifiers that are visible from this POI</td>
+</tr>
+<tr>
+<td></td>
+<td><code>is_visible_pois</code></td>
+<td>List of other POIs that are visible from this POI</td>
+</tr>
+</tbody>
+</table></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

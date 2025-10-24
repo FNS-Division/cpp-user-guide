@@ -44,7 +44,7 @@
                                 <a href="./" class="nav-link active" aria-current="page">Models</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../datasets/" class="nav-link">Datasets</a>
+                                <a href="../datasets.md" class="nav-link">Datasets</a>
                             </li>
                         </ul>
 
@@ -60,7 +60,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../datasets/" class="nav-link">
+                                <a rel="next" class="nav-link disabled">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -175,7 +175,7 @@
 <p><img alt="4g-coverage-small" src="../images/4g-coverage-small.png" /></p>
 <p>If no mobile coverage contours are provided, then the locations of cell sites have to be provided and mobile coverage is determined by the distance from a cell site. Each site is assumed to provide coverage within a specified maximum radius, which is controlled by the model parameter <code>Coverage radius around cell tower</code>.</p>
 <h3 id="feasibility_1">Feasibility</h3>
-<p>Cellular is considered a feasible technology for a POI if it is within the cellular coverage area.</p>
+<p>Cellular is considered a feasible technology for a POI if it is within the cellular coverage area (3G, 4G or 5G).</p>
 <h3 id="required-data-inputs_1">Required data inputs</h3>
 <ul>
 <li>Points of interest</li>
@@ -247,10 +247,6 @@
 <td>10</td>
 </tr>
 <tr>
-<td>Access link cost (USD per hop)</td>
-<td>831.59</td>
-</tr>
-<tr>
 <td>Annual hardware maintenance and replacement costs (USD per year, as a fraction of hardware CAPEX)</td>
 <td>0.004</td>
 </tr>
@@ -271,15 +267,7 @@
 <td>20</td>
 </tr>
 <tr>
-<td>Backhaul links (Links)</td>
-<td>0</td>
-</tr>
-<tr>
-<td>Backhaul links cost (USD per hop)</td>
-<td>2,825.07</td>
-</tr>
-<tr>
-<td>Hardware setup cost (USD per POI)</td>
+<td>Hardware setup cost, including access links and assuming one hop per POI (USD per POI)</td>
 <td>500</td>
 </tr>
 <tr>
@@ -289,14 +277,6 @@
 <tr>
 <td>Reinvest into hardware after (Years)</td>
 <td>5</td>
-</tr>
-<tr>
-<td>Retransmission towers cost (USD per tower)</td>
-<td>13,000</td>
-</tr>
-<tr>
-<td>Retransmission towers (Towers)</td>
-<td>0</td>
 </tr>
 </tbody>
 </table>
