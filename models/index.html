@@ -135,92 +135,181 @@
 <tr>
 <th>Description</th>
 <th>Example value</th>
+<th>Configurable in CPP</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Maximum connection length (meters)</td>
 <td>50,000</td>
+<td>Yes</td>
 </tr>
 <tr>
-<td>Annual hardware maintenance and replacement costs (USD per year​, as a fraction of hardware CAPEX)</td>
-<td>0.1</td>
+<td>Network type</td>
+<td>Type of road network to consider (e.g., all public roads)</td>
+<td>No</td>
 </tr>
 <tr>
-<td>Access bandwidth cost (USD per Mbps per year)</td>
-<td>31.8</td>
+<td>Distance metric</td>
+<td>Metric to compute distances in the network (e.g., 'length')</td>
+<td>No</td>
 </tr>
 <tr>
-<td>Transit bandwidth cost (USD per Mbps per year)</td>
-<td>12</td>
+<td>Number of clusters</td>
+<td>Number of geographical clusters used for analysis</td>
+<td>No</td>
 </tr>
 <tr>
-<td>Fiber cost (USD per km​)</td>
-<td>8,000</td>
-</tr>
-<tr>
-<td>Hardware setup cost (USD per POI​)</td>
-<td>500</td>
-</tr>
-<tr>
-<td>Hardware refresh after (Years)</td>
-<td>3</td>
+<td>Use road data</td>
+<td>Whether to use road network data for distance calculations</td>
+<td>No</td>
 </tr>
 </tbody>
 </table>
 <h3 id="fiber-cost-function">Fiber cost function</h3>
 <p>The fiber cost function is summarized below. The CAPEX cost for each POI is dependent on the amount of fiber required to connect that school.</p>
-<p>_Figure: Fiber cost function</p>
-<p><img alt="fiber" src="../diagrams/fiber-cost-model.drawio.svg" /></p>
-<h2 id="cellular">Cellular</h2>
-<p>The cellular model relies on cellular coverage analysis. If mobile coverage contours are provided, such as in the Figure below, then the coverage status is determined by overlaying the POIs over this layer.</p>
-<p><em>Figure: Mobile coverage contours</em></p>
-<p><img alt="4g-coverage-small" src="../images/4g-coverage-small.png" /></p>
-<p>If no mobile coverage contours are provided, then the locations of cell sites have to be provided and mobile coverage is determined by the distance from a cell site. Each site is assumed to provide coverage within a specified maximum radius, which is controlled by the model parameter <code>Coverage radius around cell tower</code>.</p>
-<h3 id="feasibility_1">Feasibility</h3>
-<p>Cellular is considered a feasible technology for a POI if it is within the cellular coverage area (3G, 4G or 5G).</p>
-<h3 id="required-data-inputs_1">Required data inputs</h3>
-<ul>
-<li>Points of interest</li>
-<li>Cell sites or Mobile coverage contours</li>
-</ul>
-<h3 id="model-parameters_1">Model parameters</h3>
 <table>
 <thead>
 <tr>
 <th>Description</th>
 <th>Example value</th>
+<th>Configurable in CPP</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Coverage radius around cell tower (meters)</td>
-<td>1,000</td>
-</tr>
-<tr>
-<td>Reinvest into hardware after (USD per year, as a fraction of hardware CAPEX)</td>
+<td>Annual hardware maintenance and replacement costs (USD per year, as a fraction of hardware CAPEX)</td>
 <td>0.1</td>
+<td>Yes</td>
 </tr>
 <tr>
-<td>Access ISP fees (USD per Mbps per year)</td>
-<td>24</td>
+<td>Access bandwidth cost (USD per Mbps per year)</td>
+<td>31.8</td>
+<td>Yes</td>
 </tr>
 <tr>
-<td>Annual traffic fee (USD per Mbps per year)</td>
+<td>Transit bandwidth cost (USD per Mbps per year)</td>
 <td>12</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Fiber cost (USD per km)</td>
+<td>8,000</td>
+<td>Yes</td>
 </tr>
 <tr>
 <td>Hardware setup cost (USD per POI)</td>
-<td>80</td>
+<td>500</td>
+<td>Yes</td>
 </tr>
 <tr>
-<td>Reinvest into hardware after (Years)</td>
+<td>Hardware refresh after (Years)</td>
 <td>3</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><em>Figure: Fiber cost function</em></p>
+<p><img alt="fiber" src="../diagrams/fiber-cost-model.drawio.svg" /></p>
+<h2 id="cellular">Cellular</h2>
+<p>The cellular model relies on cellular coverage analysis. If mobile coverage contours are provided, such as in the Figure below, then the coverage status is determined by overlaying the POIs over this layer.</p>
+<p><em>Figure: Mobile coverage contours</em></p>
+<p><img alt="4g-coverage-small" src="../images/4g-coverage-small.png" /></p>
+<p>If no mobile coverage contours are provided, then the locations of cell sites have to be provided and mobile coverage is determined by the distance from a cell site. Each site is assumed to provide coverage within a specified maximum radius, which is controlled by the model parameter Coverage radius around cell tower.</p>
+<h3 id="feasibility_1">Feasibility</h3>
+<p>Cellular is considered a feasible technology for a POI if it is within the cellular coverage area (3G, 4G or 5G).</p>
+<h3 id="required-data-inputs_1">Required data inputs</h3>
+<ul>
+<li>Points of interest</li>
+<li>Mobile coverage contours</li>
+</ul>
+<h3 id="model-parameters_1">Model parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Example value</th>
+<th>Configurable in CPP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>coverage_distance</td>
+<td>Distance around cell sites to assume coverage if no map is available (meters)</td>
+<td>1000</td>
+<td>No</td>
+</tr>
+<tr>
+<td>coverage_type</td>
+<td>Default network type for coverage buffers if no map is available</td>
+<td>"4G"</td>
+<td>No</td>
+</tr>
+<tr>
+<td>radii</td>
+<td>List of radii (km) used for coverage analysis</td>
+<td>[1, 2, 3, 5]</td>
+<td>No</td>
+</tr>
+<tr>
+<td>radius_for_demand</td>
+<td>Radius used to aggregate demand around a point</td>
+<td>1</td>
+<td>No</td>
+</tr>
+<tr>
+<td>dataset_year</td>
+<td>Year of the WorldPop population dataset</td>
+<td>2025</td>
+<td>No</td>
+</tr>
+<tr>
+<td>overlap_allowed</td>
+<td>Allow overlap in buffer areas</td>
+<td>False</td>
+<td>No</td>
 </tr>
 </tbody>
 </table>
 <h3 id="cellular-cost-function">Cellular cost function</h3>
 <p>The cellular cost function is summarized below.</p>
+<table>
+<thead>
+<tr>
+<th>Description</th>
+<th>Example value</th>
+<th>Configurable in CPP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reinvest into hardware after (USD per year, as a fraction of hardware CAPEX)</td>
+<td>0.1</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Access ISP fees (USD per Mbps per year)</td>
+<td>24</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Annual traffic fee (USD per Mbps per year)</td>
+<td>12</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Hardware setup cost (USD per POI)</td>
+<td>80</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Reinvest into hardware after (Years)</td>
+<td>3</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
 <p><em>Figure: Cellular cost function</em></p>
 <p><img alt="p2area" src="../diagrams/cellular-cost-model.drawio.svg" /></p>
 <h2 id="point-to-point">Point-to-point</h2>
@@ -242,49 +331,90 @@
 <tr>
 <th>Description</th>
 <th>Example value</th>
+<th>Configurable in CPP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Search radius (kilometers)</td>
+<td>35</td>
+<td>No</td>
+</tr>
+<tr>
+<td>POI antenna height (meters)</td>
+<td>15</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Number of visible towers to look for</td>
+<td>1</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Allowed radio types for cell sites</td>
+<td>['4G', '5G']</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h3 id="point-to-point-cost-function">Point-to-point cost function</h3>
+<p>The point-to-point cost function is summarized below. There are added complexities in this cost function due to the presence of additional physical infrastructure, such as retransmission towers and backhaul links - as well as additional one-time and annual license fees.</p>
+<table>
+<thead>
+<tr>
+<th>Description</th>
+<th>Example value</th>
+<th>Configurable in CPP</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Bandwidth per access link (MHz)</td>
 <td>10</td>
+<td>Yes</td>
 </tr>
 <tr>
 <td>Annual hardware maintenance and replacement costs (USD per year, as a fraction of hardware CAPEX)</td>
 <td>0.004</td>
+<td>Yes</td>
 </tr>
 <tr>
 <td>Access ISP fees (USD per Mbps per year)</td>
 <td>24</td>
+<td>Yes</td>
 </tr>
 <tr>
 <td>Annual recurring license fee for 1MHz (USD per MHz per year)</td>
 <td>100</td>
+<td>Yes</td>
 </tr>
 <tr>
 <td>Annual traffic fee (USD per Mbps per year)</td>
 <td>12</td>
+<td>Yes</td>
 </tr>
 <tr>
 <td>Bandwidth per backhaul link (MHz)</td>
 <td>20</td>
+<td>Yes</td>
 </tr>
 <tr>
 <td>Hardware setup cost, including access links and assuming one hop per POI (USD per POI)</td>
 <td>500</td>
+<td>Yes</td>
 </tr>
 <tr>
 <td>One time license fee for 1MHz (USD per MHz)</td>
 <td>500</td>
+<td>Yes</td>
 </tr>
 <tr>
 <td>Reinvest into hardware after (Years)</td>
 <td>5</td>
+<td>Yes</td>
 </tr>
 </tbody>
 </table>
-<h3 id="point-to-point-cost-function">Point-to-point cost function</h3>
-<p>The point-to-point cost function is summarized below. There are added complexities in this cost function due to the presence of additional physical infrastructure, such as retransmission towers and backhaul links - as well as additional one-time and annual license fees.</p>
 <p><em>Figure: Point to point cost function</em></p>
 <p><img alt="p2p" src="../diagrams/p2p-cost-model.drawio.svg" /></p>
 <h2 id="satellite">Satellite</h2>
@@ -295,39 +425,44 @@
 <ul>
 <li>Points of interest</li>
 </ul>
-<h3 id="model-parameters_3">Model parameters</h3>
+<h3 id="satellite-cost-function">Satellite cost function</h3>
+<p>The satellite cost function is summarized below.</p>
 <table>
 <thead>
 <tr>
 <th>Description</th>
 <th>Example value</th>
+<th>Configurable in CPP</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Annual hardware maintenance and replacement costs (USD per year, as a fraction of hardware CAPEX)</td>
 <td>0.04</td>
+<td>Yes</td>
 </tr>
 <tr>
 <td>Access ISP fees (USD per Mbps per year)</td>
 <td>24</td>
+<td>Yes</td>
 </tr>
 <tr>
 <td>Annual traffic fee (USD per Mbps per year)</td>
 <td>12</td>
+<td>Yes</td>
 </tr>
 <tr>
 <td>Hardware setup cost (USD per POI)</td>
 <td>3,000</td>
+<td>Yes</td>
 </tr>
 <tr>
 <td>Reinvest into hardware after (Years)</td>
 <td>5</td>
+<td>Yes</td>
 </tr>
 </tbody>
 </table>
-<h3 id="satllite-cost-function">Satllite cost function</h3>
-<p>The satellite cost function is summarized below.</p>
 <p><em>Figure: Satellite cost function</em></p>
 <p><img alt="satellite" src="../diagrams/satellite-cost-model.drawio.svg" /></p></div>
             </div>
