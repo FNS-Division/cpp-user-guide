@@ -63,7 +63,7 @@ If no mobile coverage contours are provided, then the locations of cell sites ha
 
 ### Feasibility
 
-Cellular is considered a feasible technology for a POI if it is within the cellular coverage area.
+Cellular is considered a feasible technology for a POI if it is within the cellular coverage area (3G, 4G or 5G).
 
 ### Required data inputs
 
@@ -115,19 +115,14 @@ Point-to-point microwave is considered a feasible technology for a POI if at lea
 | Description                                                              | Example value |
 |------------------------------------------------------------------------------|-------------------|
 | Bandwidth per access link (MHz)                                              | 10                |
-| Access link cost (USD per hop)                                               | 831.59            |
 | Annual hardware maintenance and replacement costs (USD per year, as a fraction of hardware CAPEX) | 0.004             |
 | Access ISP fees (USD per Mbps per year)                                      | 24                |
 | Annual recurring license fee for 1MHz (USD per MHz per year)                 | 100               |
 | Annual traffic fee (USD per Mbps per year)                                   | 12                |
 | Bandwidth per backhaul link (MHz)                                            | 20                |
-| Backhaul links (Links)                                                       | 0                 |
-| Backhaul links cost (USD per hop)                                            | 2,825.07           |
-| Hardware setup cost (USD per POI)                                            | 500               |
+| Hardware setup cost, including access links and assuming one hop per POI (USD per POI)                                            | 500               |
 | One time license fee for 1MHz (USD per MHz)                                  | 500               |
 | Reinvest into hardware after (Years)                                         | 5                 |
-| Retransmission towers cost (USD per tower)                                   | 13,000             |
-| Retransmission towers (Towers)                                               | 0                 |
 
 ### Cost model
 
