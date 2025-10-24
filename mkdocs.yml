@@ -3,5 +3,6 @@ nav:
   - Home: index.md
   - Scenarios: scenarios.md
   - Models: models.md
-  - Datasets: datasets.md
+  - Input Datasets: inputdata.md
+  - Model Outputs: outputs.md
 theme: mkdocs
