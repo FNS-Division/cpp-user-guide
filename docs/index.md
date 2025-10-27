@@ -11,4 +11,5 @@ The platform evaluates the costs of each solution and provides a deployment plan
 - Before starting an analysis, you’ll need to select a **scenario**, such as _Maximize Operator Net Present Value (NPV)_. Then, set up the **scenario parameters**, including details like the total budget and the planning period.
 - Each scenario is made up of multiple **models**—one for each technology option, and a demand module. These models serve two purposes: they evaluate whether the technology is feasible and calculate the cost of deploying it. Each model comes with its own **model parameters** that guide the analysis and uses **datasets** containing information about points of interest, ICT infrastructure, and mobile coverage.
 
+_Figure: Platform model_
 ![cpp-model](diagrams/model.drawio.svg)
