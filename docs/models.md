@@ -33,19 +33,20 @@ The data on the road network is automatically fetched by the model from OpenStre
 
 ### Model parameters
 
-| Description | Example value | Configurable in CPP |
+| Description | Value | Configurable in CPP |
 |------------|---------------|-------------------|
 | Maximum connection length (meters) | 50,000 | Yes |
 | Network type | Type of road network to consider (e.g., all public roads) | No |
 | Distance metric | Metric to compute distances in the network (e.g., 'length') | No |
 | Number of clusters | Number of geographical clusters used for analysis | No |
 | Use road data | Whether to use road network data for distance calculations | No |
+_Non-configurable parameters are hard-coded to the values shown above._
 
 ### Fiber cost function
 
 The fiber cost function is summarized below. The CAPEX cost for each POI is dependent on the amount of fiber required to connect that school.
 
-| Description | Example value | Configurable in CPP |
+| Description | Value | Configurable in CPP |
 |------------|---------------|-------------------|
 | Annual hardware maintenance and replacement costs (USD per year, as a fraction of hardware CAPEX) | 0.1 | Yes |
 | Access bandwidth cost (USD per Mbps per year) | 31.8 | Yes |
@@ -53,6 +54,7 @@ The fiber cost function is summarized below. The CAPEX cost for each POI is depe
 | Fiber cost (USD per km) | 8,000 | Yes |
 | Hardware setup cost (USD per POI) | 500 | Yes |
 | Hardware refresh after (Years) | 3 | Yes |
+_Non-configurable parameters are hard-coded to the values shown above._
 
 _Figure: Fiber cost function_
 
@@ -79,26 +81,28 @@ Cellular is considered a feasible technology for a POI if it is within the cellu
 
 ### Model parameters
 
-| Parameter | Description | Example value | Configurable in CPP |
+| Parameter | Description | Value | Configurable in CPP |
 |-----------|-------------|---------------|-------------------|
 | coverage_distance | Distance around cell sites to assume coverage if no map is available (meters) | 1000 | No |
-| coverage_type | Default network type for coverage buffers if no map is available | "4G" | No |
+| coverage_type | Default network type for coverage buffers if no map is available | 4G | No |
 | radii | List of radii (km) used for coverage analysis | [1, 2, 3, 5] | No |
 | radius_for_demand | Radius used to aggregate demand around a point | 1 | No |
 | dataset_year | Year of the WorldPop population dataset | 2025 | No |
 | overlap_allowed | Allow overlap in buffer areas | False | No |
+_Non-configurable parameters are hard-coded to the values shown above._
 
 ### Cellular cost function
 
 The cellular cost function is summarized below.
 
-| Description | Example value | Configurable in CPP |
+| Description | Value | Configurable in CPP |
 |---------------------------------------------------------|-------------------|-------------------|
 | Reinvest into hardware after (USD per year, as a fraction of hardware CAPEX) | 0.1 | Yes |
 | Access ISP fees (USD per Mbps per year) | 24 | Yes |
 | Annual traffic fee (USD per Mbps per year) | 12 | Yes |
 | Hardware setup cost (USD per POI) | 80 | Yes |
 | Reinvest into hardware after (Years) | 3 | Yes |
+_Non-configurable parameters are hard-coded to the values shown above._
 
 _Figure: Cellular cost function_
 
@@ -127,18 +131,19 @@ Point-to-point microwave is considered a feasible technology for a POI if at lea
 
 ### Model parameters
 
-| Description | Example value | Configurable in CPP |
+| Description | Value | Configurable in CPP |
 |-------------------------------------------------|-------------------|-------------------|
 | Search radius (kilometers) | 35 | No |
 | POI antenna height (meters) | 15 | No |
 | Number of visible towers to look for | 1 | No |
 | Allowed radio types for cell sites | ['4G', '5G'] | No |
+_Non-configurable parameters are hard-coded to the values shown above._
 
 ### Point-to-point cost function
 
 The point-to-point cost function is summarized below. There are added complexities in this cost function due to the presence of additional physical infrastructure, such as retransmission towers and backhaul links - as well as additional one-time and annual license fees.
 
-| Description | Example value | Configurable in CPP |
+| Description | Value | Configurable in CPP |
 |-------------------------------------------------|-------------------|-------------------|
 | Bandwidth per access link (MHz) | 10 | Yes |
 | Annual hardware maintenance and replacement costs (USD per year, as a fraction of hardware CAPEX) | 0.004 | Yes |
@@ -149,6 +154,7 @@ The point-to-point cost function is summarized below. There are added complexiti
 | Hardware setup cost, including access links and assuming one hop per POI (USD per POI) | 500 | Yes |
 | One time license fee for 1MHz (USD per MHz) | 500 | Yes |
 | Reinvest into hardware after (Years) | 5 | Yes |
+_Non-configurable parameters are hard-coded to the values shown above._
 
 _Figure: Point to point cost function_
 
@@ -170,13 +176,14 @@ Satellite connections are always considered feasible.
 
 The satellite cost function is summarized below.
 
-| Description | Example value | Configurable in CPP |
+| Description | Value | Configurable in CPP |
 |-------------------------------------------------|-------------------|-------------------|
 | Annual hardware maintenance and replacement costs (USD per year, as a fraction of hardware CAPEX) | 0.04 | Yes |
 | Access ISP fees (USD per Mbps per year) | 24 | Yes |
 | Annual traffic fee (USD per Mbps per year) | 12 | Yes |
 | Hardware setup cost (USD per POI) | 3,000 | Yes |
 | Reinvest into hardware after (Years) | 5 | Yes |
+_Non-configurable parameters are hard-coded to the values shown above._
 
 _Figure: Satellite cost function_
 
