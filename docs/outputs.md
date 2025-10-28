@@ -37,12 +37,12 @@
 | | `pop_within_4km` | Population count within 4km buffer around POI |
 | | `pop_within_5km` | Population count within 5km buffer around POI |
 | | `total_mbps` | Total bandwidth demand in Mbps for this POI |
-| **Fiber Path** | `closest_node_distance` | Distance in meters to the closest fibre node |
+| **Fibre Path** | `closest_node_distance` | Distance in meters to the closest fibre node |
 | | `closest_node_id` | Identifier of the nearest fibre node |
 | | `connected_node_dist` | Distance in meters to the connected fibre node |
 | | `connected_node_id` | Identifier of the node this POI is connected to |
 | | `fiber_path` | Route description for fibre optic connection to this POI |
-| | `fiber_path_incl_poi` | Fiber connection path including this POI in the route |
+| | `fiber_path_incl_poi` | Fibre connection path including this POI in the route |
 | | `fiber_path_order` | Order/sequence number of this POI in the fibre deployment path |
 | | `in_mst_solution` | Boolean indicating if POI is included in fibre path solution |
 | | `max_dist_km` | Maximum allowable distance in km for fibre path solution |
@@ -72,7 +72,7 @@
 | | `pp_profit` | Operator profits over project period (ISP retail fees minus cost of ownership) |
 | | `pp_revenue` | Operator revenue over project period (ISP retail fees) |
 
-# Fiber Path Edge-level results
+# Fibre Path Edge-level results
 
 ![Fiber path edges visualization](images/results-fiber-lines.png)
 
