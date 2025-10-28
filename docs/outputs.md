@@ -17,7 +17,7 @@
 | | `4g_cell_site_dist` | Distance in meters to nearest 4G cell site |
 | | `5g_cell_site_dist` | Distance in meters to nearest 5G cell site |
 | | `cell_site_dist` | Distance in meters to nearest cellular tower (any generation) |
-| | `fiber_node_dist` | Distance in meters to nearest fiber optic network node |
+| | `fiber_node_dist` | Distance in meters to nearest fibre optic network node |
 | | `transmission_node_dist` | Distance in meters to nearest transmission infrastructure node |
 | **Coverage** | `2g_mobile_coverage` | Boolean indicating if POI has 2G mobile network coverage |
 | | `3g_mobile_coverage` | Boolean indicating if POI has 3G mobile network coverage |
@@ -37,17 +37,17 @@
 | | `pop_within_4km` | Population count within 4km buffer around POI |
 | | `pop_within_5km` | Population count within 5km buffer around POI |
 | | `total_mbps` | Total bandwidth demand in Mbps for this POI |
-| **Fiber Path** | `closest_node_distance` | Distance in meters to the closest fiber node |
-| | `closest_node_id` | Identifier of the nearest fiber node |
-| | `connected_node_dist` | Distance in meters to the connected fiber node |
+| **Fiber Path** | `closest_node_distance` | Distance in meters to the closest fibre node |
+| | `closest_node_id` | Identifier of the nearest fibre node |
+| | `connected_node_dist` | Distance in meters to the connected fibre node |
 | | `connected_node_id` | Identifier of the node this POI is connected to |
-| | `fiber_path` | Route description for fiber optic connection to this POI |
+| | `fiber_path` | Route description for fibre optic connection to this POI |
 | | `fiber_path_incl_poi` | Fiber connection path including this POI in the route |
-| | `fiber_path_order` | Order/sequence number of this POI in the fiber deployment path |
-| | `in_mst_solution` | Boolean indicating if POI is included in fiber path solution |
-| | `max_dist_km` | Maximum allowable distance in km for fiber path solution |
+| | `fiber_path_order` | Order/sequence number of this POI in the fibre deployment path |
+| | `in_mst_solution` | Boolean indicating if POI is included in fibre path solution |
+| | `max_dist_km` | Maximum allowable distance in km for fibre path solution |
 | | `n_conns` | Number of network connections associated with this POI |
-| | `upstream_node_distance` | Distance in meters to the upstream fiber node |
+| | `upstream_node_distance` | Distance in meters to the upstream fibre node |
 | | `upstream_node_id` | Identifier of the upstream network node in the connection path |
 | **Visibility** | `antenna_los_distance` | Line-of-sight distance in meters for antenna/radio connections |
 | | `azimuth_angle` | Directional angle in degrees for point-to-point radio links |
@@ -59,7 +59,7 @@
 | | `visible_cell_site_ict_id` | ID of the nearest visible cellular tower/base station |
 | | `visible_cell_site_radio_type` | Type of radio technology at the nearest visible cell site |
 | | `visible_pois` | List of other POIs visible from this location |
-| **Technology Assignment** | `fiber_feasible` | Whether fiber is feasible for this POI |
+| **Technology Assignment** | `fiber_feasible` | Whether fibre is feasible for this POI |
 | | `number_of_periods` | Total number of time periods for the connection |
 | | `p2area_feasible` | Whether p2area is feasible for this POI |
 | | `p2p_feasible` | Whether p2p is feasible for this POI |
