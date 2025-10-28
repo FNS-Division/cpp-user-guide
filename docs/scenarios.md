@@ -18,4 +18,22 @@ The diagram below illustrates the _Maximize Operator Net Present Value (NPV)_ sc
 
 _Figure: Maximize Operator Net Present Value (NPV)_
 
-![scenario](diagrams/scenario.drawio.svg)
+![scenario](diagrams/scenario_max_npv.drawio.svg)
+
+## Minimize Operator Total Cost of Ownership (TCO)
+
+### Scenario parameters
+
+There are scenario-level parameters which need to be provided, as summarized in the table below.
+
+| Description | Example value |
+|------------|---------------|
+| Budget (USD) | 1,000,000 |
+| Project planning period (years) | 10 |
+| Demand per user (Mbps) | 1.5 |
+
+The diagram below illustrates the _Minimize Operator Total Cost of Ownership (TCO)_ scenario. This scenario focuses on connecting as many points of interest as possible while minimizing the operator's cost of ownership (which includes both Capital Expenditure and Operational Expenditure).
+
+_Figure: Minimize Operator Total Cost of Ownership (TCO)_
+
+![scenario](diagrams/scenario_min_tco.drawio.svg)
