@@ -13,4 +13,4 @@ The platform evaluates the costs of each solution and provides a deployment plan
 
 _Figure: Platform model_
 
-![cpp-model](diagrams/model.drawio.svg)
+![cpp-model](diagrams/scenarios-models-datasets.svg)
