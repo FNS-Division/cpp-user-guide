@@ -1,6 +1,6 @@
 # Models
 
-## Fiber
+## Fibre
 
 The fibre path model identifies the shortest and most cost-effective paths for connecting unconnected points of interest (POIs) to the existing optical fibre network using the road network. By minimizing the total length of fibre required, this model reduces overall deployment costs while efficiently extending connectivity.
 
@@ -10,9 +10,9 @@ _Figure: Graph initialization and fibre path algorithm_
 
 ![graph-initialization](images/graph-initialization.png)
 
-At each step of the algorithm, new connections are made between connected and unconnected points as long as the length of the new connection is below a specified threshold. For example, it can be specified that no single fibre line should be longer than 5 kilometers.
+At each step of the algorithm, new connections are made between connected and unconnected points as long as the length of the new connection is below a specified threshold. For example, it can be specified that no single fibre line should be longer than 5 kilometres.
 
-This approach enables economies of scale: POIs can act as relay points for neighboring POIs, enabling connectivity without each one needing to connect directly to a transmission node. This approach optimizes resource usage and simplifies network expansion.
+This approach enables economies of scale: POIs can act as relay points for neighbouring POIs, enabling connectivity without each one needing to connect directly to a transmission node. This approach optimises resource usage and simplifies network expansion.
 
 In practice, this model is an application of Kruskal's algorithm to find a Minimum Spanning Tree (MST) in a network graph, where the edges are the road network and the vertices are POIs and fibre nodes. The MST ensures the minimal fibre path necessary to connect all relevant points while adhering to road network constraints related to distance.
 
@@ -22,7 +22,7 @@ _Figure: Output of fibre path algorithm_
 
 ### Feasibility
 
-Fiber is considered a feasible technology for a POI if the algorithm is able to connect that POI to the fibre network, given the algorithm constraints - particularly the maximum length of fibre allowed per connection. In practice, fibre will not be feasible for POIs that are very far away from transmission nodes or other POIs.
+Fibre is considered a feasible technology for a POI if the algorithm is able to connect that POI to the fibre network, given the algorithm constraints - particularly the maximum length of fibre allowed per connection. In practice, fibre will not be feasible for POIs that are very far away from transmission nodes or other POIs.
 
 ### Required data inputs
 
@@ -42,14 +42,14 @@ The data on the road network is automatically fetched by the model from OpenStre
 | use_road_data | Whether to use road network data for distance calculations | True | No |
 _Non-configurable parameters are hard-coded to the values shown above._
 
-### Fiber cost function
+### Fibre cost function
 
 The fibre cost function is summarized below. The CAPEX cost for each POI is dependent on the amount of fibre required to connect that school.
 
 | Parameter | Description | Value | Configurable in CPP |
 |------------|-------------|---------------|---------------------|
 | hw_setup_cost_fibre | Hardware setup cost per point of interest (USD/POI) | 500 | Yes |
-| focl_constr_cost_fibre | Fiber optic cable construction cost per kilometer (USD/km) | 8,000 | Yes |
+| focl_constr_cost_fibre | Fibre optic cable construction cost per kilometre (USD/km) | 8,000 | Yes |
 | reinv_period_fibre | Hardware reinvestment period (years) | 3 | Yes |
 | an_hw_maint_and_repl_fibre | Annual hardware maintenance and replacement cost (fraction of initial CAPEX) | 0.1 | Yes |
 | an_isp_fees_one_mbps_fibre | Annual transit bandwidth cost (USD per Mbps per year) | 31.8 | Yes |
@@ -57,7 +57,7 @@ The fibre cost function is summarized below. The CAPEX cost for each POI is depe
 
 _Non-configurable parameters are hard-coded to the values shown above._
 
-_Figure: Fiber cost function_
+_Figure: Fibre cost function_
 
 ![fiber](diagrams/fiber-cost-model.drawio.svg)
 
@@ -111,7 +111,7 @@ _Figure: Cellular cost function_
 
 ## Point-to-point
 
-The point-to-point model evaluates the feasibility of establishing radio links between points of interest (POIs) and cell sites using visibility analysis. This involves assessing whether the line of sight between a POI and a cell site is obstructed, ensuring that only feasible links are considered for deployment. The analysis uses open topography data from the [Shuttle Radar Topography Mission](https://www.earthdata.nasa.gov/data/instruments/srtm) (SRTM), which provides 30-meter resolution elevation data. The maximum visibility limit is set at 35 kilometers, meaning that cell sites beyond this distance are not considered visible or feasible for point-to-point connectivity.
+The point-to-point model evaluates the feasibility of establishing radio links between points of interest (POIs) and cell sites using visibility analysis. This involves assessing whether the line of sight between a POI and a cell site is obstructed, ensuring that only feasible links are considered for deployment. The analysis uses open topography data from the [Shuttle Radar Topography Mission](https://www.earthdata.nasa.gov/data/instruments/srtm) (SRTM), which provides 30-meter resolution elevation data. The maximum visibility limit is set at 35 kilometres, meaning that cell sites beyond this distance are not considered visible or feasible for point-to-point connectivity.
 
 _Figure: Visible cell site_
 
@@ -134,7 +134,7 @@ Point-to-point microwave is considered a feasible technology for a POI if at lea
 
 | Parameter | Description | Value | Configurable in CPP |
 |------------|-------------|---------------|---------------------|
-| search_radius | Search radius for nearby cell sites (kilometers) | 35 | No |
+| search_radius | Search radius for nearby cell sites (kilometres) | 35 | No |
 | poi_antenna_height | Height of the POI antenna (meters) | 15 | No |
 | num_visible | Number of visible cell sites to consider | 1 | No |
 | allowed_radio_types | Allowed radio types for cell sites | ['4G', '5G'] | No |

@@ -4,7 +4,7 @@
 
 The Connectivity Planning Platform is an easy-to-use mapping and analysis tool designed to help planners connect schools, hospitals, residential buildings, and other places to the internet. By assessing various technology options like fibre, cellular networks, point-to-point microwave, and satellite, the platform identifies the best way to bring connectivity to unconnected areas.
 
-The platform evaluates the costs of each solution and provides a deployment plan that meets the cost limits you set. You can also customize the tool with your own data—uploading details about the locations of points of interest, ICT infrastructure, and mobile coverage. Additionally, it uses open data on population, road networks and topography to enrich the analysis, making it a powerful solution for planning affordable, efficient internet connectivity.
+The platform evaluates the costs of each solution and provides a deployment plan that meets the cost limits you set. You can also customise the tool with your own data—uploading details about the locations of points of interest, ICT infrastructure, and mobile coverage. Additionally, it uses open data on population, road networks and topography to enrich the analysis, making it a powerful solution for planning affordable, efficient internet connectivity.
 
 ## The Platform Model
 

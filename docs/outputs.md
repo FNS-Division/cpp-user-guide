@@ -96,7 +96,7 @@
 
 | Analysis Source | Indicator | Description |
 |----------------|-----------|-------------|
-| **Visibility** | `poi_id` | Unique identifier for the Point of Interest being analyzed |
+| **Visibility** | `poi_id` | Unique identifier for the Point of Interest being analysed |
 | | `ict_id` | Identifier for the cell site |
 | | `radio_type` | Type of radio technology at the ICT node (e.g. 4G, 5G) |
 | | `ground_distance` | Straight-line distance on ground between POI and cell site (2D) |
