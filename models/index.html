@@ -87,7 +87,7 @@
             
             <li class="nav-item" data-bs-level="1"><a href="#models" class="nav-link">Models</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="2"><a href="#fiber" class="nav-link">Fiber</a>
+            <li class="nav-item" data-bs-level="2"><a href="#fibre" class="nav-link">Fibre</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -111,18 +111,18 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="models">Models</h1>
-<h2 id="fiber">Fiber</h2>
+<h2 id="fibre">Fibre</h2>
 <p>The fibre path model identifies the shortest and most cost-effective paths for connecting unconnected points of interest (POIs) to the existing optical fibre network using the road network. By minimizing the total length of fibre required, this model reduces overall deployment costs while efficiently extending connectivity.</p>
 <p>To start with, the model connects POIs and fibre nodes to the existing road network using straight lines (unless they are already on the road network). Then, for each unconnected POI, it computes the shortest path to all fibre nodes. POIs that are already connected to the fibre network can also act as fibre nodes, from which the fibre network can be extended.</p>
 <p><em>Figure: Graph initialization and fibre path algorithm</em></p>
 <p><img alt="graph-initialization" src="../images/graph-initialization.png" /></p>
-<p>At each step of the algorithm, new connections are made between connected and unconnected points as long as the length of the new connection is below a specified threshold. For example, it can be specified that no single fibre line should be longer than 5 kilometers.</p>
-<p>This approach enables economies of scale: POIs can act as relay points for neighboring POIs, enabling connectivity without each one needing to connect directly to a transmission node. This approach optimizes resource usage and simplifies network expansion.</p>
+<p>At each step of the algorithm, new connections are made between connected and unconnected points as long as the length of the new connection is below a specified threshold. For example, it can be specified that no single fibre line should be longer than 5 kilometres.</p>
+<p>This approach enables economies of scale: POIs can act as relay points for neighbouring POIs, enabling connectivity without each one needing to connect directly to a transmission node. This approach optimises resource usage and simplifies network expansion.</p>
 <p>In practice, this model is an application of Kruskal's algorithm to find a Minimum Spanning Tree (MST) in a network graph, where the edges are the road network and the vertices are POIs and fibre nodes. The MST ensures the minimal fibre path necessary to connect all relevant points while adhering to road network constraints related to distance.</p>
 <p><em>Figure: Output of fibre path algorithm</em></p>
 <p><img alt="nam-fiber-lines" src="../images/nam-fiber-lines.png" /></p>
 <h3 id="feasibility">Feasibility</h3>
-<p>Fiber is considered a feasible technology for a POI if the algorithm is able to connect that POI to the fibre network, given the algorithm constraints - particularly the maximum length of fibre allowed per connection. In practice, fibre will not be feasible for POIs that are very far away from transmission nodes or other POIs.</p>
+<p>Fibre is considered a feasible technology for a POI if the algorithm is able to connect that POI to the fibre network, given the algorithm constraints - particularly the maximum length of fibre allowed per connection. In practice, fibre will not be feasible for POIs that are very far away from transmission nodes or other POIs.</p>
 <h3 id="required-data-inputs">Required data inputs</h3>
 <ul>
 <li>Points of interest</li>
@@ -178,7 +178,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="fiber-cost-function">Fiber cost function</h3>
+<h3 id="fibre-cost-function">Fibre cost function</h3>
 <p>The fibre cost function is summarized below. The CAPEX cost for each POI is dependent on the amount of fibre required to connect that school.</p>
 <table>
 <thead>
@@ -198,7 +198,7 @@
 </tr>
 <tr>
 <td>focl_constr_cost_fibre</td>
-<td>Fiber optic cable construction cost per kilometer (USD/km)</td>
+<td>Fibre optic cable construction cost per kilometre (USD/km)</td>
 <td>8,000</td>
 <td>Yes</td>
 </tr>
@@ -229,7 +229,7 @@
 </tbody>
 </table>
 <p><em>Non-configurable parameters are hard-coded to the values shown above.</em></p>
-<p><em>Figure: Fiber cost function</em></p>
+<p><em>Figure: Fibre cost function</em></p>
 <p><img alt="fiber" src="../diagrams/fiber-cost-model.drawio.svg" /></p>
 <h2 id="cellular">Cellular</h2>
 <p>The cellular model relies on cellular coverage analysis. If mobile coverage contours are provided, such as in the Figure below, then the coverage status is determined by overlaying the POIs over this layer.</p>
@@ -351,7 +351,7 @@
 <p><em>Figure: Cellular cost function</em></p>
 <p><img alt="p2area" src="../diagrams/cellular-cost-model.drawio.svg" /></p>
 <h2 id="point-to-point">Point-to-point</h2>
-<p>The point-to-point model evaluates the feasibility of establishing radio links between points of interest (POIs) and cell sites using visibility analysis. This involves assessing whether the line of sight between a POI and a cell site is obstructed, ensuring that only feasible links are considered for deployment. The analysis uses open topography data from the <a href="https://www.earthdata.nasa.gov/data/instruments/srtm">Shuttle Radar Topography Mission</a> (SRTM), which provides 30-meter resolution elevation data. The maximum visibility limit is set at 35 kilometers, meaning that cell sites beyond this distance are not considered visible or feasible for point-to-point connectivity.</p>
+<p>The point-to-point model evaluates the feasibility of establishing radio links between points of interest (POIs) and cell sites using visibility analysis. This involves assessing whether the line of sight between a POI and a cell site is obstructed, ensuring that only feasible links are considered for deployment. The analysis uses open topography data from the <a href="https://www.earthdata.nasa.gov/data/instruments/srtm">Shuttle Radar Topography Mission</a> (SRTM), which provides 30-meter resolution elevation data. The maximum visibility limit is set at 35 kilometres, meaning that cell sites beyond this distance are not considered visible or feasible for point-to-point connectivity.</p>
 <p><em>Figure: Visible cell site</em></p>
 <p><img alt="visible-cell-site" src="../images/visible-cell-site.png" /></p>
 <p><em>Figure: Obstructed cell site</em></p>
@@ -376,7 +376,7 @@
 <tbody>
 <tr>
 <td>search_radius</td>
-<td>Search radius for nearby cell sites (kilometers)</td>
+<td>Search radius for nearby cell sites (kilometres)</td>
 <td>35</td>
 <td>No</td>
 </tr>
