@@ -120,7 +120,7 @@
 <p>This approach enables economies of scale: POIs can act as relay points for neighbouring POIs, enabling connectivity without each one needing to connect directly to a transmission node. This approach optimises resource usage and simplifies network expansion.</p>
 <p>In practice, this model is an application of Kruskal's algorithm to find a Minimum Spanning Tree (MST) in a network graph, where the edges are the road network and the vertices are POIs and fibre nodes. The MST ensures the minimal fibre path necessary to connect all relevant points while adhering to road network constraints related to distance.</p>
 <p><em>Figure: Output of fibre path algorithm</em></p>
-<p><img alt="nam-fiber-lines" src="../images/nam-fiber-lines.png" /></p>
+<p><img alt="nam-fibre-lines" src="../images/nam-fibre-lines.png" /></p>
 <h3 id="feasibility">Feasibility</h3>
 <p>Fibre is considered a feasible technology for a POI if the algorithm is able to connect that POI to the fibre network, given the algorithm constraints - particularly the maximum length of fibre allowed per connection. In practice, fibre will not be feasible for POIs that are very far away from transmission nodes or other POIs.</p>
 <h3 id="required-data-inputs">Required data inputs</h3>
@@ -179,7 +179,7 @@
 </tbody>
 </table>
 <h3 id="fibre-cost-function">Fibre cost function</h3>
-<p>The fibre cost function is summarized below. The CAPEX cost for each POI is dependent on the amount of fibre required to connect that school.</p>
+<p>The fibre cost function is summarised below. The CAPEX cost for each POI is dependent on the amount of fibre required to connect that school.</p>
 <table>
 <thead>
 <tr>
@@ -230,7 +230,7 @@
 </table>
 <p><em>Non-configurable parameters are hard-coded to the values shown above.</em></p>
 <p><em>Figure: Fibre cost function</em></p>
-<p><img alt="fiber" src="../diagrams/fiber-cost-model.drawio.svg" /></p>
+<p><img alt="fibre" src="../diagrams/fibre-cost-model.drawio.svg" /></p>
 <h2 id="cellular">Cellular</h2>
 <p>The cellular model relies on cellular coverage analysis. If mobile coverage contours are provided, such as in the Figure below, then the coverage status is determined by overlaying the POIs over this layer.</p>
 <p><em>Figure: Mobile coverage contours</em></p>
@@ -299,7 +299,7 @@
 </tbody>
 </table>
 <h3 id="cellular-cost-function">Cellular cost function</h3>
-<p>The cellular cost function is summarized below.</p>
+<p>The cellular cost function is summarised below.</p>
 <table>
 <thead>
 <tr>
@@ -407,7 +407,7 @@
 </tbody>
 </table>
 <h3 id="point-to-point-cost-function">Point-to-point cost function</h3>
-<p>The point-to-point cost function is summarized below. There are added complexities in this cost function due to the presence of additional physical infrastructure, such as retransmission towers and backhaul links - as well as additional one-time and annual license fees.</p>
+<p>The point-to-point cost function is summarised below. There are added complexities in this cost function due to the presence of additional physical infrastructure, such as retransmission towers and backhaul links - as well as additional one-time and annual license fees.</p>
 <table>
 <thead>
 <tr>
@@ -485,7 +485,7 @@
 <li>Points of interest</li>
 </ul>
 <h3 id="satellite-cost-function">Satellite cost function</h3>
-<p>The satellite cost function is summarized below.</p>
+<p>The satellite cost function is summarised below.</p>
 <table>
 <thead>
 <tr>
