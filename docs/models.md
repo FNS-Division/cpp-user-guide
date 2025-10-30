@@ -18,7 +18,7 @@ In practice, this model is an application of Kruskal's algorithm to find a Minim
 
 _Figure: Output of fibre path algorithm_
 
-![nam-fiber-lines](images/nam-fiber-lines.png)
+![nam-fibre-lines](images/nam-fibre-lines.png)
 
 ### Feasibility
 
@@ -44,7 +44,7 @@ _Non-configurable parameters are hard-coded to the values shown above._
 
 ### Fibre cost function
 
-The fibre cost function is summarized below. The CAPEX cost for each POI is dependent on the amount of fibre required to connect that school.
+The fibre cost function is summarised below. The CAPEX cost for each POI is dependent on the amount of fibre required to connect that school.
 
 | Parameter | Description | Value | Configurable in CPP |
 |------------|-------------|---------------|---------------------|
@@ -59,7 +59,7 @@ _Non-configurable parameters are hard-coded to the values shown above._
 
 _Figure: Fibre cost function_
 
-![fiber](diagrams/fiber-cost-model.drawio.svg)
+![fibre](diagrams/fibre-cost-model.drawio.svg)
 
 ## Cellular
 
@@ -94,7 +94,7 @@ _Non-configurable parameters are hard-coded to the values shown above._
 
 ### Cellular cost function
 
-The cellular cost function is summarized below.
+The cellular cost function is summarised below.
 
 | Parameter | Description | Value | Configurable in CPP |
 |------------|-------------|---------------|---------------------|
@@ -142,7 +142,7 @@ _Non-configurable parameters are hard-coded to the values shown above._
 
 ### Point-to-point cost function
 
-The point-to-point cost function is summarized below. There are added complexities in this cost function due to the presence of additional physical infrastructure, such as retransmission towers and backhaul links - as well as additional one-time and annual license fees.
+The point-to-point cost function is summarised below. There are added complexities in this cost function due to the presence of additional physical infrastructure, such as retransmission towers and backhaul links - as well as additional one-time and annual license fees.
 
 | Parameter | Description | Value | Configurable in CPP |
 |------------|-------------|-------|---------------------|
@@ -174,7 +174,7 @@ Satellite connections are always considered feasible.
 
 ### Satellite cost function
 
-The satellite cost function is summarized below.
+The satellite cost function is summarised below.
 
 | Parameter | Description | Value | Configurable in CPP |
 |------------|-------------|-------|---------------------|
