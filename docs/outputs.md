@@ -1,6 +1,6 @@
 # Point-level results
 
-![Points visualization](images/results-points.png)
+![Points visualisation](images/results-points.png)
 
 ## Output File Metadata
 
@@ -74,7 +74,7 @@
 
 # Fibre Path Edge-level results
 
-![Fiber path edges visualization](images/results-fiber-lines.png)
+![Fibre path edges visualisation](images/results-fibre-lines.png)
 
 ## Output File Metadata
 
@@ -90,7 +90,7 @@
 
 # Visibility Edge-level results
 
-![Radio links visualization](images/results-radio-links.png)
+![Radio links visualisation](images/results-radio-links.png)
 
 ## Output File Metadata
 
