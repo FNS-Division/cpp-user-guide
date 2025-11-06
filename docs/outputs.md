@@ -80,7 +80,7 @@
 
 | Analysis Source | Indicator | Description |
 |----------------|-----------|-------------|
-| **Fiber Path** | `index` | Sequential row identifier for each road network edge/segment |
+| **Fibre Path** | `index` | Sequential row identifier for each road network edge/segment |
 | | `u` | Source node identifier (starting point of road segment) |
 | | `v` | Target node identifier (ending point of road segment) |
 | | `key` | Unique key identifier for parallel edges between same nodes |

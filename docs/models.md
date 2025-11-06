@@ -78,7 +78,7 @@ Cellular is considered a feasible technology for a POI if it is within the cellu
 ### Required data inputs
 
 - Points of interest
-- Mobile coverage contours
+- Mobile coverage contours or Cell Sites
 
 ### Model parameters
 
