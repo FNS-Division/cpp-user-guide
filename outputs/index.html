@@ -119,6 +119,7 @@
 <h1 id="point-level-results">Point-level results</h1>
 <p><img alt="Points visualisation" src="../images/results-points.png" /></p>
 <h2 id="output-file-metadata">Output File Metadata</h2>
+<p>n addition to the columns below, any columns present in the original Point of Interest data are carried over to this output file. If your input data was of type GeoJSON or GeoPackage, then columns <code>geometry</code> (containing the geometry), <code>wkt</code> (containing the geometry in Well-Known Text format) and <code>crs</code> (indicating the coordinate reference system) will also be created.</p>
 <table>
 <thead>
 <tr>
@@ -157,6 +158,31 @@
 <td></td>
 <td><code>poi_type</code></td>
 <td>Category/type of POI (e.g. school, health center, town hall)</td>
+</tr>
+<tr>
+<td></td>
+<td><code>is_connected</code></td>
+<td>Indicates whether the POI is connected to the internet (True/False)</td>
+</tr>
+<tr>
+<td></td>
+<td><code>connectivity_type</code></td>
+<td>Type of connectivity used to connect the POI in the original data</td>
+</tr>
+<tr>
+<td></td>
+<td><code>has_electricity</code></td>
+<td>Whether the POI has electricity (True/Flase)</td>
+</tr>
+<tr>
+<td></td>
+<td><code>country_code</code></td>
+<td>ISO 3-letter country code where the POI is located</td>
+</tr>
+<tr>
+<td></td>
+<td><code>analysis_id</code></td>
+<td>Unique identifier for the analysis</td>
 </tr>
 <tr>
 <td><strong>Proximity</strong></td>
@@ -225,11 +251,6 @@
 </tr>
 <tr>
 <td></td>
-<td><code>poi_count_10km</code></td>
-<td>Number of other POIs within 10km radius</td>
-</tr>
-<tr>
-<td></td>
 <td><code>poi_count_1km</code></td>
 <td>Number of other POIs within 1km radius</td>
 </tr>
@@ -255,13 +276,18 @@
 </tr>
 <tr>
 <td></td>
-<td><code>pop_within_10km</code></td>
-<td>Population count within 10km buffer around POI</td>
+<td><code>poi_count_10km</code></td>
+<td>Number of other POIs within 10km radius</td>
 </tr>
 <tr>
 <td></td>
 <td><code>pop_within_1km</code></td>
 <td>Population count within 1km buffer around POI</td>
+</tr>
+<tr>
+<td></td>
+<td><code>pop_within_2km</code></td>
+<td>Population count within 2km buffer around POI</td>
 </tr>
 <tr>
 <td></td>
@@ -277,6 +303,11 @@
 <td></td>
 <td><code>pop_within_5km</code></td>
 <td>Population count within 5km buffer around POI</td>
+</tr>
+<tr>
+<td></td>
+<td><code>pop_within_10km</code></td>
+<td>Population count within 10km buffer around POI</td>
 </tr>
 <tr>
 <td></td>
@@ -302,16 +333,6 @@
 <td></td>
 <td><code>connected_node_id</code></td>
 <td>Identifier of the node this POI is connected to</td>
-</tr>
-<tr>
-<td></td>
-<td><code>fiber_path</code></td>
-<td>Route description for fibre optic connection to this POI</td>
-</tr>
-<tr>
-<td></td>
-<td><code>fiber_path_incl_poi</code></td>
-<td>Fibre connection path including this POI in the route</td>
 </tr>
 <tr>
 <td></td>
@@ -344,6 +365,11 @@
 <td>Identifier of the upstream network node in the connection path</td>
 </tr>
 <tr>
+<td></td>
+<td><code>cluster_id</code></td>
+<td>Label of the geographical cluster the POI is in for the fiber path analysis</td>
+</tr>
+<tr>
 <td><strong>Visibility</strong></td>
 <td><code>antenna_los_distance</code></td>
 <td>Line-of-sight distance in meters for antenna/radio connections</td>
@@ -357,11 +383,6 @@
 <td></td>
 <td><code>is_visible</code></td>
 <td>Boolean indicating if POI has line-of-sight to cellular infrastructure</td>
-</tr>
-<tr>
-<td></td>
-<td><code>is_visible_pois</code></td>
-<td>Boolean indicating if this POI is visible to other POIs</td>
 </tr>
 <tr>
 <td></td>
@@ -389,19 +410,9 @@
 <td>Type of radio technology at the nearest visible cell site</td>
 </tr>
 <tr>
-<td></td>
-<td><code>visible_pois</code></td>
-<td>List of other POIs visible from this location</td>
-</tr>
-<tr>
 <td><strong>Technology Assignment</strong></td>
 <td><code>fiber_feasible</code></td>
 <td>Whether fibre is feasible for this POI</td>
-</tr>
-<tr>
-<td></td>
-<td><code>number_of_periods</code></td>
-<td>Total number of time periods for the connection</td>
 </tr>
 <tr>
 <td></td>
@@ -474,6 +485,11 @@
 </tr>
 <tr>
 <td></td>
+<td><code>analysis_id</code></td>
+<td>Unique identifier for the analysis</td>
+</tr>
+<tr>
+<td></td>
 <td><code>u</code></td>
 <td>Source node identifier (starting point of road segment)</td>
 </tr>
@@ -490,7 +506,7 @@
 <tr>
 <td></td>
 <td><code>osmid</code></td>
-<td>OpenStreetMap identifier for the original road segment</td>
+<td>OpenStreetMap identifier for the original road segment. Not all lines have an OpenStreetMap identifier, because some are added during the analysis to connect nodes.</td>
 </tr>
 <tr>
 <td></td>
@@ -499,7 +515,7 @@
 </tr>
 <tr>
 <td></td>
-<td><code>cluster</code></td>
+<td><code>cluster_id</code></td>
 <td>Geographical cluster identifier for regional analysis grouping</td>
 </tr>
 </tbody>
@@ -555,16 +571,6 @@
 <td></td>
 <td><code>azimuth_angle</code></td>
 <td>Directional bearing angle in degrees from POI to cell site</td>
-</tr>
-<tr>
-<td></td>
-<td><code>is_visible_pois</code></td>
-<td>Boolean indicating if other POIs are visible from this POI</td>
-</tr>
-<tr>
-<td></td>
-<td><code>visible_pois</code></td>
-<td>Array of POI identifiers that are visible from this POI location</td>
 </tr>
 <tr>
 <td></td>
