@@ -28,7 +28,6 @@ There are scenario-level parameters which need to be provided, as summarised in 
 
 | Description | Example value |
 |------------|---------------|
-| Budget (USD) | 1,000,000 |
 | Project planning period (years) | 10 |
 | Demand per user (Mbps) | 1.5 |
 
