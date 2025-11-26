@@ -1,6 +1,6 @@
 # Datasets
 
-This page summarises the data user-provided required by the toolkit. The provided data must conform to the standards below.
+This page summarises the user-provided data required by the toolkit. The provided data must conform to the standards below.
 
 ## Points of interest (POI)
 
@@ -8,8 +8,8 @@ This page summarises the data user-provided required by the toolkit. The provide
 |------------|-------------|---------|----------|-----------|------------|
 | poi_id | UUID | | 123e4567-e89b-12d3-a456-426614174000 | No | Unique identifier for the POI, automatically generated |
 | dataset_id | UUID | | 987fcdeb-51a2-12d3-a456-426614174000 | No | Unique identifier for the dataset, automatically generated |
-| lat | float | | 36.7538 | Yes | Latitude coordinate |
-| lon | float | | 3.0588 | Yes | Longitude coordinate |
+| lat | float | | 36.7538 | Yes | Latitude coordinate in geographic Coordinate Reference System WGS84 |
+| lon | float | | 3.0588 | Yes | Longitude coordinate in geographic Coordinate Reference System WGS84 |
 | country_code | string | | DZA | No | ISO 3166-1 alpha-3 country code |
 | is_connected | boolean | | True | No | Whether the POI has connectivity. If this column is missing, the connectivity status will be inferred using [speed test](https://www.ookla.com/ookla-for-good/open-data) measurements. |
 | connectivity_type | string | unknown, mobile, mobile_broadband, metro, fibre, wireless, satellite, wired | fibre | No | Type of internet connectivity. If this column is missing, the connectivity status will be inferred using [speed test](https://www.ookla.com/ookla-for-good/open-data) measurements. |
@@ -23,8 +23,8 @@ This page summarises the data user-provided required by the toolkit. The provide
 |------------|-------------|---------|----------|-----------|------------|
 | ict_id | UUID | | 123e4567-e89b-12d3-a456-426614174000 | No | Cell tower identifier |
 | dataset_id | UUID | | 987fcdeb-51a2-12d3-a456-426614174000 | No | Unique identifier for the dataset |
-| lat | float | | 38.988755 | Yes | Cell tower geographical latitude |
-| lon | float | | 1.401938 | Yes | Cell tower geographical longitude |
+| lat | float | | 38.988755 | Yes | Latitude coordinate in geographic Coordinate Reference System WGS84 |
+| lon | float | | 1.401938 | Yes | Longitude coordinate in geographic Coordinate Reference System WGS84 |
 | radio_type | string | 2G, 3G, 4G, 5G | 4G | Yes | Type of radio transmission technology |
 | antenna_height | float | | 25 | No | Antenna height in meters from the ground, if missing a height of 25 meters will be assumed. |
 | operator_name | string | | TelOperator | No | Mobile network operator name |
@@ -37,8 +37,8 @@ This page summarises the data user-provided required by the toolkit. The provide
 |------------|-------------|---------|----------|-----------|------------|
 | ict_id | UUID | | 123e4567-e89b-12d3-a456-426614174000 | No | Node identifier |
 | dataset_id | UUID | | 987fcdeb-51a2-12d3-a456-426614174000 | No | Unique identifier for the dataset |
-| lat | float | | 38.988755 | Yes | Geographical latitude |
-| lon | float | | 1.401938 | Yes | Geographical longitude |
+| lat | float | | 38.988755 | Yes | Latitude coordinate in geographic Coordinate Reference System WGS84 |
+| lon | float | | 1.401938 | Yes | Longitude coordinate in geographic Coordinate Reference System WGS84 |
 | transmission_medium | string | fibre, microwave, other | fibre | No | Transmission medium. If missing, 'fibre' will be assumed. |
 | node_status | string | operational, planned, under construction | operational | No | Status of the node. If missing, 'operational' will be assumed. |
 | operator_name | string | | TelOperator | No | Name of the mobile operator |
@@ -49,6 +49,6 @@ This page summarises the data user-provided required by the toolkit. The provide
 
 | Column name | Column type | Levels | Example | Mandatory | Definition |
 |------------|-------------|---------|----------|-----------|------------|
-| geometry | geometry | | POLYGON((-74.0060 40.7128, -73.9857 40.7484, -73.9772 40.7516, -74.0060 40.7128)) | Yes | Mobile coverage polygons |
+| geometry | geometry | | POLYGON((-74.0060 40.7128, -73.9857 40.7484, -73.9772 40.7516, -74.0060 40.7128)) | Yes | Mobile coverage polygons in geographic Coordinate Reference System WGS84 |
 | radio_type | str | 2G, 3G, 4G, 5G | 4G | Yes | Radio technology type |
 | fid | str | | 123e4567-e89b-12d3-a456-426614174000 | No | Unique identifier for polygons |
