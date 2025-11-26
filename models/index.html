@@ -112,7 +112,7 @@
 
 <h1 id="models">Models</h1>
 <h2 id="fibre">Fibre</h2>
-<p>The fibre path model identifies the shortest and most cost-effective paths for connecting unconnected points of interest (POIs) to the existing optical fibre network using the road network. By minimizing the total length of fibre required, this model reduces overall deployment costs while efficiently extending connectivity.</p>
+<p>The fibre path model identifies the shortest paths for connecting unconnected points of interest (POIs) to the existing optical fibre network using the road network. By minimizing the total length of fibre required, this model reduces overall deployment costs while efficiently extending connectivity.</p>
 <p>To start with, the model connects POIs and fibre nodes to the existing road network using straight lines (unless they are already on the road network). Then, for each unconnected POI, it computes the shortest path to all fibre nodes. POIs that are already connected to the fibre network can also act as fibre nodes, from which the fibre network can be extended.</p>
 <p><em>Figure: Graph initialization and fibre path algorithm</em></p>
 <p><img alt="graph-initialization" src="../images/graph-initialization.png" /></p>
@@ -235,7 +235,7 @@
 <p>The cellular model relies on cellular coverage analysis. If mobile coverage contours are provided, such as in the Figure below, then the coverage status is determined by overlaying the POIs over this layer.</p>
 <p><em>Figure: Mobile coverage contours</em></p>
 <p><img alt="4g-coverage-small" src="../images/4g-coverage-small.png" /></p>
-<p>If no mobile coverage contours are provided, then the locations of cell sites have to be provided and mobile coverage is determined by the distance from a cell site. Each site is assumed to provide coverage within a specified maximum radius, which is controlled by the model parameter Coverage radius around cell tower.</p>
+<p>If no mobile coverage contours are provided, then the locations of cell sites have to be provided and mobile coverage is determined by the distance from a cell site. Each site is assumed to provide coverage within a specified maximum radius, which is controlled by the model parameter <code>coverage_distance</code>.</p>
 <h3 id="feasibility_1">Feasibility</h3>
 <p>Cellular is considered a feasible technology for a POI if it is within the cellular coverage area (3G, 4G or 5G).</p>
 <h3 id="required-data-inputs_1">Required data inputs</h3>
