@@ -4,6 +4,8 @@ This page summarises the user-provided data required by the toolkit. The provide
 
 ## Points of interest (POI)
 
+**Example dataset:** [Download example-pointsofinterest.xlsx](datasets/example-pointsofinterest.xlsx)
+
 | Column name | Column type | Levels | Example | Mandatory | Definition |
 |------------|-------------|---------|----------|-----------|------------|
 | lat | float | | 36.7538 | Yes | Latitude coordinate in geographic Coordinate Reference System WGS84 |
@@ -19,6 +21,8 @@ This page summarises the user-provided data required by the toolkit. The provide
 
 ## Cell sites
 
+**Example dataset:** [Download example-cellsites.xlsx](datasets/example-cellsites.xlsx)
+
 | Column name | Column type | Levels | Example | Mandatory | Definition |
 |------------|-------------|---------|----------|-----------|------------|
 | lat | float | | 38.988755 | Yes | Latitude coordinate in geographic Coordinate Reference System WGS84 |
@@ -31,6 +35,8 @@ This page summarises the user-provided data required by the toolkit. The provide
 
 ## Transmission nodes
 
+**Example dataset:** [Download example-transmissionnode.xlsx](datasets/example-transmissionnode.xlsx)
+
 | Column name | Column type | Levels | Example | Mandatory | Definition |
 |------------|-------------|---------|----------|-----------|------------|
 | lat | float | | 38.988755 | Yes | Latitude coordinate in geographic Coordinate Reference System WGS84 |
@@ -42,6 +48,8 @@ This page summarises the user-provided data required by the toolkit. The provide
 
 ## Mobile coverage
 
+**Example dataset:** [Download example-coverage.csv](datasets/example-coverage.csv)
+
 | Column name | Column type | Levels | Example | Mandatory | Definition |
 |------------|-------------|---------|----------|-----------|------------|
 | geometry | geometry | | POLYGON((-74.0060 40.7128, -73.9857 40.7484, -73.9772 40.7516, -74.0060 40.7128)) | Yes | Mobile coverage polygons in geographic Coordinate Reference System WGS84 |
@@ -49,3 +57,7 @@ This page summarises the user-provided data required by the toolkit. The provide
 | country_code | string | | DZA | No | ISO 3166-1 alpha-3 country code |
 | dataset_id | UUID | | 987fcdeb-51a2-12d3-a456-426614174000 | No | Unique identifier for the dataset |
 | fid | str | | 123e4567-e89b-12d3-a456-426614174000 | No | Unique identifier for polygons |
+
+---
+
+**Disclaimer:** The example datasets provided above are synthetic data and do not reflect real-world scenarios or actual infrastructure deployments.
