@@ -5,4 +5,6 @@ nav:
   - Models: models.md
   - Input Datasets: inputdata.md
   - Model Outputs: outputs.md
+  - First Project: first-project.md
+  - First Dataset: first-dataset.md
 theme: mkdocs
