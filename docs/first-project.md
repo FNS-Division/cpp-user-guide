@@ -51,7 +51,7 @@
 
     ![Project Calculation Result Map](images/first-project/project-calculation-result-map.png)
 
-## Note
+16. Note
 
 If the project status is not updated in 7 minutes, you may need to (1) click on "All Projects" and (2) click on "View" again to refresh the screen.
 
