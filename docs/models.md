@@ -53,7 +53,7 @@ The fibre cost function is summarised below. The CAPEX cost for each POI is depe
 | reinv_period_fibre | Hardware reinvestment period (years) | 3 | Yes |
 | an_hw_maint_and_repl_fibre | Annual hardware maintenance and replacement cost (fraction of initial CAPEX) | 0.1 | Yes |
 | an_isp_fees_one_mbps_fibre | Annual transit bandwidth cost (USD per Mbps per year) | 31.8 | Yes |
-| an_traffic_fees_one_mbps_fibre | Annual access bandwidth cost (USD per Mbps per year) | 0 | Yes |
+| an_traffic_fees_one_mbps_fibre | Annual access bandwidth cost (USD per Mbps per year) | 0 | No |
 
 _Non-configurable parameters are hard-coded to the values shown above._
 
@@ -101,7 +101,7 @@ The cellular cost function is summarised below.
 | hw_setup_cost_p2area | Hardware setup cost per point of interest (USD/POI) | 80 | Yes |
 | an_hw_maint_and_repl_p2area | Annual hardware maintenance and replacement cost (fraction of initial CAPEX) | 0.1 | Yes |
 | an_isp_fees_one_mbps_p2area | Annual ISP fees (USD per Mbps per year) | 24 | Yes |
-| an_traffic_fees_one_mbps_p2area | Annual traffic fees (USD per Mbps per year) | 0 | Yes |
+| an_traffic_fees_one_mbps_p2area | Annual traffic fees (USD per Mbps per year) | 0 | No |
 | reinv_period_p2area | Reinvest into hardware after (Years) | 3 | Yes |
 _Non-configurable parameters are hard-coded to the values shown above._
 
@@ -150,7 +150,7 @@ The point-to-point cost function is summarised below. There are added complexiti
 | an_hw_maint_and_repl_p2p | Annual hardware maintenance and replacement costs (fraction of hardware CAPEX) | 0.05 | Yes |
 | an_isp_fees_one_mbps_p2p | Access ISP fees (USD per Mbps per year) | 24 | Yes |
 | an_license_fee_1mhz_p2p | Annual recurring license fee for 1 MHz (USD per MHz per year) | 100 | Yes |
-| an_traffic_fees_one_mbps_p2p | Annual traffic fee (USD per Mbps per year) | 0 | Yes |
+| an_traffic_fees_one_mbps_p2p | Annual traffic fee (USD per Mbps per year) | 0 | No |
 | hw_setup_cost_p2p | Hardware setup cost, including access links and assuming one hop per POI (USD per POI) | 500 | Yes |
 | one_time_license_fee_1mhz_p2p | One-time license fee for 1 MHz (USD per MHz) | 500 | Yes |
 | reinv_period_p2p | Reinvest into hardware after (Years) | 5 | Yes |
@@ -181,7 +181,7 @@ The satellite cost function is summarised below.
 | hw_setup_cost_sat | Hardware setup cost per point of interest (USD/POI) | 3,000 | Yes |
 | an_hw_maint_and_repl_sat | Annual hardware maintenance and replacement costs (fraction of hardware CAPEX) | 0.04 | Yes |
 | an_isp_fees_one_mbps_sat | Access ISP fees (USD per Mbps per year) | 24 | Yes |
-| an_traffic_fees_one_mbps_sat | Annual traffic fee (USD per Mbps per year) | 0 | Yes |
+| an_traffic_fees_one_mbps_sat | Annual traffic fee (USD per Mbps per year) | 0 | No |
 | reinv_period_sat | Reinvest into hardware after (Years) | 5 | Yes |
 _Non-configurable parameters are hard-coded to the values shown above._
 
