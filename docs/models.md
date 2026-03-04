@@ -86,10 +86,6 @@ Cellular is considered a feasible technology for a POI if it is within the cellu
 |-----------|-------------|---------------|-------------------|
 | coverage_distance | Distance around cell sites to assume coverage if no map is available (meters) | 1,000 | No |
 | coverage_type | Default network type for coverage buffers if no map is available | 4G | No |
-| radii | List of radii (km) used for coverage analysis | [1, 2, 3, 5] | No |
-| radius_for_demand | Radius used to aggregate demand around a point | 1 | No |
-| dataset_year | Year of the WorldPop population dataset | 2025 | No |
-| overlap_allowed | Allow overlap in buffer areas | False | No |
 _Non-configurable parameters are hard-coded to the values shown above._
 
 ### Cellular cost function
