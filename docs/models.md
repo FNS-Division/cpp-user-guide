@@ -1,5 +1,30 @@
 # Models
 
+## Demand
+
+The demand model estimates the number of people living around points of interest (POIs) by leveraging granular population datasets.
+
+_Figure: Estimating the number of users around points of interest_
+
+![demand-estimation](images/demand-buffers.jpg)
+
+### Required data inputs
+
+- Points of interest
+
+The population data is automatically fetched by the model from [WorldPop](https://hub.worldpop.org/geodata/listing?id=136).
+
+### Model parameters
+
+| Parameter | Description | Value | Configurable in CPP |
+|------------|-------------|-------|---------------------|
+| radii | The radii (km) used to generate buffers around each POI; all are reported in the outputs | [1, 3, 5] | No |
+| radius_for_demand | The radius used for estimating the number of users, from the list above | 1 | No |
+| mbps_demand_per_user | The demand per user (Mbps) | 1.5 | Yes |
+| user_rate | An additional rate applied to the number of users — for example, the proportion of the total population who is of school age in a school connectivity analysis (1 means everyone is a user) | 1 | No |
+| overlap_allowed | Whether buffers around POIs are allowed to overlap, which causes double counting of users | False | No |
+_Non-configurable parameters are hard-coded to the values shown above._
+
 ## Fibre
 
 The fibre path model identifies the shortest paths for connecting unconnected points of interest (POIs) to the existing optical fibre network using the road network. By minimizing the total length of fibre required, this model reduces overall deployment costs while efficiently extending connectivity.
