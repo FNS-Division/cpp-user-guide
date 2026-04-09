@@ -7,4 +7,6 @@ nav:
   - Model Outputs: outputs.md
   - First Project: first-project.md
   - First Dataset: first-dataset.md
+  - Technology Explorer Description: technology-explorer.md
+  - Launch Technology Explorer: explorer/index.html
 theme: mkdocs
