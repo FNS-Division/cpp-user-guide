@@ -7,9 +7,8 @@ nav:
   - Model Outputs: outputs.md
   - First Project: first-project.md
   - First Dataset: first-dataset.md
-  - Helper Products:
+  - Interactive Capacity Building Tools:
     - CPP Navigator: https://fns-division.github.io/CPP_interactive_navigator/
-    - Technology Explorer:
-      - Technology Explorer Description: technology-explorer.md
-      - Launch Technology Explorer: explorer/index.html
+    - Technology Explorer: explorer/index.html
+    - Technology Explorer Description: technology-explorer.md
 theme: mkdocs
