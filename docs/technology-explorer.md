@@ -1,4 +1,4 @@
-# I. Product Description - General
+# I. Technology Explorer Description - General
 
 ## 1. What it is
 
