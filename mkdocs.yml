@@ -8,6 +8,8 @@ nav:
   - First Project: first-project.md
   - First Dataset: first-dataset.md
   - Helper Products:
-    - Technology Explorer Description: technology-explorer.md
-    - Launch Technology Explorer: explorer/index.html
+    - CPP Navigator: https://fns-division.github.io/CPP_interactive_navigator/
+    - Technology Explorer:
+      - Technology Explorer Description: technology-explorer.md
+      - Launch Technology Explorer: explorer/index.html
 theme: mkdocs
