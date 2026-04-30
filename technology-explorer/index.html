@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Technology Explorer Description - ITU Connectivity Planning Platform</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">ITU Connectivity Planning Platform</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../scenarios/" class="nav-link">Scenarios</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../models/" class="nav-link">Models</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../inputdata/" class="nav-link">Input Datasets</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../outputs/" class="nav-link">Model Outputs</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../first-project/" class="nav-link">First Project</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../first-dataset/" class="nav-link">First Dataset</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Interactive Capacity Building Tools</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="https://fns-division.github.io/CPP_interactive_navigator/" class="dropdown-item">CPP Navigator</a>
+</li>
+                                    
+<li>
+    <a href="../explorer/" class="dropdown-item">Technology Explorer</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Technology Explorer Description</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../explorer/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#i-technology-explorer-description-general" class="nav-link">I. Technology Explorer Description - General</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#1-what-it-is" class="nav-link">1. What it is</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#2-design-considerations" class="nav-link">2. Design considerations</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#3-how-results-are-calculated-simple-math-behind-the-fit" class="nav-link">3. How results are calculated (simple "math" behind the fit)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#4-mapping-the-explorer-to-cpp-menus-concepts-simple-context-questions" class="nav-link">4. Mapping the Explorer to CPP (menus + concepts -&gt; simple context questions)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#5-features-and-expected-user-flow" class="nav-link">5. Features and expected user flow</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#ii-annex-technology-explorer-scoring-model" class="nav-link">II. Annex - Technology Explorer Scoring Model</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#1-model-overview" class="nav-link">1. Model overview</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#2-scoring-rules" class="nav-link">2. Scoring rules</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#3-visual-score-indicator" class="nav-link">3. Visual score indicator</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#4-explanation-indicators" class="nav-link">4. Explanation indicators</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#5-when-results-are-calculated" class="nav-link">5. When results are calculated</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="i-technology-explorer-description-general">I. Technology Explorer Description - General</h1>
+<h2 id="1-what-it-is">1. What it is</h2>
+<p>The Connectivity Technology Explorer is a lightweight, non-technical "pre-CPP" experience that helps users build intuition about <strong>which connectivity technologies tend to fit different contexts and why</strong>. It is designed primarily for <strong>policymakers and decision-makers</strong> who need to understand trade-offs early, before working with CPP's full modelling workflows (data inputs, parameters, datasets, scenario objectives, and cost outputs).</p>
+<p>This tool is not a cost model. It is a <strong>guided exploration tool</strong> that turns CPP concepts into plain language so users can arrive at CPP better prepared, knowing what matters most in their scenario and what questions to ask.</p>
+<p><strong>Launch the interactive tool:</strong> <a href="../explorer/">Open Connectivity Technology Explorer</a></p>
+<h2 id="2-design-considerations">2. Design considerations</h2>
+<p>CPP is powerful, but it can feel technical at the starting line. This Explorer provides a structured ramp-up by:</p>
+<ul>
+<li><strong>Reducing cognitive load</strong>: only a few context questions, no parameters or datasets required.</li>
+<li><strong>Making trade-offs visible</strong>: users see how priorities like <em>speed vs long-term value vs cost</em> shift the likely fit.</li>
+<li><strong>Explaining the "why"</strong>: each technology card highlights the key drivers behind the recommendation.</li>
+<li><strong>Supporting exploration</strong>: users can change one context choice and immediately see how results respond, building understanding through experimentation rather than instructions.</li>
+</ul>
+<p><em>Note: Satellite connectivity is described generically rather than referencing a specific orbit type, so the concept remains applicable across different satellite architectures.</em></p>
+<h2 id="3-how-results-are-calculated-simple-math-behind-the-fit">3. How results are calculated (simple "math" behind the fit)</h2>
+<p>The Explorer uses a transparent scoring model (a rules-based weighted sum) that mimics how early project logic often works:</p>
+<ol>
+<li>Each context choice contributes positive or negative points to each technology according to predefined rules that approximate early-stage planning logic.</li>
+<li>Points are added up into a single score per technology.</li>
+<li>The score is translated into a fit category:</li>
+<li><strong>Strong fit</strong>: score &gt;= 4</li>
+<li><strong>Good fit</strong>: score 1 to 3</li>
+<li><strong>Context-dependent</strong>: score -1 to 0</li>
+<li><strong>Poor fit</strong>: score &lt;= -2</li>
+<li>A match meter visualizes how strongly each technology fits the selected context. The meter is normalized per technology so that options with fewer scoring factors are not visually penalized.</li>
+<li>"Logic chips" highlight the strongest factors that influenced the score (for example <em>Infrastructure proximity +3</em> or <em>Hard terrain -2</em>), with an option to expand and view all contributing signals.</li>
+</ol>
+<p>This is intentionally simple: it gives users a credible, explainable model of the <em>direction</em> of fit, not a feasibility/cost conclusion.</p>
+<p>Note: for the detailed scoring model, see the section <strong>Annex - Technology Explorer scoring model</strong>.</p>
+<h2 id="4-mapping-the-explorer-to-cpp-menus-concepts-simple-context-questions">4. Mapping the Explorer to CPP (menus + concepts -&gt; simple context questions)</h2>
+<p>The Explorer steps are a simplified translation of how CPP typically structures a project: define the context, define what's needed, then define what matters most.</p>
+<style>
+.tech-explorer-table,
+.tech-explorer-table th,
+.tech-explorer-table td {
+  border: 1px solid #9ca3af;
+}
+
+.tech-explorer-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.tech-explorer-table th,
+.tech-explorer-table td {
+  padding: 8px;
+}
+
+.tech-explorer-mapping-table {
+  table-layout: fixed;
+}
+</style>
+
+<h3 id="step-1-where-are-we">Step 1 - "Where are we?"</h3>
+<table class="tech-explorer-table tech-explorer-mapping-table" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <colgroup>
+    <col style="width: 28%;">
+    <col style="width: 36%;">
+    <col style="width: 36%;">
+  </colgroup>
+  <thead>
+    <tr>
+      <th>Explorer inputs</th>
+      <th>CPP concept translation</th>
+      <th>Why we translated it this way</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <ul>
+          <li><em>How close is this location to existing infrastructure?</em></li>
+          <li><em>How difficult is it to build here?</em></li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li><strong>Geography and access constraints</strong> -> remoteness and terrain (proxy for construction complexity, accessibility), and likely infrastructure proximity</li>
+          <li><strong>Buildability constraints</strong> -> terrain as a proxy for civil works effort and physical feasibility challenges</li>
+        </ul>
+      </td>
+      <td>Instead of asking for CPP-specific data fields upfront, we capture the <strong>same intent</strong> as high-level context signals a policymaker can answer reliably.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="step-2-what-is-needed">Step 2 - "What is needed?"</h3>
+<table class="tech-explorer-table tech-explorer-mapping-table" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <colgroup>
+    <col style="width: 28%;">
+    <col style="width: 36%;">
+    <col style="width: 36%;">
+  </colgroup>
+  <thead>
+    <tr>
+      <th>Explorer inputs</th>
+      <th>CPP concept translation</th>
+      <th>Why we translated it this way</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <ul>
+          <li><em>What level of performance is required?</em> (demand)</li>
+          <li><em>How many people need access?</em> (density)</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li><strong>Demand assumptions</strong> (bandwidth needs, service expectations) -> simplified into essential connectivity / everyday use / high-performance needs</li>
+          <li><strong>Scale and concentration of demand</strong> -> simplified into low / mid / high density</li>
+        </ul>
+      </td>
+      <td>CPP can represent demand via parameters and datasets. The Explorer uses "plain language demand tiers" to help users reason about <strong>capacity vs coverage</strong> needs before they ever touch numerical inputs.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="step-3-what-matters-most">Step 3 - "What matters most?"</h3>
+<table class="tech-explorer-table tech-explorer-mapping-table" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <colgroup>
+    <col style="width: 28%;">
+    <col style="width: 36%;">
+    <col style="width: 36%;">
+  </colgroup>
+  <thead>
+    <tr>
+      <th>Explorer inputs</th>
+      <th>CPP concept translation</th>
+      <th>Why we translated it this way</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <ul>
+          <li><em>What's the priority?</em> (cost / long-term value / speed)</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li><strong>Scenario objectives / optimization goals</strong> -> simplified into a single dominant objective users can choose</li>
+        </ul>
+      </td>
+      <td>In CPP, objective-setting strongly influences recommended solutions. The Explorer makes that relationship visible early, without requiring users to understand optimization language.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="5-features-and-expected-user-flow">5. Features and expected user flow</h2>
+<h3 id="51-core-features">5.1 Core features</h3>
+<ul>
+<li><strong>Three-step guided context setup</strong> with clear progression and completion indicators.</li>
+<li><strong>Selectable "tiles"</strong> (instead of dropdowns) for faster, mobile-friendly input.</li>
+<li><strong>Technology fit</strong> results shown as:</li>
+<li>Fit label (Strong / Good / Context-dependent / Poor fit)</li>
+<li>Match meter (visual strength of fit)</li>
+<li>Key driver chips (strongest contributing factors shown by default, with an option to expand and view all contributing signals)</li>
+<li>Plain-language "why" bullets (pros + watch-outs)</li>
+<li><strong>Optional toggle to show CPP parameter examples</strong>: displays illustrative CPP parameter examples to connect the simple choices back to CPP terminology.</li>
+<li><strong>Neutral state</strong> before context completion: shows technologies without bias until the user has provided a full context.</li>
+<li><strong>Info modal</strong> explaining purpose, boundaries, and how it supports CPP readiness.</li>
+<li><strong>Context-aware input validation</strong> to prevent contradictory scenario definitions.</li>
+<li><strong>Context consistency rules</strong>: to avoid unrealistic combinations (for example, a very remote location paired with dense urban demand), the Explorer enforces simple consistency rules between inputs. Population density options are constrained by the selected remoteness level. If a user changes the remoteness after selecting density, incompatible density options are automatically cleared.</li>
+<li><strong>Expandable factor explanation</strong>: results highlight the strongest factors first and allow users to expand each card to see all contributing signals behind the score.</li>
+<li><strong>Technology-normalized match meters</strong>: the visual match bar is normalized for each technology so the percentage accurately reflects how well that technology fits the selected context.</li>
+</ul>
+<h3 id="52-how-users-are-expected-to-use-it">5.2 How users are expected to use it</h3>
+<p>You can launch the tool while following this flow: <a href="../explorer/">Open Connectivity Technology Explorer</a></p>
+<ol>
+<li><strong>Start by defining the context, not by picking a technology</strong>: answer Steps 1 to 3 based on the project context.</li>
+<li>Review the results:</li>
+<li>Compare which technologies rise or fall with the context.</li>
+<li>Read the "why" bullets to understand trade-offs.</li>
+<li>(Optional) turn on <strong>"Show CPP parameter examples"</strong>:</li>
+<li>See examples of CPP parameters that relate to each technology.</li>
+<li>Use this as a bridge to CPP terminology and deeper modelling work.</li>
+<li>Iterate: change one assumption (e.g., priority or terrain) and observe how the fit shifts. This is the learning mechanism.</li>
+</ol>
+<h1 id="ii-annex-technology-explorer-scoring-model">II. Annex - Technology Explorer Scoring Model</h1>
+<h2 id="1-model-overview">1. Model overview</h2>
+<p>The Connectivity Technology Explorer uses a <strong>simple additive scoring model</strong> to estimate how well different connectivity technologies fit a given context.</p>
+<p>For each scenario defined by the user, the tool evaluates five contextual dimensions:</p>
+<ol>
+<li>Location remoteness</li>
+<li>Terrain difficulty</li>
+<li>Population density</li>
+<li>Connectivity demand</li>
+<li>Project priority</li>
+</ol>
+<p>Each condition contributes <strong>positive or negative points</strong> to each technology. All points are summed to produce a final score.</p>
+<h2 id="2-scoring-rules">2. Scoring rules</h2>
+<p>Points are applied according to the following rules.</p>
+<table class="tech-explorer-table" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th>Context condition</th>
+      <th>Fibre</th>
+      <th>Cellular / FWA</th>
+      <th>Point-to-Point</th>
+      <th>Satellite</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Infrastructure nearby</td><td>+3</td><td>+2</td><td>+1</td><td>-1</td></tr>
+    <tr><td>Outside town</td><td>+1</td><td>+2</td><td>+2</td><td>0</td></tr>
+    <tr><td>Far from infrastructure</td><td>-1</td><td>0</td><td>0</td><td>+2</td></tr>
+    <tr><td>Very remote</td><td>-1</td><td>-1</td><td>0</td><td>+2</td></tr>
+    <tr><td>Easy terrain</td><td>+1</td><td>0</td><td>+1</td><td>0</td></tr>
+    <tr><td>Rugged terrain</td><td>-2</td><td>0</td><td>-1</td><td>0</td></tr>
+    <tr><td>Dense population</td><td>+2</td><td>+1</td><td>0</td><td>0</td></tr>
+    <tr><td>Everyday use needs</td><td>+2</td><td>+1</td><td>+1</td><td>0</td></tr>
+    <tr><td>High-performance needs</td><td>+2</td><td>0</td><td>0</td><td>-1</td></tr>
+    <tr><td>Essential connectivity needs</td><td>-1</td><td>-1</td><td>-1</td><td>0</td></tr>
+    <tr><td>Priority: minimize cost</td><td>0</td><td>+1</td><td>+1</td><td>0</td></tr>
+    <tr><td>Priority: long-term value</td><td>+1</td><td>0</td><td>0</td><td>-1</td></tr>
+    <tr><td>Priority: deploy quickly</td><td>-1</td><td>+2</td><td>+1</td><td>+2</td></tr>
+  </tbody>
+</table>
+
+<p>Note: Some scoring conditions can occur simultaneously. For example, a location may be both near infrastructure and outside a town, or a project may serve high demand while also prioritizing long-term value. Because of this, the maximum theoretical score for a technology may exceed the sum visible in any single row combination in the table.</p>
+<p>Notes:</p>
+<ul>
+<li>Some conditions do not affect certain technologies.</li>
+<li>High-performance needs are treated as a stronger performance requirement. Selecting this option triggers both the general higher-performance rule and an additional high-performance rule in the scoring model.</li>
+<li>Satellite receives higher scores as remoteness increases.</li>
+<li>Basic demand is treated as a low <strong>planning baseline</strong>, so it does not strongly favor any technology and slightly reduces the relative fit of infrastructure-heavy options.</li>
+</ul>
+<h2 id="3-visual-score-indicator">3. Visual score indicator</h2>
+<p>The Explorer uses a visual "match meter" to illustrate how strongly each connectivity technology fits the selected context.</p>
+<p>The Explorer normalizes the match meter per technology. Each technology's score is compared against its own realistic maximum score, and the meter is calculated as a percentage of that maximum.</p>
+<p>Negative scores are visually floored at 0% so that the bar does not imply a positive fit when the score is neutral or weak.</p>
+<p>For visualization purposes, the Explorer currently assumes approximate maximum scores. These values represent practical upper bounds used to normalize the visual meter. Actual scenario scores may not reach these values because some scoring conditions are mutually exclusive.</p>
+<table class="tech-explorer-table" border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th>Technology</th>
+      <th>Approximate maximum score used for visualization</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Fibre</td><td>10</td></tr>
+    <tr><td>Cellular / FWA</td><td>6</td></tr>
+    <tr><td>Point-to-Point radio</td><td>5</td></tr>
+    <tr><td>Satellite</td><td>6</td></tr>
+  </tbody>
+</table>
+
+<h2 id="4-explanation-indicators">4. Explanation indicators</h2>
+<p>To help users understand the result, the Explorer highlights the strongest contributing factors influencing the score for each technology. These appear as small indicator chips (for example: <strong>Infrastructure proximity +3</strong> or <strong>Hard terrain -2</strong>).</p>
+<p>By default, the interface shows the most influential signals to keep the explanation readable. Users can expand the result card to reveal all contributing factors that affected the score.</p>
+<p>This design balances transparency of the scoring logic with clarity of the user interface.</p>
+<h2 id="5-when-results-are-calculated">5. When results are calculated</h2>
+<p>Technology fit is only calculated after all five contextual inputs are selected. Until then, technologies are displayed in a neutral state.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
