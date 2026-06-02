@@ -10,3 +10,9 @@ nav:
     - Technology Explorer: explorer/index.html
     - Technology Explorer Description: technology-explorer.md
 theme: mkdocs
+
+markdown_extensions:
+  - mdx_math
+
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML
