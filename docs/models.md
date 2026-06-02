@@ -2,28 +2,55 @@
 
 ## Demand
 
-The demand model estimates the number of people living around points of interest (POIs) by leveraging granular population datasets.
+The demand model estimates the number of people residing within a defined radius of each point of interest (POI) by leveraging granular population datasets. This serves two purposes: approximating the number of active internet users at each POI, and deriving the total throughput (in Mbps) that any technology option must provide to meet that demand.
 
-_Figure: Estimating the number of users around points of interest_
+If the input data includes values for `total_mbps` (total bandwidth demand in Mbps) or `number_of_users` (peak concurrent internet users), those user-supplied values are used directly. Otherwise, both quantities are estimated by the demand model as described below.
+
+**Number of users** is estimated as:
+
+$$N_{\text{users}} = P_{\text{radius}} \times r_{\text{user}}$$
+
+where $P_{\text{radius}}$ is the population within `radius_for_demand` km of the POI, and $r_{\text{user}}$ is the user rate (e.g. the share of the population of school age, for a school connectivity analysis).
+
+_Figure: Population buffers used to estimate the number of users around points of interest._
 
 ![demand-estimation](images/demand-buffers.jpg)
 
+**Total throughput demand** is estimated as:
+
+$$T = \min\left(d_{\text{user}} \times N_{\text{users}},\ T_{\text{max}}\right)$$
+
+where $d_{\text{user}}$ is the per-user demand in Mbps, and $T_{\text{max}}$ is a cap to avoid unrealistically high estimates:
+
+$$T_{\text{max}} = \max\left(T_{\text{fiber}},\ T_{\text{p2area}},\ T_{\text{p2p}},\ T_{\text{satellite}}\right)$$
+
+This cap is defined as the highest throughput achievable across any of the supported technology options.
+
+_Figure: Population buffers used to estimate the number of users around points of interest._
+
+![demand-curve](images/demand-curve.png)
+
 ### Required data inputs
 
-- Points of interest
+- Points of interest (POI layer)
 
-The population data is automatically fetched by the model from [WorldPop](https://hub.worldpop.org/geodata/listing?id=136).
+Population data is automatically retrieved by the model from [WorldPop](https://hub.worldpop.org/geodata/listing?id=136).
 
 ### Model parameters
 
-| Parameter | Description | Value | Configurable in CPP |
-|------------|-------------|-------|---------------------|
-| radii | The radii (km) used to generate buffers around each POI; all are reported in the outputs | [1, 3, 5] | No |
-| radius_for_demand | The radius used for estimating the number of users, from the list above | 1 | No |
-| mbps_demand_per_user | The demand per user (Mbps) | 1.5 | Yes |
-| user_rate | An additional rate applied to the number of users — for example, the proportion of the total population who is of school age in a school connectivity analysis (1 means everyone is a user) | 1 | No |
-| overlap_allowed | Whether buffers around POIs are allowed to overlap, which causes double counting of users | False | No |
-_Non-configurable parameters are hard-coded to the values shown above._
+| Parameter | Description | Default | Configurable in CPP |
+|---|---|---|---|
+| `radii` | Buffer radii (km) around each POI; all distances are reported in the outputs | [1, 3, 5] | No |
+| `radius_for_demand` | The radius (km) used to estimate $N_{\text{users}}$, drawn from `radii` | 1 | No |
+| `mbps_demand_per_user` | Per-user bandwidth demand $d_{\text{user}}$ (Mbps) | 1.5 | Yes |
+| `user_rate` | Share of the local population counted as users $r_{\text{user}}$ (1 = entire population) | 1 | No |
+| `overlap_allowed` | Whether buffers around POIs may overlap; if `False`, overlapping areas are assigned to a single POI to avoid double-counting | False | No |
+| `max_throughput_fiber` | Maximum achievable download speed via fibre (Mbps) | 15,000 | No |
+| `max_throughput_p2area` | Maximum achievable download speed via cellular (Mbps) | 200 | No |
+| `max_throughput_p2p` | Maximum achievable download speed via point-to-point microwave (Mbps) | 400 | No |
+| `max_throughput_satellite` | Maximum achievable download speed via satellite (Mbps) | 200 | No |
+
+_Non-configurable parameters are hard-coded to the default values shown above._
 
 ## Fibre
 
@@ -78,7 +105,6 @@ The fibre cost function is summarised below. The CAPEX cost for each POI is depe
 | reinv_period_fibre | Hardware reinvestment period (years) | 3 | Yes |
 | an_hw_maint_and_repl_fibre | Annual hardware maintenance and replacement cost (fraction of initial CAPEX) | 0.1 | Yes |
 | an_isp_fees_one_mbps_fibre | Annual transit bandwidth cost (USD per Mbps per year) | 31.8 | Yes |
-| an_traffic_fees_one_mbps_fibre | Annual access bandwidth cost (USD per Mbps per year) | 0 | No |
 
 _Non-configurable parameters are hard-coded to the values shown above._
 
@@ -122,7 +148,6 @@ The cellular cost function is summarised below.
 | hw_setup_cost_p2area | Hardware setup cost per point of interest (USD/POI) | 80 | Yes |
 | an_hw_maint_and_repl_p2area | Annual hardware maintenance and replacement cost (fraction of initial CAPEX) | 0.1 | Yes |
 | an_isp_fees_one_mbps_p2area | Annual ISP fees (USD per Mbps per year) | 24 | Yes |
-| an_traffic_fees_one_mbps_p2area | Annual traffic fees (USD per Mbps per year) | 0 | No |
 | reinv_period_p2area | Reinvest into hardware after (Years) | 3 | Yes |
 _Non-configurable parameters are hard-coded to the values shown above._
 
@@ -171,7 +196,6 @@ The point-to-point cost function is summarised below. There are added complexiti
 | an_hw_maint_and_repl_p2p | Annual hardware maintenance and replacement costs (fraction of hardware CAPEX) | 0.05 | Yes |
 | an_isp_fees_one_mbps_p2p | Access ISP fees (USD per Mbps per year) | 24 | Yes |
 | an_license_fee_1mhz_p2p | Annual recurring license fee for 1 MHz (USD per MHz per year) | 100 | Yes |
-| an_traffic_fees_one_mbps_p2p | Annual traffic fee (USD per Mbps per year) | 0 | No |
 | hw_setup_cost_p2p | Hardware setup cost, including access links and assuming one hop per POI (USD per POI) | 500 | Yes |
 | one_time_license_fee_1mhz_p2p | One-time license fee for 1 MHz (USD per MHz) | 500 | Yes |
 | reinv_period_p2p | Reinvest into hardware after (Years) | 5 | Yes |
@@ -202,7 +226,6 @@ The satellite cost function is summarised below.
 | hw_setup_cost_sat | Hardware setup cost per point of interest (USD/POI) | 3,000 | Yes |
 | an_hw_maint_and_repl_sat | Annual hardware maintenance and replacement costs (fraction of hardware CAPEX) | 0.04 | Yes |
 | an_isp_fees_one_mbps_sat | Access ISP fees (USD per Mbps per year) | 24 | Yes |
-| an_traffic_fees_one_mbps_sat | Annual traffic fee (USD per Mbps per year) | 0 | No |
 | reinv_period_sat | Reinvest into hardware after (Years) | 5 | Yes |
 _Non-configurable parameters are hard-coded to the values shown above._
 
