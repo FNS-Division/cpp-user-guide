@@ -10,7 +10,7 @@ If the input data includes values for `total_mbps` (total bandwidth demand in Mb
 
 $$N_{\text{users}} = P_{\text{radius}} \times r_{\text{user}}$$
 
-where $P_{\text{radius}}$ is the population within `radius_for_demand` km of the POI, and $r_{\text{user}}$ is the user rate (e.g. the share of the population of school age, for a school connectivity analysis).
+where \(P_{\text{radius}}\) is the population within `radius_for_demand` km of the POI, and \(r_{\text{user}}\) is the user rate (e.g. the share of the population of school age, for a school connectivity analysis).
 
 _Figure: Population buffers used to estimate the number of users around points of interest._
 
@@ -20,7 +20,7 @@ _Figure: Population buffers used to estimate the number of users around points o
 
 $$T = \min\left(d_{\text{user}} \times N_{\text{users}},\ T_{\text{max}}\right)$$
 
-where $d_{\text{user}}$ is the per-user demand in Mbps, and $T_{\text{max}}$ is a cap to avoid unrealistically high estimates:
+where \(d_{\text{user}}\) is the per-user demand in Mbps, and \(T_{\text{max}}\) is a cap to avoid unrealistically high estimates:
 
 $$T_{\text{max}} = \max\left(T_{\text{fiber}},\ T_{\text{p2area}},\ T_{\text{p2p}},\ T_{\text{satellite}}\right)$$
 
