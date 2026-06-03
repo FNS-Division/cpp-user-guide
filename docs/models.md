@@ -41,9 +41,9 @@ Population data is automatically retrieved by the model from [WorldPop](https://
 | Parameter | Description | Default | Configurable in CPP |
 |---|---|---|---|
 | `radii` | Buffer radii (km) around each POI; all distances are reported in the outputs | [1, 3, 5] | No |
-| `radius_for_demand` | The radius (km) used to estimate $N_{\text{users}}$, drawn from `radii` | 1 | No |
-| `mbps_demand_per_user` | Per-user bandwidth demand $d_{\text{user}}$ (Mbps) | 1.5 | Yes |
-| `user_rate` | Share of the local population counted as users $r_{\text{user}}$ (1 = entire population) | 1 | No |
+| `radius_for_demand` | The radius (km) used to estimate the number of users, drawn from `radii` | 1 | No |
+| `mbps_demand_per_user` | Per-user bandwidth demand (Mbps) | 1.5 | Yes |
+| `user_rate` | Share of the local population counted as users (1 = entire population) | 1 | No |
 | `overlap_allowed` | Whether buffers around POIs may overlap; if `False`, overlapping areas are assigned to a single POI to avoid double-counting | False | No |
 | `max_throughput_fiber` | Maximum achievable download speed via fibre (Mbps) | 15,000 | No |
 | `max_throughput_p2area` | Maximum achievable download speed via cellular (Mbps) | 200 | No |
