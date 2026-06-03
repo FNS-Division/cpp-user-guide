@@ -125,13 +125,13 @@ In addition to the parameters above, the cost function takes the following quant
 Initial CAPEX combines the fixed hardware setup cost with the cost of constructing the required fibre. The fibre length is scaled by the expansion factor \(e\) to reflect that the cable actually laid exceeds the estimated path length:
 
 $$
-\text{CAPEX}_{\text{init}} = \texttt{hw\_setup\_cost\_fibre} + e \cdot L \cdot \texttt{focl\_constr\_cost\_fibre}
+\text{CAPEX}_{\text{init}} = \texttt{hw_setup_cost_fibre} + e \cdot L \cdot \texttt{focl_constr_cost_fibre}
 $$
 
 Hardware is replaced at regular intervals over the project period. The number of reinvestments is the number of complete reinvestment cycles elapsed:
 
 $$
-\text{CAPEX}_{\text{reinv}} = \texttt{hw\_setup\_cost\_fibre} \cdot \left\lfloor \frac{P}{\texttt{reinv\_period\_fibre}} \right\rfloor
+\text{CAPEX}_{\text{reinv}} = \texttt{hw_setup_cost_fibre} \cdot \left\lfloor \frac{P}{\texttt{reinv_period_fibre}} \right\rfloor
 $$
 
 Total CAPEX is therefore:
@@ -145,7 +145,7 @@ $$
 Annual OPEX is a fixed fraction of the initial CAPEX, covering maintenance and replacement:
 
 $$
-\text{OPEX}_{\text{annual}} = \texttt{an\_hw\_maint\_and\_repl\_fibre} \cdot \text{CAPEX}_{\text{init}}
+\text{OPEX}_{\text{annual}} = \texttt{an_hw_maint_and_repl_fibre} \cdot \text{CAPEX}_{\text{init}}
 \qquad
 \text{OPEX}_{\text{total}} = P \cdot \text{OPEX}_{\text{annual}}
 $$
@@ -163,7 +163,7 @@ $$
 Annual revenue is the retail fee paid to the operator, which scales with throughput. Throughput is capped at `max_throughput_fibre`, since operators can only deliver download speeds up to a certain limit:
 
 $$
-\text{Rev}_{\text{annual}} = \min\!\left(Q,\ \texttt{max\_throughput\_fibre}\right) \cdot \texttt{an\_isp\_fees\_one\_mbps\_fibre}
+\text{Rev}_{\text{annual}} = \min\!\left(Q,\ \texttt{max_throughput_fibre}\right) \cdot \texttt{an_isp_fees_one_mbps_fibre}
 \qquad
 \text{Rev}_{\text{total}} = P \cdot \text{Rev}_{\text{annual}}
 $$
@@ -255,13 +255,13 @@ In addition to the parameters above, the cost function takes the following quant
 Unlike fibre, cellular deployment has no per-distance construction cost; initial CAPEX is simply the hardware setup cost:
 
 $$
-\text{CAPEX}_{\text{init}} = \texttt{hw\_setup\_cost\_p2area}
+\text{CAPEX}_{\text{init}} = \texttt{hw_setup_cost_p2area}
 $$
 
 Hardware is replaced at regular intervals over the project period. The number of reinvestments is the number of complete reinvestment cycles elapsed:
 
 $$
-\text{CAPEX}_{\text{reinv}} = \text{CAPEX}_{\text{init}} \cdot \left\lfloor \frac{P}{\texttt{reinv\_period\_p2area}} \right\rfloor
+\text{CAPEX}_{\text{reinv}} = \text{CAPEX}_{\text{init}} \cdot \left\lfloor \frac{P}{\texttt{reinv_period_p2area}} \right\rfloor
 $$
 
 Total CAPEX is therefore:
@@ -275,7 +275,7 @@ $$
 Annual OPEX is a fixed fraction of the initial CAPEX, covering maintenance and replacement:
 
 $$
-\text{OPEX}_{\text{annual}} = \texttt{an\_hw\_maint\_and\_repl\_p2area} \cdot \text{CAPEX}_{\text{init}}
+\text{OPEX}_{\text{annual}} = \texttt{an_hw_maint_and_repl_p2area} \cdot \text{CAPEX}_{\text{init}}
 \qquad
 \text{OPEX}_{\text{total}} = P \cdot \text{OPEX}_{\text{annual}}
 $$
@@ -293,7 +293,7 @@ $$
 Annual revenue is the retail fee paid to the operator, which scales with throughput. Throughput is capped at `max_throughput_p2area`, since operators can only deliver download speeds up to a certain limit:
 
 $$
-\text{Rev}_{\text{annual}} = \min\!\left(Q,\ \texttt{max\_throughput\_p2area}\right) \cdot \texttt{an\_isp\_fees\_one\_mbps\_p2area}
+\text{Rev}_{\text{annual}} = \min\!\left(Q,\ \texttt{max_throughput_p2area}\right) \cdot \texttt{an_isp_fees_one_mbps_p2area}
 \qquad
 \text{Rev}_{\text{total}} = P \cdot \text{Rev}_{\text{annual}}
 $$
@@ -392,15 +392,15 @@ In addition to the parameters above, the cost function takes the following quant
 Spectrum licence fees are charged per MHz of licensed bandwidth. With a single access link per POI, this is simply the access link bandwidth:
 
 $$
-B = \texttt{access\_link\_bandwidth\_p2p}
+B = \texttt{access_link_bandwidth_p2p}
 $$
 
 This bandwidth drives both the one-time and recurring licence fees:
 
 $$
-F_{\text{licence}}^{\text{once}} = \texttt{one\_time\_license\_fee\_1mhz\_p2p} \cdot B
+F_{\text{licence}}^{\text{once}} = \texttt{one_time_license_fee_1mhz_p2p} \cdot B
 \qquad
-F_{\text{licence}}^{\text{annual}} = \texttt{an\_license\_fee\_1mhz\_p2p} \cdot B
+F_{\text{licence}}^{\text{annual}} = \texttt{an_license_fee_1mhz_p2p} \cdot B
 $$
 
 #### Capital expenditure (CAPEX)
@@ -408,7 +408,7 @@ $$
 Hardware CAPEX is the per-POI setup cost, which includes the access link:
 
 $$
-\text{CAPEX}_{\text{hw}} = \texttt{hw\_setup\_cost\_p2p}
+\text{CAPEX}_{\text{hw}} = \texttt{hw_setup_cost_p2p}
 $$
 
 Initial CAPEX adds the one-time licence fee to the hardware CAPEX:
@@ -420,7 +420,7 @@ $$
 Hardware is replaced at regular intervals over the project period. Reinvestment applies only to the hardware component — the one-time licence fee is not repaid:
 
 $$
-\text{CAPEX}_{\text{reinv}} = \text{CAPEX}_{\text{hw}} \cdot \left\lfloor \frac{P}{\texttt{reinv\_period\_p2p}} \right\rfloor
+\text{CAPEX}_{\text{reinv}} = \text{CAPEX}_{\text{hw}} \cdot \left\lfloor \frac{P}{\texttt{reinv_period_p2p}} \right\rfloor
 $$
 
 Total CAPEX is therefore:
@@ -434,7 +434,7 @@ $$
 Annual OPEX combines the recurring licence fee with hardware maintenance and replacement. Maintenance is charged as a fraction of *hardware* CAPEX only, excluding the one-time licence fee:
 
 $$
-\text{OPEX}_{\text{annual}} = F_{\text{licence}}^{\text{annual}} + \texttt{an\_hw\_maint\_and\_repl\_p2p} \cdot \text{CAPEX}_{\text{hw}}
+\text{OPEX}_{\text{annual}} = F_{\text{licence}}^{\text{annual}} + \texttt{an_hw_maint_and_repl_p2p} \cdot \text{CAPEX}_{\text{hw}}
 \qquad
 \text{OPEX}_{\text{total}} = P \cdot \text{OPEX}_{\text{annual}}
 $$
@@ -452,7 +452,7 @@ $$
 Annual revenue is the retail fee paid to the operator, which scales with throughput. Throughput is capped at `max_throughput_p2p`, since operators can only deliver download speeds up to a certain limit:
 
 $$
-\text{Rev}_{\text{annual}} = \min\!\left(Q,\ \texttt{max\_throughput\_p2p}\right) \cdot \texttt{an\_isp\_fees\_one\_mbps\_p2p}
+\text{Rev}_{\text{annual}} = \min\!\left(Q,\ \texttt{max_throughput_p2p}\right) \cdot \texttt{an_isp_fees_one_mbps_p2p}
 \qquad
 \text{Rev}_{\text{total}} = P \cdot \text{Rev}_{\text{annual}}
 $$
@@ -528,13 +528,13 @@ In addition to the parameters above, the cost function takes the following quant
 Satellite deployment has no per-distance or infrastructure construction cost; initial CAPEX is simply the hardware setup cost:
 
 $$
-\text{CAPEX}_{\text{init}} = \texttt{hw\_setup\_cost\_sat}
+\text{CAPEX}_{\text{init}} = \texttt{hw_setup_cost_sat}
 $$
 
 Hardware is replaced at regular intervals over the project period. The number of reinvestments is the number of complete reinvestment cycles elapsed:
 
 $$
-\text{CAPEX}_{\text{reinv}} = \text{CAPEX}_{\text{init}} \cdot \left\lfloor \frac{P}{\texttt{reinv\_period\_sat}} \right\rfloor
+\text{CAPEX}_{\text{reinv}} = \text{CAPEX}_{\text{init}} \cdot \left\lfloor \frac{P}{\texttt{reinv_period_sat}} \right\rfloor
 $$
 
 Total CAPEX is therefore:
@@ -548,7 +548,7 @@ $$
 Annual OPEX is a fixed fraction of the initial CAPEX, covering maintenance and replacement:
 
 $$
-\text{OPEX}_{\text{annual}} = \texttt{an\_hw\_maint\_and\_repl\_sat} \cdot \text{CAPEX}_{\text{init}}
+\text{OPEX}_{\text{annual}} = \texttt{an_hw_maint_and_repl_sat} \cdot \text{CAPEX}_{\text{init}}
 \qquad
 \text{OPEX}_{\text{total}} = P \cdot \text{OPEX}_{\text{annual}}
 $$
@@ -566,7 +566,7 @@ $$
 Annual revenue is the retail fee paid to the operator, which scales with throughput. Throughput is capped at `max_throughput_sat`, since operators can only deliver download speeds up to a certain limit:
 
 $$
-\text{Rev}_{\text{annual}} = \min\!\left(Q,\ \texttt{max\_throughput\_sat}\right) \cdot \texttt{an\_isp\_fees\_one\_mbps\_sat}
+\text{Rev}_{\text{annual}} = \min\!\left(Q,\ \texttt{max_throughput_sat}\right) \cdot \texttt{an_isp_fees_one_mbps_sat}
 \qquad
 \text{Rev}_{\text{total}} = P \cdot \text{Rev}_{\text{annual}}
 $$
