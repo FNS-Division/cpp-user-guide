@@ -62,7 +62,7 @@ _Figure: Graph initialization and fibre path algorithm_
 
 ![graph-initialization](images/graph-initialization.png)
 
-At each step of the algorithm, new connections are made between connected and unconnected points as long as the length of the new connection is below a specified threshold. For example, it can be specified that no single fibre line should be longer than 5 kilometres.
+At each step of the algorithm, new connections are made between connected and unconnected points as long as the length of the new connection is below a specified threshold. For example, it can be specified that no single fibre connection should be longer than 5 kilometres.
 
 This approach enables economies of scale: POIs can act as relay points for neighbouring POIs, enabling connectivity without each one needing to connect directly to a transmission node. This approach optimises resource usage and simplifies network expansion.
 
@@ -97,7 +97,7 @@ _Non-configurable parameters are hard-coded to the default values shown above._
 
 ### Fibre cost function
 
-The fibre cost function is summarised below. The CAPEX cost for each POI depends on the length of fibre required to connect it.
+The fibre cost function depends on the parameters below.
 
 | Parameter | Description | Default | Configurable in CPP |
 |---|---|---|---|
@@ -106,13 +106,99 @@ The fibre cost function is summarised below. The CAPEX cost for each POI depends
 | `reinv_period_fibre` | Hardware reinvestment period (years) | 3 | Yes |
 | `an_hw_maint_and_repl_fibre` | Annual hardware maintenance and replacement cost (fraction of initial CAPEX) | 0.1 | Yes |
 | `an_isp_fees_one_mbps_fibre` | Annual transit bandwidth cost (USD/Mbps/year) | 31.8 | Yes |
-| `max_throughput_fiber` | Maximum achievable download speed via fibre (Mbps). The throughput is capped at this value. | 15,000 | No |
+| `max_throughput_fibre` | Maximum achievable download speed via fibre (Mbps). The throughput is capped at this value. | 15,000 | No |
+| `interest_rate` | Discount rate used to compute present values | 0.02 | No |
 
 _Non-configurable parameters are hard-coded to the values shown above._
 
-_Figure: Fibre cost function_
+#### Inputs
 
-![fibre](diagrams/fibre-cost-model.drawio.svg)
+In addition to the parameters above, the cost function takes the following quantities, derived upstream for each POI:
+
+- \(L\) — fibre length required to connect the POI (km)
+- \(Q\) — throughput (Mbps)
+- \(P\) — project period over which costs and revenues are evaluated (years)
+- \(e\) — fibre expansion factor, applied to the estimated length to account for routing overhead (default 1.1)
+
+#### Capital expenditure (CAPEX)
+
+Initial CAPEX combines the fixed hardware setup cost with the cost of constructing the required fibre. The fibre length is scaled by the expansion factor \(e\) to reflect that the cable actually laid exceeds the estimated path length:
+
+$$
+\text{CAPEX}_{\text{init}} = \texttt{hw\_setup\_cost\_fibre} + e \cdot L \cdot \texttt{focl\_constr\_cost\_fibre}
+$$
+
+Hardware is replaced at regular intervals over the project period. The number of reinvestments is the number of complete reinvestment cycles elapsed:
+
+$$
+\text{CAPEX}_{\text{reinv}} = \texttt{hw\_setup\_cost\_fibre} \cdot \left\lfloor \frac{P}{\texttt{reinv\_period\_fibre}} \right\rfloor
+$$
+
+Total CAPEX is therefore:
+
+$$
+\text{CAPEX}_{\text{total}} = \text{CAPEX}_{\text{init}} + \text{CAPEX}_{\text{reinv}}
+$$
+
+#### Operating expenditure (OPEX)
+
+Annual OPEX is a fixed fraction of the initial CAPEX, covering maintenance and replacement:
+
+$$
+\text{OPEX}_{\text{annual}} = \texttt{an\_hw\_maint\_and\_repl\_fibre} \cdot \text{CAPEX}_{\text{init}}
+\qquad
+\text{OPEX}_{\text{total}} = P \cdot \text{OPEX}_{\text{annual}}
+$$
+
+#### Cost of ownership
+
+The total cost of ownership over the project period is the sum of total CAPEX and total OPEX:
+
+$$
+\text{CoO} = \text{CAPEX}_{\text{total}} + \text{OPEX}_{\text{total}}
+$$
+
+#### Revenue
+
+Annual revenue is the retail fee paid to the operator, which scales with throughput. Throughput is capped at `max_throughput_fibre`, since operators can only deliver download speeds up to a certain limit:
+
+$$
+\text{Rev}_{\text{annual}} = \min\!\left(Q,\ \texttt{max\_throughput\_fibre}\right) \cdot \texttt{an\_isp\_fees\_one\_mbps\_fibre}
+\qquad
+\text{Rev}_{\text{total}} = P \cdot \text{Rev}_{\text{annual}}
+$$
+
+#### Profit
+
+Profit over the project period is total revenue less the cost of ownership:
+
+$$
+\text{Profit} = \text{Rev}_{\text{total}} - \text{CoO}
+$$
+
+#### Annualised cost
+
+For per-year reporting, CAPEX is annualised by spreading total CAPEX evenly across the project period and adding annual OPEX:
+
+$$
+\text{Cost}_{\text{annual}} = \frac{\text{CAPEX}_{\text{total}}}{P} + \text{OPEX}_{\text{annual}}
+$$
+
+#### Present values
+
+Costs and revenues are discounted to present value using the present value interest factor of an annuity (PVIFA), at interest rate \(i\):
+
+$$
+\text{PVIFA} = \frac{1 - (1 + i)^{-P}}{i}
+$$
+
+$$
+\text{PV}_{\text{costs}} = \text{Cost}_{\text{annual}} \cdot \text{PVIFA}
+\qquad
+\text{PV}_{\text{revenues}} = \text{Rev}_{\text{annual}} \cdot \text{PVIFA}
+$$
+
+The net present value is the difference between the present value of revenues and the present value of costs.
 
 ## Cellular
 
@@ -144,7 +230,7 @@ _Non-configurable parameters are hard-coded to the default values shown above._
 
 ### Cellular cost function
 
-The cellular cost function is summarised below.
+The cellular cost function depends on the parameters below.
 
 | Parameter | Description | Default | Configurable in CPP |
 |---|---|---|---|
@@ -153,12 +239,96 @@ The cellular cost function is summarised below.
 | `an_isp_fees_one_mbps_p2area` | Annual transit bandwidth cost (USD/Mbps/year) | 24 | Yes |
 | `reinv_period_p2area` | Hardware reinvestment period (years) | 3 | Yes |
 | `max_throughput_p2area` | Maximum achievable download speed via cellular (Mbps). The throughput is capped at this value. | 200 | No |
+| `interest_rate` | Discount rate used to compute present values | 0.05 | Yes |
 
 _Non-configurable parameters are hard-coded to the default values shown above._
 
-_Figure: Cellular cost function_
+#### Inputs
 
-![p2area](diagrams/cellular-cost-model.drawio.svg)
+In addition to the parameters above, the cost function takes the following quantities, derived upstream for each POI:
+
+- \(Q\) — throughput (Mbps)
+- \(P\) — project period over which costs and revenues are evaluated (years)
+
+#### Capital expenditure (CAPEX)
+
+Unlike fibre, cellular deployment has no per-distance construction cost; initial CAPEX is simply the hardware setup cost:
+
+$$
+\text{CAPEX}_{\text{init}} = \texttt{hw\_setup\_cost\_p2area}
+$$
+
+Hardware is replaced at regular intervals over the project period. The number of reinvestments is the number of complete reinvestment cycles elapsed:
+
+$$
+\text{CAPEX}_{\text{reinv}} = \text{CAPEX}_{\text{init}} \cdot \left\lfloor \frac{P}{\texttt{reinv\_period\_p2area}} \right\rfloor
+$$
+
+Total CAPEX is therefore:
+
+$$
+\text{CAPEX}_{\text{total}} = \text{CAPEX}_{\text{init}} + \text{CAPEX}_{\text{reinv}}
+$$
+
+#### Operating expenditure (OPEX)
+
+Annual OPEX is a fixed fraction of the initial CAPEX, covering maintenance and replacement:
+
+$$
+\text{OPEX}_{\text{annual}} = \texttt{an\_hw\_maint\_and\_repl\_p2area} \cdot \text{CAPEX}_{\text{init}}
+\qquad
+\text{OPEX}_{\text{total}} = P \cdot \text{OPEX}_{\text{annual}}
+$$
+
+#### Cost of ownership
+
+The total cost of ownership over the project period is the sum of total CAPEX and total OPEX:
+
+$$
+\text{CoO} = \text{CAPEX}_{\text{total}} + \text{OPEX}_{\text{total}}
+$$
+
+#### Revenue
+
+Annual revenue is the retail fee paid to the operator, which scales with throughput. Throughput is capped at `max_throughput_p2area`, since operators can only deliver download speeds up to a certain limit:
+
+$$
+\text{Rev}_{\text{annual}} = \min\!\left(Q,\ \texttt{max\_throughput\_p2area}\right) \cdot \texttt{an\_isp\_fees\_one\_mbps\_p2area}
+\qquad
+\text{Rev}_{\text{total}} = P \cdot \text{Rev}_{\text{annual}}
+$$
+
+#### Profit
+
+Profit over the project period is total revenue less the cost of ownership:
+
+$$
+\text{Profit} = \text{Rev}_{\text{total}} - \text{CoO}
+$$
+
+#### Annualised cost
+
+For per-year reporting, CAPEX is annualised by spreading total CAPEX evenly across the project period and adding annual OPEX:
+
+$$
+\text{Cost}_{\text{annual}} = \frac{\text{CAPEX}_{\text{total}}}{P} + \text{OPEX}_{\text{annual}}
+$$
+
+#### Present values
+
+Costs and revenues are discounted to present value using the present value interest factor of an annuity (PVIFA), at interest rate \(i\):
+
+$$
+\text{PVIFA} = \frac{1 - (1 + i)^{-P}}{i}
+$$
+
+$$
+\text{PV}_{\text{costs}} = \text{Cost}_{\text{annual}} \cdot \text{PVIFA}
+\qquad
+\text{PV}_{\text{revenues}} = \text{Rev}_{\text{annual}} \cdot \text{PVIFA}
+$$
+
+The net present value is the difference between the present value of revenues and the present value of costs.
 
 ## Point-to-Point
 
@@ -194,28 +364,134 @@ _Non-configurable parameters are hard-coded to the default values shown above._
 
 ### Point-to-point cost function
 
-The point-to-point cost function is summarised below. Additional complexities arise from physical infrastructure such as retransmission towers and backhaul links, as well as one-time and recurring licence fees.
+The point-to-point cost function depends on the parameters below. Beyond the hardware and bandwidth costs, it carries spectrum licence fees, charged both as a one-time fee and as a recurring annual fee.
 
 | Parameter | Description | Default | Configurable in CPP |
 |---|---|---|---|
+| `hw_setup_cost_p2p` | Hardware setup cost, including access links and assuming one hop per POI (USD/POI) | 500 | Yes |
 | `access_link_bandwidth_p2p` | Bandwidth per access link (MHz) | 10 | Yes |
+| `one_time_license_fee_1mhz_p2p` | One-time licence fee (USD/MHz) | 500 | Yes |
+| `an_license_fee_1mhz_p2p` | Annual recurring licence fee (USD/MHz/year) | 100 | Yes |
 | `an_hw_maint_and_repl_p2p` | Annual hardware maintenance and replacement cost (fraction of hardware CAPEX) | 0.05 | Yes |
 | `an_isp_fees_one_mbps_p2p` | Annual transit bandwidth cost (USD/Mbps/year) | 24 | Yes |
-| `an_license_fee_1mhz_p2p` | Annual recurring licence fee (USD/MHz/year) | 100 | Yes |
-| `hw_setup_cost_p2p` | Hardware setup cost, including access links and assuming one hop per POI (USD/POI) | 500 | Yes |
-| `one_time_license_fee_1mhz_p2p` | One-time licence fee (USD/MHz) | 500 | Yes |
 | `reinv_period_p2p` | Hardware reinvestment period (years) | 5 | Yes |
 | `max_throughput_p2p` | Maximum achievable download speed via point-to-point microwave (Mbps). The throughput is capped at this value. | 400 | No |
+| `interest_rate` | Discount rate used to compute present values | 0.05 | Yes |
 
 _Non-configurable parameters are hard-coded to the default values shown above._
 
-_Figure: Point to point cost function_
+#### Inputs
 
-![p2p](diagrams/p2p-cost-model.drawio.svg)
+In addition to the parameters above, the cost function takes the following quantities, derived upstream for each POI:
+
+- \(Q\) — throughput (Mbps)
+- \(P\) — project period over which costs and revenues are evaluated (years)
+
+#### Licensed bandwidth
+
+Spectrum licence fees are charged per MHz of licensed bandwidth. With a single access link per POI, this is simply the access link bandwidth:
+
+$$
+B = \texttt{access\_link\_bandwidth\_p2p}
+$$
+
+This bandwidth drives both the one-time and recurring licence fees:
+
+$$
+F_{\text{licence}}^{\text{once}} = \texttt{one\_time\_license\_fee\_1mhz\_p2p} \cdot B
+\qquad
+F_{\text{licence}}^{\text{annual}} = \texttt{an\_license\_fee\_1mhz\_p2p} \cdot B
+$$
+
+#### Capital expenditure (CAPEX)
+
+Hardware CAPEX is the per-POI setup cost, which includes the access link:
+
+$$
+\text{CAPEX}_{\text{hw}} = \texttt{hw\_setup\_cost\_p2p}
+$$
+
+Initial CAPEX adds the one-time licence fee to the hardware CAPEX:
+
+$$
+\text{CAPEX}_{\text{init}} = \text{CAPEX}_{\text{hw}} + F_{\text{licence}}^{\text{once}}
+$$
+
+Hardware is replaced at regular intervals over the project period. Reinvestment applies only to the hardware component — the one-time licence fee is not repaid:
+
+$$
+\text{CAPEX}_{\text{reinv}} = \text{CAPEX}_{\text{hw}} \cdot \left\lfloor \frac{P}{\texttt{reinv\_period\_p2p}} \right\rfloor
+$$
+
+Total CAPEX is therefore:
+
+$$
+\text{CAPEX}_{\text{total}} = \text{CAPEX}_{\text{init}} + \text{CAPEX}_{\text{reinv}}
+$$
+
+#### Operating expenditure (OPEX)
+
+Annual OPEX combines the recurring licence fee with hardware maintenance and replacement. Maintenance is charged as a fraction of *hardware* CAPEX only, excluding the one-time licence fee:
+
+$$
+\text{OPEX}_{\text{annual}} = F_{\text{licence}}^{\text{annual}} + \texttt{an\_hw\_maint\_and\_repl\_p2p} \cdot \text{CAPEX}_{\text{hw}}
+\qquad
+\text{OPEX}_{\text{total}} = P \cdot \text{OPEX}_{\text{annual}}
+$$
+
+#### Cost of ownership
+
+The total cost of ownership over the project period is the sum of total CAPEX and total OPEX:
+
+$$
+\text{CoO} = \text{CAPEX}_{\text{total}} + \text{OPEX}_{\text{total}}
+$$
+
+#### Revenue
+
+Annual revenue is the retail fee paid to the operator, which scales with throughput. Throughput is capped at `max_throughput_p2p`, since operators can only deliver download speeds up to a certain limit:
+
+$$
+\text{Rev}_{\text{annual}} = \min\!\left(Q,\ \texttt{max\_throughput\_p2p}\right) \cdot \texttt{an\_isp\_fees\_one\_mbps\_p2p}
+\qquad
+\text{Rev}_{\text{total}} = P \cdot \text{Rev}_{\text{annual}}
+$$
+
+#### Profit
+
+Profit over the project period is total revenue less the cost of ownership:
+
+$$
+\text{Profit} = \text{Rev}_{\text{total}} - \text{CoO}
+$$
+
+#### Annualised cost
+
+For per-year reporting, CAPEX is annualised by spreading total CAPEX evenly across the project period and adding annual OPEX:
+
+$$
+\text{Cost}_{\text{annual}} = \frac{\text{CAPEX}_{\text{total}}}{P} + \text{OPEX}_{\text{annual}}
+$$
+
+#### Present values
+
+Costs and revenues are discounted to present value using the present value interest factor of an annuity (PVIFA), at interest rate \(i\):
+
+$$
+\text{PVIFA} = \frac{1 - (1 + i)^{-P}}{i}
+$$
+
+$$
+\text{PV}_{\text{costs}} = \text{Cost}_{\text{annual}} \cdot \text{PVIFA}
+\qquad
+\text{PV}_{\text{revenues}} = \text{Rev}_{\text{annual}} \cdot \text{PVIFA}
+$$
+
+The net present value is the difference between the present value of revenues and the present value of costs.
 
 ## Satellite
 
-There is no specific analysis used to assess the feasibility of satellite connections. They are considered always feasible in this version of the platform.
+There is no specific model used to assess the feasibility of satellite connections. They are considered always feasible if the satellite model is added to a project, which assumes that there is a satellite connectivity provider in the country.
 
 ### Feasibility
 
@@ -236,9 +512,93 @@ The satellite cost function is summarised below.
 | `an_isp_fees_one_mbps_sat` | Annual transit bandwidth cost (USD/Mbps/year) | 24 | Yes |
 | `reinv_period_sat` | Hardware reinvestment period (years) | 5 | Yes |
 | `max_throughput_sat` | Maximum achievable download speed via satellite (Mbps). The throughput is capped at this value. | 200 | No |
+| `interest_rate` | Discount rate used to compute present values | 0.05 | Yes |
 
 _Non-configurable parameters are hard-coded to the default values shown above._
 
-_Figure: Satellite cost function_
+#### Inputs
 
-![satellite](diagrams/satellite-cost-model.drawio.svg)
+In addition to the parameters above, the cost function takes the following quantities, derived upstream for each POI:
+
+- \(Q\) — throughput (Mbps)
+- \(P\) — project period over which costs and revenues are evaluated (years)
+
+#### Capital expenditure (CAPEX)
+
+Satellite deployment has no per-distance or infrastructure construction cost; initial CAPEX is simply the hardware setup cost:
+
+$$
+\text{CAPEX}_{\text{init}} = \texttt{hw\_setup\_cost\_sat}
+$$
+
+Hardware is replaced at regular intervals over the project period. The number of reinvestments is the number of complete reinvestment cycles elapsed:
+
+$$
+\text{CAPEX}_{\text{reinv}} = \text{CAPEX}_{\text{init}} \cdot \left\lfloor \frac{P}{\texttt{reinv\_period\_sat}} \right\rfloor
+$$
+
+Total CAPEX is therefore:
+
+$$
+\text{CAPEX}_{\text{total}} = \text{CAPEX}_{\text{init}} + \text{CAPEX}_{\text{reinv}}
+$$
+
+#### Operating expenditure (OPEX)
+
+Annual OPEX is a fixed fraction of the initial CAPEX, covering maintenance and replacement:
+
+$$
+\text{OPEX}_{\text{annual}} = \texttt{an\_hw\_maint\_and\_repl\_sat} \cdot \text{CAPEX}_{\text{init}}
+\qquad
+\text{OPEX}_{\text{total}} = P \cdot \text{OPEX}_{\text{annual}}
+$$
+
+#### Cost of ownership
+
+The total cost of ownership over the project period is the sum of total CAPEX and total OPEX:
+
+$$
+\text{CoO} = \text{CAPEX}_{\text{total}} + \text{OPEX}_{\text{total}}
+$$
+
+#### Revenue
+
+Annual revenue is the retail fee paid to the operator, which scales with throughput. Throughput is capped at `max_throughput_sat`, since operators can only deliver download speeds up to a certain limit:
+
+$$
+\text{Rev}_{\text{annual}} = \min\!\left(Q,\ \texttt{max\_throughput\_sat}\right) \cdot \texttt{an\_isp\_fees\_one\_mbps\_sat}
+\qquad
+\text{Rev}_{\text{total}} = P \cdot \text{Rev}_{\text{annual}}
+$$
+
+#### Profit
+
+Profit over the project period is total revenue less the cost of ownership:
+
+$$
+\text{Profit} = \text{Rev}_{\text{total}} - \text{CoO}
+$$
+
+#### Annualised cost
+
+For per-year reporting, CAPEX is annualised by spreading total CAPEX evenly across the project period and adding annual OPEX:
+
+$$
+\text{Cost}_{\text{annual}} = \frac{\text{CAPEX}_{\text{total}}}{P} + \text{OPEX}_{\text{annual}}
+$$
+
+#### Present values
+
+Costs and revenues are discounted to present value using the present value interest factor of an annuity (PVIFA), at interest rate \(i\):
+
+$$
+\text{PVIFA} = \frac{1 - (1 + i)^{-P}}{i}
+$$
+
+$$
+\text{PV}_{\text{costs}} = \text{Cost}_{\text{annual}} \cdot \text{PVIFA}
+\qquad
+\text{PV}_{\text{revenues}} = \text{Rev}_{\text{annual}} \cdot \text{PVIFA}
+$$
+
+The net present value is the difference between the present value of revenues and the present value of costs.
