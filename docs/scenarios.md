@@ -210,7 +210,7 @@ $$
 
 This constraint is what prevents the trivial empty solution and forces the model to find the least-cost assignment that serves all POIs.
 
-## Scenario 3: Maximize number of connected users
+## Scenario 3: Maximise number of connected users
 
 ### Scenario parameters
 
