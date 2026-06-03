@@ -2,11 +2,11 @@
 
 The tool provides built-in connectivity scenarios to guide the analysis. Each scenario corresponds to a specific objective for connectivity planners or policymakers — for example, minimising deployment costs, maximising the number of users reached, or maximising operator revenues.
 
-The choice of scenario determines which technology is assigned to connect each POI, and therefore drives the cost and revenue outputs of the model. Users should select the scenario that best matches their objectives.
+The choice of scenario determines which technology is assigned to connect each POI, and therefore drives the cost and revenue outputs of the model. Scenarios can be configured with or without a budget constraint: without a budget, all POIs are connected; with a budget, the model must prioritise which POIs to connect given the available funds. Users should select the scenario that best matches their objectives.
 
 ## Overall approach
 
-Each scenario involves solving a technology assignment problem: determining which technology should be assigned to each Point of Interest (POI). This problem is formulated as a linear optimization model, in which an objective function is maximized subject to a set of constraints.
+Each scenario involves solving a technology assignment problem: determining which technology should be assigned to each Point of Interest (POI). This problem is formulated as a linear optimization model, in which an objective function is maximised subject to a set of constraints.
 
 While the specific objectives and constraints vary between scenarios, the overall optimization process follows the same sequence of steps, as illustrated in the flowchart below.
 
@@ -47,7 +47,7 @@ $$
 
 ### Objective function
 
-Every scenario maximizes a weighted combination of two objectives. The **primary objective**, \(f_{\text{primary}}\), is scenario-specific (e.g. minimizing cost) and is defined in each scenario's section below. The **secondary objective**, \(f_{\text{capacity}}\), is common to all scenarios: it rewards assignments in which a POI is served by a technology capable of meeting its throughput requirement. It acts as a tie-breaker, nudging the solution toward better capacity satisfaction among assignments that are otherwise comparable under the primary objective.
+Every scenario maximises a weighted combination of two objectives. The **primary objective**, \(f_{\text{primary}}\), is scenario-specific (e.g. minimizing cost) and is defined in each scenario's section below. The **secondary objective**, \(f_{\text{capacity}}\), is common to all scenarios: it rewards assignments in which a POI is served by a technology capable of meeting its throughput requirement. It acts as a tie-breaker, nudging the solution toward better capacity satisfaction among assignments that are otherwise comparable under the primary objective.
 
 The capacity objective counts the POIs whose assigned technology can meet their demand. For each POI \(i\) and technology \(tech\), let \(c_{i,\,tech}\) indicate whether that technology's maximum throughput is sufficient:
 
@@ -73,7 +73,7 @@ $$
 \tilde{f} = \frac{f - f_{\min}}{f_{\max} - f_{\min}}
 $$
 
-The two rescaled objectives are then combined into a single weighted objective, which is what the model maximizes:
+The two rescaled objectives are then combined into a single weighted objective, which is what the model maximises:
 
 $$
 f = w_{\text{primary}} \, \tilde{f}_{\text{primary}} + w_{\text{capacity}} \, \tilde{f}_{\text{capacity}}
@@ -107,7 +107,7 @@ These are the scenario parameters:
 
 ### Purpose
 
-This scenario takes the perspective of a commercial operator or investor. The goal is to identify the technology assignment that is most financially attractive over the project period — connecting POIs in the way that maximizes the net financial return, or, when spending is capped, that generates the most revenue for the available budget.
+This scenario takes the perspective of a commercial operator or investor. The goal is to identify the technology assignment that is most financially attractive over the project period — connecting POIs in the way that maximises the net financial return, or, when spending is capped, that generates the most revenue for the available budget.
 
 ### Primary objective
 
@@ -137,7 +137,7 @@ $$
 f_{\text{primary}} = \text{PV}_{\text{revenues}} - \text{PV}_{\text{costs}}
 $$
 
-**With a budget**, costs are instead handled as a constraint (see below), and the objective is simply to maximize the present value of revenues:
+**With a budget**, costs are instead handled as a constraint (see below), and the objective is simply to maximise the present value of revenues:
 
 $$
 f_{\text{primary}} = \text{PV}_{\text{revenues}}
@@ -145,7 +145,7 @@ $$
 
 ### Constraints
 
-In addition to the shared constraintsa (at most one technology per POI, and the fibre relay dependencies) this scenario applies one of the following, depending on the budget setting:
+In addition to the shared constraints (at most one technology per POI, and the fibre relay dependencies) this scenario applies one of the following, depending on the budget setting:
 
 **Without a budget**, every POI must be connected. The model is required to assign a technology to each POI, and the optimization determines only *which* one:
 
@@ -159,9 +159,18 @@ $$
 \sum_{i}\sum_{tech} \gamma_{i,\,tech}\, X_{i,\,tech} \;\cdot\; T \;\leq\; B
 $$
 
-Under a budget, the model maximizes revenue while respecting this cap, which means it may leave some POIs unconnected when connecting them would not be affordable.
+Under a budget, the model maximises revenue while respecting this cap, which means it may leave some POIs unconnected when connecting them would not be affordable.
 
 ## Scenario 2: Minimise operator total cost of ownership (TCO)
+
+### Scenario parameters
+
+These are the scenario parameters:
+
+| Description | Example value |
+|------------|---------------|
+| Project planning period (years) | 10 |
+| Demand per user (Mbps) | 1.5 |
 
 ### Purpose
 
