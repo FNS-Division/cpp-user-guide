@@ -10,7 +10,7 @@ The platform evaluates the costs of each solution and provides a deployment plan
 
 - **Dataset Upload**: Begin by uploading your datasets to the platform. The data will be processed and cleaned to ensure it is ready for analysis. If you have previously uploaded the required datasets, you may skip this step.
 - **Project Creation**: Create a new project and assign it a name.
-- **Scenario Selection**: Select a scenario for your project. Scenarios define the logic used to assign technology options to Points of Interest (POIs). For example, the _Maximise Operator Net Present Value (NPV)_ scenario chooses the set of technology options that jointly maximise operator profits. At this stage, you will also set scenario parameters—such as the planning period, budget, and throughput demand per user—and choose which technology options to include in your analysis.
+- **Scenario Selection**: Select a scenario for your project. Scenarios define the logic used to assign technology options to Points of Interest (POIs). For example, the _Maximise Operator Net Present Value (NPV)_ scenario chooses the set of technology options that jointly maximise operator profits. At this stage, you will also set scenario parameters, such as the planning period, budget, and throughput demand per user—and choose which technology options to include in your analysis.
 - **Model Configuration & Dataset Selection**: Configure each technology model by specifying key parameters, such as the maximum allowable connection length and equipment costs. Each model relies on specific datasets, including ICT infrastructure locations. Here, you will link the relevant datasets to each model.
 
 _Figure: Platform model_

@@ -14,7 +14,7 @@ where \(P_{\text{radius}}\) is the population within `radius_for_demand` km of t
 
 _Figure: Population buffers used to estimate the number of users around points of interest._
 
-![demand-estimation](images/demand-buffers.jpg)
+![demand-estimation](images/CPP-DEMAND.png)
 
 **Total throughput demand** is estimated as:
 
@@ -58,7 +58,7 @@ The fibre path model identifies the shortest paths for connecting unconnected po
 
 To start with, the model connects POIs and fibre nodes to the existing road network using straight lines (unless they are already on the road network). Then, for each unconnected POI, it computes the shortest path to all fibre nodes. POIs that are already connected to the fibre network can also act as fibre nodes, from which the fibre network can be extended.
 
-_Figure: Graph initialization and fibre path algorithm_
+_Figure: Graph initialization and fibre path algorithm (school connectivity example)_
 
 ![graph-initialization](images/graph-initialization.png)
 
@@ -70,7 +70,7 @@ In practice, this model is an application of Kruskal's algorithm to find a Minim
 
 _Figure: Output of fibre path algorithm_
 
-![nam-fibre-lines](images/nam-fibre-lines.png)
+![nam-fibre-lines](images/CPP-FP-MODELS.png)
 
 ### Feasibility
 
@@ -206,7 +206,7 @@ The cellular model relies on cellular coverage analysis. If mobile coverage cont
 
 _Figure: Mobile coverage contours_
 
-![4g-coverage-small](images/4g-coverage-small.png)
+![4g-coverage-small](images/CPP-COVERAGE-MODELS.png)
 
 If no mobile coverage contours are provided, then the locations of cell sites have to be provided and mobile coverage is determined by the distance from a cell site. Each site is assumed to provide coverage within a specified maximum radius, which is controlled by the model parameter `coverage_distance`.
 
