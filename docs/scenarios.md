@@ -1,6 +1,6 @@
 # Scenarios
 
-The tool provides built-in connectivity scenarios to guide the analysis. Each scenario corresponds to a specific objective for connectivity planners or policymakers — for example, minimising deployment costs, maximising the number of users reached, or maximising operator revenues.
+The tool provides built-in connectivity scenarios to guide the analysis. Each scenario corresponds to a specific objective for connectivity planners or policymakers. For example, minimising deployment costs, maximising the number of users reached, or maximising operator revenues.
 
 The choice of scenario determines which technology is assigned to connect each POI, and therefore drives the cost and revenue outputs of the model. Scenarios can be configured with or without a budget constraint: without a budget, all POIs are connected; with a budget, the model must prioritise which POIs to connect given the available funds. Users should select the scenario that best matches their objectives.
 
@@ -54,7 +54,7 @@ The capacity objective counts the POIs whose assigned technology can meet their 
 $$
 c_{i,\,tech} =
 \begin{cases}
-1 & \text{if } Q_i \leq \texttt{max\_throughput}_{tech} \\
+1 & \text{if } Q_i \leq \texttt{max_throughput}_{tech} \\
 0 & \text{otherwise}
 \end{cases}
 $$
