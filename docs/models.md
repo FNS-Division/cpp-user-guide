@@ -1,10 +1,10 @@
-# Models
+# Analyses
 
 ## Demand
 
-The demand model estimates the number of people residing within a defined radius of each point of interest (POI) by leveraging granular population datasets. This serves two purposes: approximating the number of active internet users at each POI, and deriving the total throughput (in Mbps) that any technology option must provide to meet that demand.
+The demand analysis estimates the number of people residing within a defined radius of each point of interest (POI) by leveraging granular population datasets. This serves two purposes: approximating the number of active internet users at each POI, and deriving the total throughput (in Mbps) that any technology option must provide to meet that demand.
 
-If the input data includes values for `total_mbps` (total bandwidth demand in Mbps) or `number_of_users` (peak concurrent internet users), those user-supplied values are used directly. Otherwise, both quantities are estimated by the demand model as described below.
+If the input data includes values for `total_mbps` (total bandwidth demand in Mbps) or `number_of_users` (peak concurrent internet users), those user-supplied values are used directly. Otherwise, both quantities are estimated by the demand analysis as described below.
 
 **Number of users** is estimated as:
 
@@ -51,6 +51,8 @@ Population data is automatically retrieved by the model from [WorldPop](https://
 | `max_throughput_sat` | Maximum achievable download speed via satellite (Mbps) | 200 | No |
 
 _Non-configurable parameters are hard-coded to the default values shown above._
+
+# Models
 
 ## Fibre
 

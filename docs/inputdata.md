@@ -6,55 +6,84 @@ This page summarises the user-provided data required by the toolkit. The provide
 
 **Example dataset:** [Download example-pointsofinterest.xlsx](datasets/example-pointsofinterest.xlsx)
 
-| Column name | Column type | Levels | Example | Mandatory | Definition |
-|------------|-------------|---------|----------|-----------|------------|
-| lat | float | | 36.7538 | Yes | Latitude coordinate in geographic Coordinate Reference System WGS84 |
-| lon | float | | 3.0588 | Yes | Longitude coordinate in geographic Coordinate Reference System WGS84 |
-| connectivity_type | string | unknown, mobile, mobile_broadband, metro, fiber, wireless, satellite, wired | fiber | No | Type of internet connectivity. If this column is missing, the connectivity status will be inferred using [speed test](https://www.ookla.com/ookla-for-good/open-data) measurements. |
-| country_code | string | | DZA | No | ISO 3166-1 alpha-3 country code |
-| dataset_id | UUID | | 987fcdeb-51a2-12d3-a456-426614174000 | No | Unique identifier for the dataset, automatically generated |
-| has_electricity | boolean | | True | No | Whether the POI has electricity. If missing, no electricity will be assumed. |
-| is_connected | boolean | | True | No | Whether the POI has connectivity. If this column is missing, the connectivity status will be inferred using [speed test](https://www.ookla.com/ookla-for-good/open-data) measurements. |
-| number_of_users | int | | True | No | Peak number of internet user at the POI. If missing, this will be estimated by the demand model using population data. |
-| total_mbps | float | | 50.0 | No | Total bandwidth demand in Mbps for this POI. If missing, this will be estimated by the demand model using the number of users and the averag demand per user. |
-| poi_id | UUID | | 123e4567-e89b-12d3-a456-426614174000 | No | Unique identifier for the POI, automatically generated |
-| poi_type | string | | school | No | Type of point of interest |
+| Column name | Type | Example | Required | Levels | Description |
+|-------------|------|---------|----------|--------|-------------|
+| `lat` | float | 36.7538 | Yes* | | Latitude in WGS84 |
+| `lon` | float | 3.0588 | Yes* | | Longitude in WGS84 |
+| `connectivity_type` | string | fiber | No | `unknown`<br>`mobile`<br>`mobile_broadband`<br>`metro`<br>`fiber`<br>`wireless`<br>`satellite`<br>`wired` | Type of internet connectivity |
+| `country_code` | string | ESP | No | | ISO 3166-1 alpha-3 country code |
+| `dataset_id` | UUID | 987fcdeb-51a2-12d3 | No | | Dataset identifier (auto-generated if omitted) |
+| `has_electricity` | boolean | True | No | `True`<br>`False` | Whether the POI has electricity |
+| `is_connected` | boolean | True | No | `True`<br>`False` | Whether the POI has internet connectivity |
+| `number_of_users` | int | 500 | No | | Peak number of internet users at the POI |
+| `total_mbps` | float | 50.0 | No | | Total bandwidth demand in Mbps |
+| `poi_id` | UUID | 123e4567-e89b-12d3 | No | | POI identifier (auto-generated if omitted) |
+| `poi_type` | string | school | No | | Type of point of interest |
+
+**Notes:**
+
+- **\*** Required unless the input is a GeoPackage (GPKG) or GeoJSON file containing valid geometry.
+
+- If **connectivity_type** or **is_connected** is not provided, connectivity status will be inferred using speed-test data from [Ookla Open Data](https://www.ookla.com/ookla-for-good/open-data).
+
+- If **has_electricity** is not provided, the POI will be assumed not to have electricity.
+
+- If **number_of_users** is not provided, it will be estimated using the demand model and population data.
+
+- If **total_mbps** is not provided, it will be estimated from the number of users and the assumed bandwidth demand per user (demand analysis).
 
 ## Cell sites
 
 **Example dataset:** [Download example-cellsites.xlsx](datasets/example-cellsites.xlsx)
 
-| Column name | Column type | Levels | Example | Mandatory | Definition |
-|------------|-------------|---------|----------|-----------|------------|
-| lat | float | | 38.988755 | Yes | Latitude coordinate in geographic Coordinate Reference System WGS84 |
-| lon | float | | 1.401938 | Yes | Longitude coordinate in geographic Coordinate Reference System WGS84 |
-| radio_type | string | 2G, 3G, 4G, 5G | 4G | Yes | Type of radio transmission technology |
-| antenna_height | float | | 25 | No | Antenna height in meters from the ground, if missing a height of 25 meters will be assumed. |
-| country_code | string | | DZA | No | ISO 3166-1 alpha-3 country code |
-| dataset_id | UUID | | 987fcdeb-51a2-12d3-a456-426614174000 | No | Unique identifier for the dataset |
-| ict_id | UUID | | 123e4567-e89b-12d3-a456-426614174000 | No | Cell tower identifier |
+| Column name | Type | Example | Required | Levels | Description |
+|-------------|------|---------|----------|--------|-------------|
+| `lat` | float | 38.988755 | Yes* | | Latitude in WGS84 |
+| `lon` | float | 1.401938 | Yes* | | Longitude in WGS84 |
+| `radio_type` | string | 4G | Yes | `2G`<br>`3G`<br>`4G`<br>`5G` | Radio transmission technology |
+| `antenna_height` | float | 25 | No | | Antenna height above ground level (meters) |
+| `country_code` | string | DZA | No | | ISO 3166-1 alpha-3 country code |
+| `dataset_id` | UUID | 987fcdeb-51a2-12d3 | No | | Dataset identifier (auto-generated if omitted) |
+| `ict_id` | UUID | 123e4567-e89b-12d3 | No | | Cell tower identifier (auto-generated if omitted) |
+
+**Notes:**
+
+- **\*** Required unless the input is a GeoPackage (GPKG) or GeoJSON file containing valid geometry.
+
+- If **`antenna_height`** is not provided, a default height of **25 meters** will be assumed.
 
 ## Transmission nodes
 
 **Example dataset:** [Download example-transmissionnode.xlsx](datasets/example-transmissionnode.xlsx)
 
-| Column name | Column type | Levels | Example | Mandatory | Definition |
-|------------|-------------|---------|----------|-----------|------------|
-| lat | float | | 38.988755 | Yes | Latitude coordinate in geographic Coordinate Reference System WGS84 |
-| lon | float | | 1.401938 | Yes | Longitude coordinate in geographic Coordinate Reference System WGS84 |
-| country_code | string | | DZA | No | ISO 3166-1 alpha-3 country code |
-| dataset_id | UUID | | 987fcdeb-51a2-12d3-a456-426614174000 | No | Unique identifier for the dataset |
-| ict_id | UUID | | 123e4567-e89b-12d3-a456-426614174000 | No | Node identifier |
-| transmission_medium | string | fiber, microwave, other | fiber | No | Transmission medium. If missing, 'fiber' will be assumed. |
+| Column name | Type | Example | Required | Levels | Description |
+|-------------|------|---------|----------|--------|-------------|
+| `lat` | float | 38.988755 | Yes* | | Latitude in WGS84 |
+| `lon` | float | 1.401938 | Yes* | | Longitude in WGS84 |
+| `country_code` | string | DZA | No | | ISO 3166-1 alpha-3 country code |
+| `dataset_id` | UUID | 987fcdeb-51a2-12d3 | No | | Dataset identifier (auto-generated if omitted) |
+| `ict_id` | UUID | 123e4567-e89b-12d3 | No | | Node identifier (auto-generated if omitted) |
+| `transmission_medium` | string | fiber | No | `fiber`<br>`microwave`<br>`other` | Transmission medium |
+
+**Notes:**
+
+- **\*** Required unless the input is a GeoPackage (GPKG) or GeoJSON file containing valid geometry.
+
+- If **`transmission_medium`** is not provided, `fiber` will be assumed.
 
 ## Mobile coverage
 
-**Example dataset:** [Download example-coverage.csv](datasets/example-coverage.csv)
+**Example dataset:** [Download example-coverage.csv](datasets/example-mobilecoverage.xlsx)
 
-| Column name | Column type | Levels | Example | Mandatory | Definition |
-|------------|-------------|---------|----------|-----------|------------|
-| geometry | geometry | | POLYGON((-74.0060 40.7128, -73.9857 40.7484, -73.9772 40.7516, -74.0060 40.7128)) | Yes | Mobile coverage polygons in geographic Coordinate Reference System WGS84 |
-| radio_type | str | 2G, 3G, 4G, 5G | 4G | Yes | Radio technology type |
-| country_code | string | | DZA | No | ISO 3166-1 alpha-3 country code |
-| dataset_id | UUID | | 987fcdeb-51a2-12d3-a456-426614174000 | No | Unique identifier for the dataset |
-| fid | str | | 123e4567-e89b-12d3-a456-426614174000 | No | Unique identifier for polygons |
+| Column name | Type | Example | Required | Levels | Description |
+|-------------|------|---------|----------|--------|-------------|
+| `geometry` | geometry | `POLYGON((-74.0060 40.7128, -73.9857 40.7484, -73.9772 40.7516, -74.0060 40.7128))` | Yes | | Mobile coverage polygon in WGS84 |
+| `radio_type` | string | 4G | Yes* | `2G`<br>`3G`<br>`4G`<br>`5G` | Radio transmission technology |
+| `country_code` | string | DZA | No | | ISO 3166-1 alpha-3 country code |
+| `dataset_id` | UUID | 987fcdeb-51a2-12d3 | No | | Dataset identifier (auto-generated if omitted) |
+
+**Notes:**
+
+- **\*** **`radio_type`** is automatically added through the CPP user interface using a drop down menu.
+
+- **`geometry`** must contain valid polygon or multipolygon geometries in the **WGS84** coordinate reference system.
