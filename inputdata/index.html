@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Input Datasets - ITU Connectivity Planning Platform</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">ITU Connectivity Planning Platform</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../scenarios/" class="nav-link">Scenarios</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../models/" class="nav-link">Models</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./" class="nav-link active" aria-current="page">Input Datasets</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../outputs/" class="nav-link">Model Outputs</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Interactive Capacity Building Tools</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="https://fns-division.github.io/CPP_interactive_navigator/" class="dropdown-item">CPP Navigator</a>
+</li>
+                                    
+<li>
+    <a href="../explorer/" class="dropdown-item">Technology Explorer</a>
+</li>
+                                    
+<li>
+    <a href="../technology-explorer/" class="dropdown-item">Technology Explorer Description</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../models/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../outputs/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#datasets" class="nav-link">Datasets</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#points-of-interest-poi" class="nav-link">Points of interest (POI)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#cell-sites" class="nav-link">Cell sites</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#transmission-nodes" class="nav-link">Transmission nodes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#mobile-coverage" class="nav-link">Mobile coverage</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="datasets">Datasets</h1>
+<p>This page summarises the user-provided data required by the toolkit. The provided data must conform to the standards below.</p>
+<h2 id="points-of-interest-poi">Points of interest (POI)</h2>
+<p><strong>Example dataset:</strong> <a href="../datasets/example-pointsofinterest.xlsx">Download example-pointsofinterest.xlsx</a></p>
+<table>
+<thead>
+<tr>
+<th>Column name</th>
+<th>Type</th>
+<th>Example</th>
+<th>Required</th>
+<th>Levels</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lat</code></td>
+<td>float</td>
+<td>36.7538</td>
+<td>Yes*</td>
+<td></td>
+<td>Latitude in WGS84</td>
+</tr>
+<tr>
+<td><code>lon</code></td>
+<td>float</td>
+<td>3.0588</td>
+<td>Yes*</td>
+<td></td>
+<td>Longitude in WGS84</td>
+</tr>
+<tr>
+<td><code>connectivity_type</code></td>
+<td>string</td>
+<td>fiber</td>
+<td>No</td>
+<td><code>unknown</code><br><code>mobile</code><br><code>mobile_broadband</code><br><code>metro</code><br><code>fiber</code><br><code>wireless</code><br><code>satellite</code><br><code>wired</code></td>
+<td>Type of internet connectivity</td>
+</tr>
+<tr>
+<td><code>country_code</code></td>
+<td>string</td>
+<td>ESP</td>
+<td>No</td>
+<td></td>
+<td>ISO 3166-1 alpha-3 country code</td>
+</tr>
+<tr>
+<td><code>dataset_id</code></td>
+<td>UUID</td>
+<td>987fcdeb-51a2-12d3</td>
+<td>No</td>
+<td></td>
+<td>Dataset identifier (auto-generated if omitted)</td>
+</tr>
+<tr>
+<td><code>has_electricity</code></td>
+<td>boolean</td>
+<td>True</td>
+<td>No</td>
+<td><code>True</code><br><code>False</code></td>
+<td>Whether the POI has electricity</td>
+</tr>
+<tr>
+<td><code>is_connected</code></td>
+<td>boolean</td>
+<td>True</td>
+<td>No</td>
+<td><code>True</code><br><code>False</code></td>
+<td>Whether the POI has internet connectivity</td>
+</tr>
+<tr>
+<td><code>number_of_users</code></td>
+<td>int</td>
+<td>500</td>
+<td>No</td>
+<td></td>
+<td>Peak number of internet users at the POI</td>
+</tr>
+<tr>
+<td><code>total_mbps</code></td>
+<td>float</td>
+<td>50.0</td>
+<td>No</td>
+<td></td>
+<td>Total bandwidth demand in Mbps</td>
+</tr>
+<tr>
+<td><code>poi_id</code></td>
+<td>UUID</td>
+<td>123e4567-e89b-12d3</td>
+<td>No</td>
+<td></td>
+<td>POI identifier (auto-generated if omitted)</td>
+</tr>
+<tr>
+<td><code>poi_type</code></td>
+<td>string</td>
+<td>school</td>
+<td>No</td>
+<td></td>
+<td>Type of point of interest</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Notes:</strong></p>
+<ul>
+<li>
+<p><strong>*</strong> Required unless the input is a GeoPackage (GPKG) or GeoJSON file containing valid geometry.</p>
+</li>
+<li>
+<p>If <strong>connectivity_type</strong> or <strong>is_connected</strong> is not provided, connectivity status will be inferred using speed-test data from <a href="https://www.ookla.com/ookla-for-good/open-data">Ookla Open Data</a>.</p>
+</li>
+<li>
+<p>If <strong>has_electricity</strong> is not provided, the POI will be assumed not to have electricity.</p>
+</li>
+<li>
+<p>If <strong>number_of_users</strong> is not provided, it will be estimated using the demand model and population data.</p>
+</li>
+<li>
+<p>If <strong>total_mbps</strong> is not provided, it will be estimated from the number of users and the assumed bandwidth demand per user (demand analysis).</p>
+</li>
+</ul>
+<h2 id="cell-sites">Cell sites</h2>
+<p><strong>Example dataset:</strong> <a href="../datasets/example-cellsites.xlsx">Download example-cellsites.xlsx</a></p>
+<table>
+<thead>
+<tr>
+<th>Column name</th>
+<th>Type</th>
+<th>Example</th>
+<th>Required</th>
+<th>Levels</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lat</code></td>
+<td>float</td>
+<td>38.988755</td>
+<td>Yes*</td>
+<td></td>
+<td>Latitude in WGS84</td>
+</tr>
+<tr>
+<td><code>lon</code></td>
+<td>float</td>
+<td>1.401938</td>
+<td>Yes*</td>
+<td></td>
+<td>Longitude in WGS84</td>
+</tr>
+<tr>
+<td><code>radio_type</code></td>
+<td>string</td>
+<td>4G</td>
+<td>Yes</td>
+<td><code>2G</code><br><code>3G</code><br><code>4G</code><br><code>5G</code></td>
+<td>Radio transmission technology</td>
+</tr>
+<tr>
+<td><code>antenna_height</code></td>
+<td>float</td>
+<td>25</td>
+<td>No</td>
+<td></td>
+<td>Antenna height above ground level (meters)</td>
+</tr>
+<tr>
+<td><code>country_code</code></td>
+<td>string</td>
+<td>DZA</td>
+<td>No</td>
+<td></td>
+<td>ISO 3166-1 alpha-3 country code</td>
+</tr>
+<tr>
+<td><code>dataset_id</code></td>
+<td>UUID</td>
+<td>987fcdeb-51a2-12d3</td>
+<td>No</td>
+<td></td>
+<td>Dataset identifier (auto-generated if omitted)</td>
+</tr>
+<tr>
+<td><code>ict_id</code></td>
+<td>UUID</td>
+<td>123e4567-e89b-12d3</td>
+<td>No</td>
+<td></td>
+<td>Cell tower identifier (auto-generated if omitted)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Notes:</strong></p>
+<ul>
+<li>
+<p><strong>*</strong> Required unless the input is a GeoPackage (GPKG) or GeoJSON file containing valid geometry.</p>
+</li>
+<li>
+<p>If <strong><code>antenna_height</code></strong> is not provided, a default height of <strong>25 meters</strong> will be assumed.</p>
+</li>
+</ul>
+<h2 id="transmission-nodes">Transmission nodes</h2>
+<p><strong>Example dataset:</strong> <a href="../datasets/example-transmissionnode.xlsx">Download example-transmissionnode.xlsx</a></p>
+<table>
+<thead>
+<tr>
+<th>Column name</th>
+<th>Type</th>
+<th>Example</th>
+<th>Required</th>
+<th>Levels</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lat</code></td>
+<td>float</td>
+<td>38.988755</td>
+<td>Yes*</td>
+<td></td>
+<td>Latitude in WGS84</td>
+</tr>
+<tr>
+<td><code>lon</code></td>
+<td>float</td>
+<td>1.401938</td>
+<td>Yes*</td>
+<td></td>
+<td>Longitude in WGS84</td>
+</tr>
+<tr>
+<td><code>country_code</code></td>
+<td>string</td>
+<td>DZA</td>
+<td>No</td>
+<td></td>
+<td>ISO 3166-1 alpha-3 country code</td>
+</tr>
+<tr>
+<td><code>dataset_id</code></td>
+<td>UUID</td>
+<td>987fcdeb-51a2-12d3</td>
+<td>No</td>
+<td></td>
+<td>Dataset identifier (auto-generated if omitted)</td>
+</tr>
+<tr>
+<td><code>ict_id</code></td>
+<td>UUID</td>
+<td>123e4567-e89b-12d3</td>
+<td>No</td>
+<td></td>
+<td>Node identifier (auto-generated if omitted)</td>
+</tr>
+<tr>
+<td><code>transmission_medium</code></td>
+<td>string</td>
+<td>fiber</td>
+<td>No</td>
+<td><code>fiber</code><br><code>microwave</code><br><code>other</code></td>
+<td>Transmission medium</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Notes:</strong></p>
+<ul>
+<li>
+<p><strong>*</strong> Required unless the input is a GeoPackage (GPKG) or GeoJSON file containing valid geometry.</p>
+</li>
+<li>
+<p>If <strong><code>transmission_medium</code></strong> is not provided, <code>fiber</code> will be assumed.</p>
+</li>
+</ul>
+<h2 id="mobile-coverage">Mobile coverage</h2>
+<p><strong>Example dataset:</strong> <a href="../datasets/example-mobilecoverage.xlsx">Download example-coverage.csv</a></p>
+<table>
+<thead>
+<tr>
+<th>Column name</th>
+<th>Type</th>
+<th>Example</th>
+<th>Required</th>
+<th>Levels</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>geometry</code></td>
+<td>geometry</td>
+<td><code>POLYGON((-74.0060 40.7128, -73.9857 40.7484, -73.9772 40.7516, -74.0060 40.7128))</code></td>
+<td>Yes</td>
+<td></td>
+<td>Mobile coverage polygon in WGS84</td>
+</tr>
+<tr>
+<td><code>radio_type</code></td>
+<td>string</td>
+<td>4G</td>
+<td>Yes*</td>
+<td><code>2G</code><br><code>3G</code><br><code>4G</code><br><code>5G</code></td>
+<td>Radio transmission technology</td>
+</tr>
+<tr>
+<td><code>country_code</code></td>
+<td>string</td>
+<td>DZA</td>
+<td>No</td>
+<td></td>
+<td>ISO 3166-1 alpha-3 country code</td>
+</tr>
+<tr>
+<td><code>dataset_id</code></td>
+<td>UUID</td>
+<td>987fcdeb-51a2-12d3</td>
+<td>No</td>
+<td></td>
+<td>Dataset identifier (auto-generated if omitted)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Notes:</strong></p>
+<ul>
+<li>
+<p><strong>*</strong> <strong><code>radio_type</code></strong> is automatically added through the CPP user interface using a drop down menu.</p>
+</li>
+<li>
+<p><strong><code>geometry</code></strong> must contain valid polygon or multipolygon geometries in the <strong>WGS84</strong> coordinate reference system.</p>
+</li>
+<li>
+<p>If you submit a <strong>raster file</strong> through the platform, the pixels with coverage should have a value of <code>1</code>.</p>
+</li>
+<li>
+<p>If you submit <strong>vector data</strong>, only include the polygons of areas <strong>with</strong> coverage.</p>
+</li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Connectivity Technology Explorer (POC)</title>
+
+<link rel="stylesheet" href="styles.css">
+	
+</head>
+
+<body>
+<header>
+  <div class="headerInner">
+    <div class="headerGrid">
+      <div class="headerBrand" aria-label="ITU collaboration mark">
+        <img src="itu.png" alt="ITU logo"/>
+        <div class="collab">In collaboration with Ericsson</div>
+      </div>
+      <h1>Connectivity Technology Explorer</h1>
+      <div aria-hidden="true"></div>
+    </div>
+
+    <div class="headerSubRow">
+      <div class="spacer" aria-hidden="true"></div>
+
+      <p>
+        Define a context, then see which connectivity technologies tend to fit and why. Designed to build intuition before using CPP.
+      </p>
+
+      <button class="infoBtn" id="infoBtn" type="button"
+        aria-label="About this tool"
+        aria-haspopup="dialog"
+        aria-controls="infoModal"
+        aria-expanded="false"
+        title="About this tool">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20Zm0-18a8 8 0 1 0 0 16 8 8 0 0 0 0-16Zm1 13h-2v-6h2v6Zm0-8h-2V7h2v2Z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="modalOverlay" id="infoModal" role="dialog" aria-modal="true" aria-labelledby="infoTitle" aria-hidden="true">
+  <div class="modal" role="document">
+    <div class="modalHeader">
+      <h3 class="modalTitle" id="infoTitle">What this Explorer is for</h3>
+      <button class="modalClose" id="infoClose" type="button" aria-label="Close">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M18.3 5.7a1 1 0 0 0-1.4 0L12 10.6 7.1 5.7a1 1 0 0 0-1.4 1.4l4.9 4.9-4.9 4.9a1 1 0 1 0 1.4 1.4l4.9-4.9 4.9 4.9a1 1 0 0 0 1.4-1.4L13.4 12l4.9-4.9a1 1 0 0 0 0-1.4Z"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="modalBody">
+      <p>
+        This Explorer helps you build intuition about connectivity options and when they are typically selected in Connectivity Planning Platform (CPP) projects.
+        It is designed for early-stage decision-making — before diving into technical modelling, detailed assumptions, datasets, and calculations.
+      </p>
+
+      <p style="margin-top:10px; font-weight:800; color:var(--textDark);">
+        How to use it
+      </p>
+      <p>
+        Choose a simple context on the left (location conditions, demand, and what matters most).
+        The Explorer then highlights which technologies tend to fit that situation and explains the “why” in plain language.
+      </p>
+
+      <p style="margin-top:10px; font-weight:800; color:var(--textDark);">
+        What you gain
+      </p>
+      <p>
+        A clearer view of the trade-offs policymakers often need to consider — such as speed of deployment, long-term value, and feasibility in remote or difficult terrain —
+        so conversations with technical teams and partners start from a shared understanding.
+      </p>
+
+      <p style="margin-top:10px; font-weight:800; color:var(--textDark);">
+        What it is not
+      </p>
+      <p>
+        This Explorer does not produce investment-grade results or project cost estimates. CPP is used for detailed, data-driven planning once your objectives and context are defined.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="panel panel-left">
+    <div class="card leftPulse" id="leftCard">
+
+      <div class="progressRow" id="progressRow" aria-label="Context setup progress">
+        <div>
+          <div class="progressTitle">Context setup</div>
+          <div class="progressSub" id="progressSub">Select all items to see results</div>
+        </div>
+        <div class="dots" id="progressDots" aria-hidden="true"></div>
+      </div>
+
+      <div class="step" id="step1" aria-expanded="true">
+        <div class="stepHeader" role="button" tabindex="0" aria-controls="step1Body">
+          <div class="stepHeaderLeft">
+            <div class="cueInHeader" id="cueInHeader" aria-hidden="true"></div>
+            <span class="stepStatus" id="step1Status" aria-hidden="true"></span>
+            <div class="stepTitle"><h2>Step 1. Where are we?</h2></div>
+          </div>
+          <div class="caret" aria-hidden="true"></div>
+        </div>
+        <div class="stepBody" id="step1Body">
+
+          <label>How close is this location to existing infrastructure?</label>
+          <select id="remoteness" class="selectHidden" aria-label="How close is this location to existing infrastructure?">
+  <option value="" selected disabled>Select…</option>
+  <option value="near">Very close to infrastructure (inside a city, well connected)</option>
+  <option value="mid">Close to infrastructure (near a city, some infrastructure nearby)</option>
+  <option value="far">Far from infrastructure (outside town, infrastructure is farther away)</option>
+  <option value="remote">Very limited nearby infrastructure (underserved or remote area)</option>
+</select>
+          <div class="tileGroup" data-tiles-for="remoteness" aria-label="How close is this location to existing infrastructure? options"></div>
+
+          <label>How difficult is it to build here?</label>
+          <select id="terrain" class="selectHidden" aria-label="How difficult is it to build here?">
+            <option value="" selected disabled>Select…</option>
+            <option value="easy">Easy terrain (build-friendly)</option>
+            <option value="medium">Moderate terrain challenges</option>
+            <option value="hard">Rugged / mountainous (challenging)</option>
+          </select>
+          <div class="tileGroup" data-tiles-for="terrain" data-cols="3" aria-label="How difficult is it to build here? options"></div>
+
+        </div>
+      </div>
+
+      <div class="step" id="step2" aria-expanded="false">
+        <div class="stepHeader" role="button" tabindex="0" aria-controls="step2Body">
+          <div class="stepHeaderLeft">
+            <span class="stepStatus" id="step2Status" aria-hidden="true"></span>
+            <div class="stepTitle"><h2>Step 2.  What is needed?</h2></div>
+          </div>
+          <div class="caret" aria-hidden="true"></div>
+        </div>
+        <div class="stepBody" id="step2Body">
+
+          <label>How many people need access?</label>
+          <select id="density" class="selectHidden" aria-label="How many people need access?">
+            <option value="" selected disabled>Select…</option>
+            <option value="low">Small village (low density)</option>
+            <option value="mid">Expanding town (medium density)</option>
+            <option value="high">Dense urban area (high density)</option>
+          </select>
+          <div class="tileGroup" data-tiles-for="density" data-cols="3" aria-label="How many people need access? options"></div>
+          <div class="fieldNote hidden" id="densityConstraintNote"></div>
+
+          <label>What level of performance is required?</label>
+          <select id="demand" class="selectHidden" aria-label="What level of performance is required?">
+  <option value="" selected disabled>Select…</option>
+  <option value="basic">Essential connectivity (calls, messaging, basic data)</option>
+  <option value="video">Everyday use (video, work, education)</option>
+  <option value="critical">High-performance needs (data-intensive services, advanced applications)</option>
+</select>
+          <div class="tileGroup" data-tiles-for="demand" data-cols="3" aria-label="How important is performance? options"></div>
+          <div class="fieldNote" id="demandNote">
+            <strong>Planning note:</strong> Higher performance levels are recommended for long-term impact and scalability.
+          </div>
+
+        </div>
+      </div>
+
+      <div class="step" id="step3" aria-expanded="false">
+        <div class="stepHeader" role="button" tabindex="0" aria-controls="step3Body">
+          <div class="stepHeaderLeft">
+            <span class="stepStatus" id="step3Status" aria-hidden="true"></span>
+            <div class="stepTitle"><h2>Step 3. What matters most?</h2></div>
+          </div>
+          <div class="caret" aria-hidden="true"></div>
+        </div>
+        <div class="stepBody" id="step3Body">
+
+          <label>What’s the priority?</label>
+          <select id="priority" class="selectHidden" aria-label="What’s the priority?">
+            <option value="" selected disabled>Select…</option>
+            <option value="cost">Save money (lowest cost path)</option>
+            <option value="value">Maximize long-term value (future-proof)</option>
+            <option value="speed">Deploy quickly (time matters)</option>
+          </select>
+          <div class="tileGroup" data-tiles-for="priority" data-cols="3" aria-label="What’s the priority? options"></div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="panel-right">
+    <div class="card">
+
+      <div class="resultsHeader">
+        <div class="left">
+          <div class="title">Optional: Show CPP parameter examples</div>
+          <div class="sub">See example CPP parameters typically used for each technology.</div>
+        </div>
+
+        <div class="mode" aria-label="View mode switcher">
+          <div class="modeLabel" id="modeSimple">OFF</div>
+          <div class="switch" title="Show/hide CPP parameter examples">
+            <input type="checkbox" id="mappingToggle" aria-label="Toggle CPP parameter examples"/>
+          </div>
+          <div class="modeLabel" id="modeAdv">ON</div>
+        </div>
+      </div>
+
+      <div class="storyBox">
+        <div class="kicker">Technology fit for your context</div>
+        <div class="story" id="contextStory">—</div>
+      </div>
+
+      <div class="results" id="results"></div>
+
+      <div class="smallNote">
+        <strong>Important note</strong>
+        This Explorer is designed to help you understand how different connectivity technologies behave in different contexts.
+        It does not calculate real project costs or feasibility.
+        <br><br>
+        The Connectivity Planning Platform (CPP) performs detailed modelling using real datasets and project parameters,
+        and applies scenario objectives to compute technically and economically viable solutions.
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
