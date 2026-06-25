@@ -87,3 +87,7 @@ This page summarises the user-provided data required by the toolkit. The provide
 - **\*** **`radio_type`** is automatically added through the CPP user interface using a drop down menu.
 
 - **`geometry`** must contain valid polygon or multipolygon geometries in the **WGS84** coordinate reference system.
+
+- If you submit a **raster file** through the platform, the pixels with coverage should have a value of `1`.
+
+- If you submit **vector data**, only include the polygons of areas **with** coverage.
