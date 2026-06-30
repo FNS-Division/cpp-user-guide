@@ -101,7 +101,7 @@ These are the scenario parameters:
 
 | Description | Example value |
 |------------|---------------|
-| Budget (USD) | 1,000,000 |
+| Budget (USD) | _(none by default; optional)_ |
 | Project planning period (years) | 10 |
 | Demand per user (Mbps) | 1.5 |
 
