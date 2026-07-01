@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Scenarios - ITU Connectivity Planning Platform</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">ITU Connectivity Planning Platform</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./" class="nav-link active" aria-current="page">Scenarios</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../models/" class="nav-link">Models</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../inputdata/" class="nav-link">Input Datasets</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../outputs/" class="nav-link">Model Outputs</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Interactive Capacity Building Tools</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="https://fns-division.github.io/CPP_interactive_navigator/" class="dropdown-item">CPP Navigator</a>
+</li>
+                                    
+<li>
+    <a href="../explorer/" class="dropdown-item">Technology Explorer</a>
+</li>
+                                    
+<li>
+    <a href="../technology-explorer/" class="dropdown-item">Technology Explorer Description</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href=".." class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../models/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#scenarios" class="nav-link">Scenarios</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#overall-approach" class="nav-link">Overall approach</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#scenario-1-maximise-operator-net-present-value-npv" class="nav-link">Scenario 1: Maximise Operator Net Present Value (NPV)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#scenario-2-minimise-operator-total-cost-of-ownership-tco" class="nav-link">Scenario 2: Minimise operator total cost of ownership (TCO)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#scenario-3-maximise-number-of-connected-users" class="nav-link">Scenario 3: Maximise number of connected users</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#scenario-4-maximise-number-of-connected-pois" class="nav-link">Scenario 4: Maximise number of connected POIs</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="scenarios">Scenarios</h1>
+<p>The tool provides built-in connectivity scenarios to guide the analysis. Each scenario corresponds to a specific objective for connectivity planners or policymakers. For example, minimising deployment costs, maximising the number of users reached, or maximising operator revenues.</p>
+<p>The choice of scenario determines which technology is assigned to connect each POI, and therefore drives the cost and revenue outputs of the model. Scenarios can be configured with or without a budget constraint: without a budget, all POIs are connected; with a budget, the model must prioritise which POIs to connect given the available funds. Users should select the scenario that best matches their objectives.</p>
+<h2 id="overall-approach">Overall approach</h2>
+<p>Each scenario involves solving a technology assignment problem: determining which technology should be assigned to each Point of Interest (POI). This problem is formulated as a linear optimization model, in which an objective function is maximised subject to a set of constraints.</p>
+<p>While the specific objectives and constraints vary between scenarios, the overall optimization process follows the same sequence of steps, as illustrated in the flowchart below.</p>
+<p><em>Figure: Solving a technology assignment problem</em></p>
+<p><img alt="scenario" src="../diagrams/scenarios-generic.drawio.svg" /></p>
+<p><strong>1. Estimate demand.</strong> The required throughput at each POI is estimated by the demand model (see the <a href="../models/">Models</a> section). Demand informs the assignment in two ways: it influences which technology is best suited to a POI, since technologies differ in the throughput they can deliver, and higher throughput drives higher costs, which are a key factor in certain scenarios.</p>
+<p><strong>2. Assess technology feasibility.</strong> Not every technology can serve every POI. Each technology is evaluated against the conditions required for it to be viable at a given location. For example, cellular is only feasible if the POI falls within the coverage area of a cell site. This step determines the set of candidate technologies available for each POI.</p>
+<p><strong>3. Solve the optimization.</strong> Finally, the objective function and constraints are formulated and solved to find the optimal assignment, which determines the technology to be used at each POI. The objectives and constraints specific to each scenario are described in the sections that follow.</p>
+<h3 id="general-notations">General notations</h3>
+<p>We first introduce some notation. Throughout, we use the following indices, parameters, and decision variables:</p>
+<p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+i &\in \{1, \ldots, N\} && \text{Points of Interest} \\
+tech &\in \{\text{fibre},\, \text{cellular},\, \text{p2p},\, \text{satellite}\} && \text{available technologies} \\
+r &\in \mathbb{R} && \text{discount rate} \\
+X_{i,\,tech} &=
+\begin{cases}
+1 & \text{if technology } tech \text{ is selected for POI } i \\
+0 & \text{otherwise}
+\end{cases}
+\end{aligned}
+</script>
+</p>
+<p>The decision variables <script type="math/tex">X_{i,\,tech}</script> are binary: each indicates whether a given technology is assigned to a given POI.</p>
+<p>Each POI can be served by at most one technology. This is enforced by requiring that, for every POI <script type="math/tex">i</script>, the assignment variables sum to no more than one across all technologies:</p>
+<p>
+<script type="math/tex; mode=display">
+\sum_{tech} X_{i,\,tech} \leq 1 \qquad \forall\, i \in \{1, \ldots, N\}
+</script>
+</p>
+<h3 id="objective-function">Objective function</h3>
+<p>Every scenario maximises a weighted combination of two objectives. The <strong>primary objective</strong>, <script type="math/tex">f_{\text{primary}}</script>, is scenario-specific (e.g. minimizing cost) and is defined in each scenario's section below. The <strong>secondary objective</strong>, <script type="math/tex">f_{\text{capacity}}</script>, is common to all scenarios: it rewards assignments in which a POI is served by a technology capable of meeting its throughput requirement. It acts as a tie-breaker, nudging the solution toward better capacity satisfaction among assignments that are otherwise comparable under the primary objective.</p>
+<p>The capacity objective counts the POIs whose assigned technology can meet their demand. For each POI <script type="math/tex">i</script> and technology <script type="math/tex">tech</script>, let <script type="math/tex">c_{i,\,tech}</script> indicate whether that technology's maximum throughput is sufficient:</p>
+<p>
+<script type="math/tex; mode=display">
+c_{i,\,tech} =
+\begin{cases}
+1 & \text{if } Q_i \leq \texttt{max_throughput}_{tech} \\
+0 & \text{otherwise}
+\end{cases}
+</script>
+</p>
+<p>where <script type="math/tex">Q_i</script> is the required throughput at POI <script type="math/tex">i</script>. The capacity objective is then the number of POIs assigned a technology that satisfies their demand:</p>
+<p>
+<script type="math/tex; mode=display">
+f_{\text{capacity}} = \sum_{i}\sum_{tech} c_{i,\,tech} \, X_{i,\,tech}
+</script>
+</p>
+<h4 id="rescaling-and-combining-the-objectives">Rescaling and combining the objectives</h4>
+<p>The two objectives are measured in different units (e.g. US dollars for cost, a count of POIs for capacity), so they cannot be combined directly. Each is first rescaled to a common <script type="math/tex">[0, 1]</script> range using min–max normalization. The minimum and maximum attainable values of each objective are found by solving the optimization once for each objective in isolation, subject to the same constraints:</p>
+<p>
+<script type="math/tex; mode=display">
+\tilde{f} = \frac{f - f_{\min}}{f_{\max} - f_{\min}}
+</script>
+</p>
+<p>The two rescaled objectives are then combined into a single weighted objective, which is what the model maximises:</p>
+<p>
+<script type="math/tex; mode=display">
+f = w_{\text{primary}} \, \tilde{f}_{\text{primary}} + w_{\text{capacity}} \, \tilde{f}_{\text{capacity}}
+</script>
+</p>
+<p>The weights <script type="math/tex">w_{\text{primary}} = 0.75</script> and <script type="math/tex">w_{\text{capacity}} = 0.25</script> were chosen based on desk research and sensitivity analysis. The larger weight on the primary objective ensures it drives the assignment, while the capacity term serves only to break ties between solutions of comparable primary value.</p>
+<h3 id="additional-constraints-for-fibre-paths">Additional constraints for fibre paths</h3>
+<p>Fibre connections form a physical network, and each individual fibre segment is subject to a maximum connection distance (see <code>max_connection_distance</code>). This is what creates dependencies between POIs. Consider a POI <script type="math/tex">c</script> that is too far from the nearest fibre node to be connected directly, but is within range of a closer POI <script type="math/tex">b</script>. POI <script type="math/tex">c</script> can still be reached by routing fibre to <script type="math/tex">b</script> first and then extending a short segment from <script type="math/tex">b</script> to <script type="math/tex">c</script>, each segment individually respecting the distance limit, even though the direct distance from the fibre node to <script type="math/tex">c</script> does not. In this arrangement <script type="math/tex">b</script> acts as a relay: <script type="math/tex">c</script> can be assigned fibre only if <script type="math/tex">b</script> is also assigned fibre, since without <script type="math/tex">b</script> there is no in-range path to <script type="math/tex">c</script>.</p>
+<p>This dependency is enforced with a linking constraint. For each such pair, where <script type="math/tex">c</script> depends on relay <script type="math/tex">b</script>:</p>
+<p>
+<script type="math/tex; mode=display">
+X_{c,\,\text{fibre}} \leq X_{b,\,\text{fibre}}
+</script>
+</p>
+<p>The inequality captures the required logic: if <script type="math/tex">b</script> is not assigned fibre (<script type="math/tex">X_{b,\,\text{fibre}} = 0</script>), then <script type="math/tex">X_{c,\,\text{fibre}}</script> is forced to 0, so <script type="math/tex">c</script> cannot take fibre either. If <script type="math/tex">b</script> is assigned fibre (<script type="math/tex">X_{b,\,\text{fibre}} = 1</script>), the constraint becomes <script type="math/tex">X_{c,\,\text{fibre}} \leq 1</script>, which is non-binding: <script type="math/tex">c</script> is then free to take fibre or not.</p>
+<h2 id="scenario-1-maximise-operator-net-present-value-npv">Scenario 1: Maximise Operator Net Present Value (NPV)</h2>
+<h3 id="scenario-parameters">Scenario parameters</h3>
+<p>These are the scenario parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Description</th>
+<th>Example value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Budget (USD)</td>
+<td><em>(none by default; optional)</em></td>
+</tr>
+<tr>
+<td>Project planning period (years)</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Demand per user (Mbps)</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<h3 id="purpose">Purpose</h3>
+<p>This scenario takes the perspective of a commercial operator or investor. The goal is to identify the technology assignment that is most financially attractive over the project period — connecting POIs in the way that maximises the net financial return, or, when spending is capped, that generates the most revenue for the available budget.</p>
+<h3 id="primary-objective">Primary objective</h3>
+<p>The objective is built from the present value of the revenues and costs generated by the technology assignment. Both are computed over the full project planning period (see <a href="#scenario-parameters">Scenario parameters</a>) and discounted to reflect the time value of money.</p>
+<p>Discounting uses the present value interest factor of an annuity (PVIFA), which converts a constant amount received or paid each year over the <script type="math/tex">T</script>-year planning period into its equivalent value today, at discount rate <script type="math/tex">r</script>:</p>
+<p>
+<script type="math/tex; mode=display">
+\text{PVIFA} = \frac{1 - (1 + r)^{-T}}{r}
+</script>
+</p>
+<p>The present values of revenues and costs follow by applying the PVIFA to the annual revenues and annual costs implied by the assignment:</p>
+<p>
+<script type="math/tex; mode=display">
+\text{PV}_{\text{revenues}} = \text{PVIFA} \cdot \sum_{i}\sum_{tech} \rho_{i,\,tech}\, X_{i,\,tech}
+\qquad
+\text{PV}_{\text{costs}} = \text{PVIFA} \cdot \sum_{i}\sum_{tech} \gamma_{i,\,tech}\, X_{i,\,tech}
+</script>
+</p>
+<p>where <script type="math/tex">\rho_{i,\,tech}</script> is the annual revenue and <script type="math/tex">\gamma_{i,\,tech}</script> the annual cost of serving POI <script type="math/tex">i</script> with technology <script type="math/tex">tech</script> (both derived in the cost-function sections in <a href="../models/">Models</a>).</p>
+<p>The form of the primary objective depends on whether the scenario is run with a budget:</p>
+<p><strong>Without a budget</strong>, the objective is net present value — revenues less costs — so the model seeks the most profitable assignment:</p>
+<p>
+<script type="math/tex; mode=display">
+f_{\text{primary}} = \text{PV}_{\text{revenues}} - \text{PV}_{\text{costs}}
+</script>
+</p>
+<p><strong>With a budget</strong>, costs are instead handled as a constraint (see below), and the objective is simply to maximise the present value of revenues:</p>
+<p>
+<script type="math/tex; mode=display">
+f_{\text{primary}} = \text{PV}_{\text{revenues}}
+</script>
+</p>
+<h3 id="constraints">Constraints</h3>
+<p>In addition to the shared constraints (at most one technology per POI, and the fibre relay dependencies) this scenario applies one of the following, depending on the budget setting:</p>
+<p><strong>Without a budget</strong>, every POI must be connected. The model is required to assign a technology to each POI, and the optimization determines only <em>which</em> one:</p>
+<p>
+<script type="math/tex; mode=display">
+\sum_{tech} X_{i,\,tech} = 1 \qquad \forall\, i
+</script>
+</p>
+<p><strong>With a budget</strong>, POIs need not all be connected; instead, total spending may not exceed the budget specified in the <a href="#scenario-parameters">Scenario parameters</a>:</p>
+<p>
+<script type="math/tex; mode=display">
+\sum_{i}\sum_{tech} \gamma_{i,\,tech}\, X_{i,\,tech} \;\cdot\; T \;\leq\; B
+</script>
+</p>
+<p>Under a budget, the model maximises revenue while respecting this cap, which means it may leave some POIs unconnected when connecting them would not be affordable.</p>
+<h2 id="scenario-2-minimise-operator-total-cost-of-ownership-tco">Scenario 2: Minimise operator total cost of ownership (TCO)</h2>
+<h3 id="scenario-parameters_1">Scenario parameters</h3>
+<p>These are the scenario parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Description</th>
+<th>Example value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Project planning period (years)</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Demand per user (Mbps)</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<h3 id="purpose_1">Purpose</h3>
+<p>This scenario takes the perspective of an operator or funder whose aim is to connect every POI as cheaply as possible.</p>
+<p>Unlike the profitability scenario, this scenario does not accept a budget. The objective is to minimise cost while connecting all POIs, so the connect-all requirement is essential: without it, the cheapest possible solution would be to connect nothing at all, since any connection adds cost.</p>
+<h3 id="primary-objective_1">Primary objective</h3>
+<p>This scenario is a special case of the profitability objective in which revenues are set to zero, leaving only the present value of costs. The model minimises this quantity.</p>
+<p>As before, costs are computed over the project planning period (see <a href="#scenario-parameters">Scenario parameters</a>) and discounted to present value using the PVIFA at discount rate <script type="math/tex">r</script>:</p>
+<p>
+<script type="math/tex; mode=display">
+\text{PVIFA} = \frac{1 - (1 + r)^{-T}}{r}
+</script>
+</p>
+<p>
+<script type="math/tex; mode=display">
+\text{PV}_{\text{costs}} = \text{PVIFA} \cdot \sum_{i}\sum_{tech} \gamma_{i,\,tech}\, X_{i,\,tech}
+</script>
+</p>
+<p>where <script type="math/tex">\gamma_{i,\,tech}</script> is the annual cost of serving POI <script type="math/tex">i</script> with technology <script type="math/tex">tech</script>. The primary objective is to minimise this present value of costs:</p>
+<p>
+<script type="math/tex; mode=display">
+\min \; f_{\text{primary}} = \text{PV}_{\text{costs}}
+</script>
+</p>
+<p>Equivalently, this is the net present value objective of Scenario 1 with revenues fixed at zero.</p>
+<h3 id="constraints_1">Constraints</h3>
+<p>In addition to the shared constraints (at most one technology per POI, and the fibre relay dependencies) this scenario always requires that every POI be connected:</p>
+<p>
+<script type="math/tex; mode=display">
+\sum_{tech} X_{i,\,tech} = 1 \qquad \forall\, i
+</script>
+</p>
+<p>This constraint is what prevents the trivial empty solution and forces the model to find the least-cost assignment that serves all POIs.</p>
+<h2 id="scenario-3-maximise-number-of-connected-users">Scenario 3: Maximise number of connected users</h2>
+<h3 id="scenario-parameters_2">Scenario parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Description</th>
+<th>Example value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Budget (USD)</td>
+<td>1,000,000</td>
+</tr>
+<tr>
+<td>Project planning period (years)</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Demand per user (Mbps)</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<h3 id="purpose_2">Purpose</h3>
+<p>This scenario takes the perspective of a policymaker working under a fixed budget that is not sufficient to connect every POI. Rather than optimising for financial return, the goal is to maximise social impact: connecting the set of POIs that reaches the largest number of people for the money available.</p>
+<p>A budget is required for this scenario to be meaningful. The objective is to reach as many people as possible, so without a spending limit the optimal solution would simply be to connect every POI: there would be no trade-off to resolve. The budget is what creates the scarcity that the scenario is designed to address: when funds are insufficient to connect everything, the model must decide <em>which</em> POIs to prioritise, and it does so by favouring those that serve the most people per unit of budget.</p>
+<h3 id="primary-objective_2">Primary objective</h3>
+<p>The objective is to maximise the total number of people reached across all connected POIs. Each POI carries an estimated user count from the demand model (see the <a href="../models/">Models</a> section) which is by default the number of people within 1km. The objective sums these counts over the POIs the model chooses to connect:</p>
+<p>
+<script type="math/tex; mode=display">
+f_{\text{primary}} = \sum_{i} u_i \, Y_i
+</script>
+</p>
+<p>where <script type="math/tex">u_i</script> is the estimated number of users at POI <script type="math/tex">i</script>, and <script type="math/tex">Y_i</script> indicates whether POI <script type="math/tex">i</script> is connected (<script type="math/tex">Y_i = 1</script>) or not (<script type="math/tex">Y_i = 0</script>).</p>
+<h3 id="constraints_2">Constraints</h3>
+<p>In addition to the shared constraints (at most one technology per POI, and the fibre relay dependencies) this scenario applies a mandatory budget constraint: total spending may not exceed the budget specified in the scenario parameters above:</p>
+<p>
+<script type="math/tex; mode=display">
+\sum_{i}\sum_{tech} \gamma_{i,\,tech}\, X_{i,\,tech} \;\cdot\; T \;\leq\; B
+</script>
+</p>
+<p>where <script type="math/tex">\gamma_{i,\,tech}</script> is the annual cost of serving POI <script type="math/tex">i</script> with technology <script type="math/tex">tech</script> (derived in the cost-function sections above), and <script type="math/tex">T</script> is the project planning period.</p>
+<p>The optimisation resolves which POIs to connect so as to reach the greatest population within the budget.</p>
+<h2 id="scenario-4-maximise-number-of-connected-pois">Scenario 4: Maximise number of connected POIs</h2>
+<h3 id="scenario-parameters_3">Scenario parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Description</th>
+<th>Example value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Budget (USD)</td>
+<td>1,000,000</td>
+</tr>
+<tr>
+<td>Project planning period (years)</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Demand per user (Mbps)</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<h3 id="purpose_3">Purpose</h3>
+<p>This scenario is closely related to Scenario 3, and again takes the perspective of a policymaker working under a fixed budget that cannot connect every POI. The difference lies in what is being maximised: rather than reaching the largest <em>population</em>, the goal here is to connect the largest <em>number of POIs</em>. Each connected POI counts equally, regardless of how many people it serves.</p>
+<p>As in Scenario 3, a budget is required for the scenario to be meaningful. Without a spending limit, the optimal solution would simply be to connect every POI, leaving no trade-off to resolve.</p>
+<h3 id="primary-objective_3">Primary objective</h3>
+<p>The objective is to maximise the total number of connected POIs:</p>
+<p>
+<script type="math/tex; mode=display">
+f_{\text{primary}} = \sum_{i} Y_i
+</script>
+</p>
+<p>where <script type="math/tex">Y_i</script> indicates whether POI <script type="math/tex">i</script> is connected (<script type="math/tex">Y_i = 1</script>) or not (<script type="math/tex">Y_i = 0</script>). This differs from Scenario 3 only in that each POI contributes a weight of 1, rather than its estimated user count <script type="math/tex">u_i</script> — so the model maximises the <em>count</em> of connected POIs rather than the <em>population</em> reached.</p>
+<h3 id="constraints_3">Constraints</h3>
+<p>In addition to the shared constraints (at most one technology per POI, and the fibre relay dependencies) this scenario applies a mandatory budget constraint: total spending may not exceed the budget specified in the scenario parameters above:</p>
+<p>
+<script type="math/tex; mode=display">
+\sum_{i}\sum_{tech} \gamma_{i,\,tech}\, X_{i,\,tech} \;\cdot\; T \;\leq\; B
+</script>
+</p>
+<p>where <script type="math/tex">\gamma_{i,\,tech}</script> is the annual cost of serving POI <script type="math/tex">i</script> with technology <script type="math/tex">tech</script> (derived in the cost-function sections above), and <script type="math/tex">T</script> is the project planning period.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
