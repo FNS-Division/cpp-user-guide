@@ -103,7 +103,7 @@ These are the scenario parameters:
 |------------|---------------|
 | Budget (USD) | _(none by default; optional)_ |
 | Project planning period (years) | 10 |
-| Demand per user (Mbps) | 1.5 |
+| Demand per user (Mbps) | 5 |
 
 ### Purpose
 
@@ -170,7 +170,7 @@ These are the scenario parameters:
 | Description | Example value |
 |------------|---------------|
 | Project planning period (years) | 10 |
-| Demand per user (Mbps) | 1.5 |
+| Demand per user (Mbps) | 5 |
 
 ### Purpose
 
@@ -218,7 +218,7 @@ This constraint is what prevents the trivial empty solution and forces the model
 |------------|---------------|
 | Budget (USD) | 1,000,000 |
 | Project planning period (years) | 10 |
-| Demand per user (Mbps) | 1.5 |
+| Demand per user (Mbps) | 5 |
 
 ### Purpose
 
@@ -256,7 +256,7 @@ The optimisation resolves which POIs to connect so as to reach the greatest popu
 |------------|---------------|
 | Budget (USD) | 1,000,000 |
 | Project planning period (years) | 10 |
-| Demand per user (Mbps) | 1.5 |
+| Demand per user (Mbps) | 5 |
 
 ### Purpose
 
