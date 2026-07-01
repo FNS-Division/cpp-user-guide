@@ -107,7 +107,7 @@ The fibre cost function depends on the parameters below.
 | `focl_constr_cost_fibre` | Fibre optic cable construction cost (USD/km) | 30,000 | Yes |
 | `reinv_period_fibre` | Hardware reinvestment period (years) | 3 | Yes |
 | `an_hw_maint_and_repl_fibre` | Annual hardware maintenance and replacement cost (fraction of initial CAPEX) | 0.05 | Yes |
-| `an_isp_fees_one_mbps_fibre` | Annual transit bandwidth cost (USD/Mbps/year) | 60 | Yes |
+| `an_isp_fees_one_mbps_fibre` | Annual ISP retail fees (USD/Mbps/year) | 60 | Yes |
 | `max_throughput_fibre` | Maximum achievable download speed via fibre (Mbps). The throughput is capped at this value. | 15,000 | No |
 | `interest_rate` | Discount rate used to compute present values | 0.02 | No |
 
@@ -238,7 +238,7 @@ The cellular cost function depends on the parameters below.
 |---|---|---|---|
 | `hw_setup_cost_p2area` | Hardware setup cost per POI (USD) | 120 | Yes |
 | `an_hw_maint_and_repl_p2area` | Annual hardware maintenance and replacement cost (fraction of initial CAPEX) | 0.12 | Yes |
-| `an_isp_fees_one_mbps_p2area` | Annual transit bandwidth cost (USD/Mbps/year) | 180 | Yes |
+| `an_isp_fees_one_mbps_p2area` | Annual ISP retail fees (USD/Mbps/year) | 180 | Yes |
 | `reinv_period_p2area` | Hardware reinvestment period (years) | 5 | Yes |
 | `max_throughput_p2area` | Maximum achievable download speed via cellular (Mbps). The throughput is capped at this value. | 200 | No |
 | `interest_rate` | Discount rate used to compute present values | 0.05 | Yes |
@@ -375,7 +375,7 @@ The point-to-point cost function depends on the parameters below. Beyond the har
 | `one_time_license_fee_1mhz_p2p` | One-time licence fee (USD/MHz) | 50 | Yes |
 | `an_license_fee_1mhz_p2p` | Annual recurring licence fee (USD/MHz/year) | 15 | Yes |
 | `an_hw_maint_and_repl_p2p` | Annual hardware maintenance and replacement cost (fraction of hardware CAPEX) | 0.1 | Yes |
-| `an_isp_fees_one_mbps_p2p` | Annual transit bandwidth cost (USD/Mbps/year) | 120 | Yes |
+| `an_isp_fees_one_mbps_p2p` | Annual ISP retail fees (USD/Mbps/year) | 120 | Yes |
 | `reinv_period_p2p` | Hardware reinvestment period (years) | 7 | Yes |
 | `max_throughput_p2p` | Maximum achievable download speed via point-to-point microwave (Mbps). The throughput is capped at this value. | 400 | No |
 | `interest_rate` | Discount rate used to compute present values | 0.05 | Yes |
@@ -511,7 +511,7 @@ The satellite cost function is summarised below.
 |---|---|---|---|
 | `hw_setup_cost_sat` | Hardware setup cost per POI (USD) | 800 | Yes |
 | `an_hw_maint_and_repl_sat` | Annual hardware maintenance and replacement cost (fraction of hardware CAPEX) | 0.1 | Yes |
-| `an_isp_fees_one_mbps_sat` | Annual transit bandwidth cost (USD/Mbps/year) | 600 | Yes |
+| `an_isp_fees_one_mbps_sat` | Annual ISP retail fees (USD/Mbps/year) | 600 | Yes |
 | `reinv_period_sat` | Hardware reinvestment period (years) | 5 | Yes |
 | `max_throughput_sat` | Maximum achievable download speed via satellite (Mbps). The throughput is capped at this value. | 200 | No |
 | `interest_rate` | Discount rate used to compute present values | 0.05 | Yes |
