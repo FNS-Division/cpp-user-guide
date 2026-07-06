@@ -8,9 +8,9 @@ If the input data includes values for `total_mbps` (total bandwidth demand in Mb
 
 **Number of users** is estimated as:
 
-$$N_{\text{users}} = P_{\text{radius}} \times r_{\text{user}}$$
+$$N_{\text{users}} = P_{\text{radius}} \times r_{\text{user}} \times r_{\text{sim}}$$
 
-where \(P_{\text{radius}}\) is the population within `radius_for_demand` km of the POI, and \(r_{\text{user}}\) is the user rate (e.g. the share of the population of school age, for a school connectivity analysis).
+where \(P_{\text{radius}}\) is the population within `radius_for_demand` km of the POI, \(r_{\text{user}}\) is the user rate (e.g. the share of the population of school age, for a school connectivity analysis), and \(r_{\text{sim}}\) is the simultaneity rate — the share of those users expected to be online at the same time, so that \(N_{\text{users}}\) represents peak concurrent users rather than the total user base.
 
 _Figure: Population buffers used to estimate the number of users around points of interest._
 
@@ -18,15 +18,15 @@ _Figure: Population buffers used to estimate the number of users around points o
 
 **Total throughput demand** is estimated as:
 
-$$T = \min\left(d_{\text{user}} \times N_{\text{users}},\ T_{\text{max}}\right)$$
+$$T = \text{clip}\left(d_{\text{user}} \times N_{\text{users}},\ T_{\text{min}},\ T_{\text{max}}\right)$$
 
-where \(d_{\text{user}}\) is the per-user demand in Mbps, and \(T_{\text{max}}\) is a cap to avoid unrealistically high estimates:
+where \(d_{\text{user}}\) is the per-user demand in Mbps, and the estimate is constrained between a floor \(T_{\text{min}}\) and a ceiling \(T_{\text{max}}\).
+
+The floor \(T_{\text{min}}\) (20 Mbps) ensures that every POI is assigned a minimum viable level of demand, even where the surrounding population is very sparse or absent. The ceiling \(T_{\text{max}}\) avoids unrealistically high estimates and is defined as the highest throughput achievable across any of the supported technology options:
 
 $$T_{\text{max}} = \max\left(T_{\text{fiber}},\ T_{\text{p2area}},\ T_{\text{p2p}},\ T_{\text{satellite}}\right)$$
 
-This cap is defined as the highest throughput achievable across any of the supported technology options.
-
-_Figure: Population buffers used to estimate the number of users around points of interest._
+_Figure: Predicted throughput as a function of the number of concurrent users. Demand rises linearly with users but is held at a floor (20 Mbps) for sparse locations and capped at a ceiling (\(T_{\text{max}}\))._
 
 ![demand-curve](images/demand-curve.png)
 
@@ -42,8 +42,9 @@ Population data is automatically retrieved by the model from [WorldPop](https://
 |---|---|---|---|
 | `radii` | Buffer radii (km) around each POI; all distances are reported in the outputs | [1, 3, 5] | No |
 | `radius_for_demand` | The radius (km) used to estimate the number of users, drawn from `radii` | 1 | No |
-| `mbps_demand_per_user` | Per-user bandwidth demand (Mbps) | 1.5 | Yes |
-| `user_rate` | Share of the local population counted as users (1 = entire population) | 1 | No |
+| `mbps_demand_per_user` | Per-user bandwidth demand (Mbps) | 2 | Yes |
+| `user_rate` | Share of the local population counted as users (1 = entire population) | 0.25 | No |
+| `simultaneous_users_rate` | Share of users expected to be online at the same time, used to convert the user base into peak concurrent users | 0.10 | No |
 | `overlap_allowed` | Whether buffers around POIs may overlap; if `False`, overlapping areas are assigned to a single POI to avoid double-counting | False | No |
 | `max_throughput_fiber` | Maximum achievable download speed via fibre (Mbps) | 15,000 | No |
 | `max_throughput_p2area` | Maximum achievable download speed via cellular (Mbps) | 200 | No |
