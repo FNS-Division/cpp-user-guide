@@ -47,9 +47,9 @@ Population data is automatically retrieved by the model from [WorldPop](https://
 | `simultaneous_users_rate` | Share of users expected to be online at the same time, used to convert the user base into peak concurrent users | 0.10 | No |
 | `overlap_allowed` | Whether buffers around POIs may overlap; if `False`, overlapping areas are assigned to a single POI to avoid double-counting | False | No |
 | `max_throughput_fiber` | Maximum achievable download speed via fibre (Mbps) | 15,000 | No |
-| `max_throughput_p2area` | Maximum achievable download speed via cellular (Mbps) | 200 | No |
+| `max_throughput_p2area` | Maximum achievable download speed via cellular (Mbps) | 900 | No |
 | `max_throughput_p2p` | Maximum achievable download speed via point-to-point microwave (Mbps) | 400 | No |
-| `max_throughput_sat` | Maximum achievable download speed via satellite (Mbps) | 200 | No |
+| `max_throughput_sat` | Maximum achievable download speed via satellite (Mbps) | 400 | No |
 
 _Non-configurable parameters are hard-coded to the default values shown above._
 
@@ -241,7 +241,7 @@ The cellular cost function depends on the parameters below.
 | `an_hw_maint_and_repl_p2area` | Annual hardware maintenance and replacement cost (fraction of initial CAPEX) | 0.12 | Yes |
 | `an_isp_fees_one_mbps_p2area` | Annual ISP retail fees (USD/Mbps/year) | 4.5 | Yes |
 | `reinv_period_p2area` | Hardware reinvestment period (years) | 5 | Yes |
-| `max_throughput_p2area` | Maximum achievable download speed via cellular (Mbps). The throughput is capped at this value. | 200 | No |
+| `max_throughput_p2area` | Maximum achievable download speed via cellular (Mbps). The throughput is capped at this value. | 900 | No |
 | `interest_rate` | Discount rate used to compute present values | 0.02 | No |
 
 _Non-configurable parameters are hard-coded to the default values shown above._
@@ -514,7 +514,7 @@ The satellite cost function is summarised below.
 | `an_hw_maint_and_repl_sat` | Annual hardware maintenance and replacement cost (fraction of hardware CAPEX) | 0.1 | Yes |
 | `an_isp_fees_one_mbps_sat` | Annual ISP retail fees (USD/Mbps/year) | 6.4 | Yes |
 | `reinv_period_sat` | Hardware reinvestment period (years) | 5 | Yes |
-| `max_throughput_sat` | Maximum achievable download speed via satellite (Mbps). The throughput is capped at this value. | 200 | No |
+| `max_throughput_sat` | Maximum achievable download speed via satellite (Mbps). The throughput is capped at this value. | 400 | No |
 | `interest_rate` | Discount rate used to compute present values | 0.02 | No |
 
 _Non-configurable parameters are hard-coded to the default values shown above._
