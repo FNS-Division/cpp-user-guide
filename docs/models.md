@@ -36,7 +36,7 @@ _Figure: Predicted throughput as a function of the number of concurrent users. D
 
 Population data is automatically retrieved by the model from [WorldPop](https://hub.worldpop.org/geodata/listing?id=136).
 
-### Model parameters
+### Analysis parameters
 
 | Parameter | Description | Default | Configurable in CPP |
 |---|---|---|---|
@@ -93,7 +93,7 @@ The data on the road network is automatically fetched by the model from OpenStre
 | `max_connection_distance` | Maximum allowable distance for a single connection (metres) | 15,000 | Yes |
 | `network_type` | Type of road network to consider | `all_public` | No |
 | `distance_metric` | Metric used to compute distances in the network | `length` | No |
-| `n_clusters` | Number of geographical clusters used for analysis (1 = no clustering) | 1 | No |
+| `n_clusters` | Number of geographical clusters used for analysis (1 = no clustering) | 1 cluster per 10,000 km<sup>2</sup> | No |
 | `use_road_data` | Whether to use road network data for distance calculations | `True` | No |
 
 _Non-configurable parameters are hard-coded to the default values shown above._
@@ -104,8 +104,8 @@ The fibre cost function depends on the parameters below.
 
 | Parameter | Description | Default | Configurable in CPP |
 |---|---|---|---|
-| `hw_setup_cost_fibre` | Hardware setup cost per POI (USD) | 1,200 | Yes |
-| `focl_constr_cost_fibre` | Fibre optic cable construction cost (USD/km) | 30,000 | Yes |
+| `hw_setup_cost_fibre` | Hardware setup cost per POI (USD) | 500 | Yes |
+| `focl_constr_cost_fibre` | Fibre optic cable construction cost (USD/km) | 20,000 | Yes |
 | `reinv_period_fibre` | Hardware reinvestment period (years) | 3 | Yes |
 | `an_hw_maint_and_repl_fibre` | Annual hardware maintenance and replacement cost (fraction of initial CAPEX) | 0.05 | Yes |
 | `an_isp_fees_one_mbps_fibre` | Annual ISP retail fees (USD/Mbps/year) | 5.5 | Yes |
@@ -226,7 +226,7 @@ Cellular is considered a feasible technology for a POI if it is within the cellu
 
 | Parameter | Description | Default | Configurable in CPP |
 |---|---|---|---|
-| `coverage_distance` | Distance around cell sites used to approximate coverage when no map is available (metres) | 1,000 | No |
+| `coverage_distance` | Distance around cell sites used to approximate coverage when no map is available (metres) | 5,000 | No |
 | `coverage_type` | Default network type for coverage buffers when no map is available | `4G` | No |
 
 _Non-configurable parameters are hard-coded to the default values shown above._
@@ -242,7 +242,7 @@ The cellular cost function depends on the parameters below.
 | `an_isp_fees_one_mbps_p2area` | Annual ISP retail fees (USD/Mbps/year) | 4.5 | Yes |
 | `reinv_period_p2area` | Hardware reinvestment period (years) | 5 | Yes |
 | `max_throughput_p2area` | Maximum achievable download speed via cellular (Mbps). The throughput is capped at this value. | 200 | No |
-| `interest_rate` | Discount rate used to compute present values | 0.05 | Yes |
+| `interest_rate` | Discount rate used to compute present values | 0.02 | No |
 
 _Non-configurable parameters are hard-coded to the default values shown above._
 
@@ -358,8 +358,8 @@ Point-to-point microwave is considered a feasible technology for a POI if at lea
 
 | Parameter | Description | Default | Configurable in CPP |
 |---|---|---|---|
-| `search_radius` | Search radius for nearby cell sites (km) | 35 | No |
-| `poi_antenna_height` | Height of the POI antenna (metres) | 15 | No |
+| `search_radius` | Search radius for nearby cell sites (km) | 30 | No |
+| `poi_antenna_height` | Height of the POI antenna (metres) | 75th percentile of the country's building height distribution, from [GlobalBuildingAtlas](https://essd.copernicus.org/articles/17/6647/2025/); 5 metres if not available | No |
 | `num_visible` | Number of visible cell sites to consider | 1 | No |
 | `allowed_radio_types` | Allowed radio types for cell sites | `['2G','3G','4G','5G']` | No |
 
@@ -379,7 +379,7 @@ The point-to-point cost function depends on the parameters below. Beyond the har
 | `an_isp_fees_one_mbps_p2p` | Annual ISP retail fees (USD/Mbps/year) | 5.5 | Yes |
 | `reinv_period_p2p` | Hardware reinvestment period (years) | 7 | Yes |
 | `max_throughput_p2p` | Maximum achievable download speed via point-to-point microwave (Mbps). The throughput is capped at this value. | 400 | No |
-| `interest_rate` | Discount rate used to compute present values | 0.05 | Yes |
+| `interest_rate` | Discount rate used to compute present values | 0.02 | No |
 
 _Non-configurable parameters are hard-coded to the default values shown above._
 
@@ -515,7 +515,7 @@ The satellite cost function is summarised below.
 | `an_isp_fees_one_mbps_sat` | Annual ISP retail fees (USD/Mbps/year) | 6.4 | Yes |
 | `reinv_period_sat` | Hardware reinvestment period (years) | 5 | Yes |
 | `max_throughput_sat` | Maximum achievable download speed via satellite (Mbps). The throughput is capped at this value. | 200 | No |
-| `interest_rate` | Discount rate used to compute present values | 0.05 | Yes |
+| `interest_rate` | Discount rate used to compute present values | 0.02 | No |
 
 _Non-configurable parameters are hard-coded to the default values shown above._
 
