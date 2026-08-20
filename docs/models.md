@@ -90,7 +90,7 @@ The data on the road network is automatically fetched by the model from OpenStre
 
 | Parameter | Description | Default | Configurable in CPP |
 |---|---|---|---|
-| `max_connection_distance` | Maximum allowable distance for a single connection (metres) | 15,000 | Yes |
+| `max_connection_distance` | Maximum allowable distance for a single connection (metres) | 50,000 | Yes |
 | `network_type` | Type of road network to consider | `all_public` | No |
 | `distance_metric` | Metric used to compute distances in the network | `length` | No |
 | `n_clusters` | Number of geographical clusters used for analysis (1 = no clustering) | 1 cluster per 10,000 km<sup>2</sup> | No |
@@ -335,7 +335,7 @@ The net present value is the difference between the present value of revenues an
 
 ## Point-to-Point
 
-The point-to-point model evaluates the feasibility of establishing radio links between points of interest (POIs) and cell sites using visibility analysis. This involves assessing whether the line of sight between a POI and a cell site is obstructed, ensuring that only feasible links are considered for deployment. The analysis uses open topography data from the [Shuttle Radar Topography Mission](https://www.earthdata.nasa.gov/data/instruments/srtm) (SRTM), which provides 30-meter resolution elevation data. The maximum visibility limit is set at 35 kilometres, meaning that cell sites beyond this distance are not considered visible or feasible for point-to-point connectivity.
+The point-to-point model evaluates the feasibility of establishing radio links between points of interest (POIs) and cell sites using visibility analysis. This involves assessing whether the line of sight between a POI and a cell site is obstructed, ensuring that only feasible links are considered for deployment. The analysis uses open topography data from the [Shuttle Radar Topography Mission](https://www.earthdata.nasa.gov/data/instruments/srtm) (SRTM), which provides 30-meter resolution elevation data. The maximum visibility limit is set at 30 kilometres, meaning that cell sites beyond this distance are not considered visible or feasible for point-to-point connectivity.
 
 _Figure: Visible cell site_
 
