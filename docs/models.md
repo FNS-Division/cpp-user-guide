@@ -106,7 +106,7 @@ The fibre cost function depends on the parameters below.
 |---|---|---|---|
 | `hw_setup_cost_fibre` | Hardware setup cost per POI (USD) | 500 | Yes |
 | `focl_constr_cost_fibre` | Fibre optic cable construction cost (USD/km) | 20,000 | Yes |
-| `reinv_period_fibre` | Hardware reinvestment period (years) | 3 | Yes |
+| `reinv_period_fibre` | Hardware reinvestment period (years) | 10 | Yes |
 | `an_hw_maint_and_repl_fibre` | Annual hardware maintenance and replacement cost (fraction of initial CAPEX) | 0.05 | Yes |
 | `an_isp_fees_one_mbps_fibre` | Annual ISP retail fees (USD/Mbps/year) | 5.5 | Yes |
 | `max_throughput_fibre` | Maximum achievable download speed via fibre (Mbps). The throughput is capped at this value. | 15,000 | No |
