@@ -4,7 +4,9 @@ This page summarises the user-provided data required by the toolkit. The provide
 
 ## Points of interest (POI)
 
-**Example dataset:** [Download example-pointsofinterest.xlsx](datasets/example-pointsofinterest.xlsx)
+**Example dataset:** [Download example-pointsofinterest.xlsx](datasets/example-pointsofinterest.xlsx) · [Download example-pointsofinterest.gpkg](datasets/example-pointsofinterest.gpkg)
+
+**Accepted file formats:** `.csv`, `.xlsx`, `.geojson`, `.gpkg`, `.kml`
 
 | Column name | Type | Example | Required | Levels | Description |
 |-------------|------|---------|----------|--------|-------------|
@@ -34,7 +36,9 @@ This page summarises the user-provided data required by the toolkit. The provide
 
 ## Cell sites
 
-**Example dataset:** [Download example-cellsites.xlsx](datasets/example-cellsites.xlsx)
+**Example dataset:** [Download example-cellsites.xlsx](datasets/example-cellsites.xlsx) · [Download example-cellsites.gpkg](datasets/example-cellsites.gpkg)
+
+**Accepted file formats:** `.csv`, `.xlsx`, `.geojson`, `.gpkg`, `.kml`
 
 | Column name | Type | Example | Required | Levels | Description |
 |-------------|------|---------|----------|--------|-------------|
@@ -54,7 +58,9 @@ This page summarises the user-provided data required by the toolkit. The provide
 
 ## Transmission nodes
 
-**Example dataset:** [Download example-transmissionnode.xlsx](datasets/example-transmissionnode.xlsx)
+**Example dataset:** [Download example-transmissionnode.xlsx](datasets/example-transmissionnode.xlsx) · [Download example-transmissionnode.gpkg](datasets/example-transmissionnode.gpkg)
+
+**Accepted file formats:** `.csv`, `.xlsx`, `.geojson`, `.gpkg`, `.kml`
 
 | Column name | Type | Example | Required | Levels | Description |
 |-------------|------|---------|----------|--------|-------------|
@@ -73,7 +79,9 @@ This page summarises the user-provided data required by the toolkit. The provide
 
 ## Mobile coverage
 
-**Example dataset:** [Download example-coverage.csv](datasets/example-mobilecoverage.xlsx)
+**Example dataset:** [Download example-coverage.csv](datasets/example-mobilecoverage.xlsx) · [Download example-mobilecoverage.gpkg](datasets/example-mobilecoverage.gpkg)
+
+**Accepted file formats:** `.csv`, `.xlsx`, `.geojson`, `.gpkg`, `.kml`, `.tif`, `.tiff`
 
 | Column name | Type | Example | Required | Levels | Description |
 |-------------|------|---------|----------|--------|-------------|
