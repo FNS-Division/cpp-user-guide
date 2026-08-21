@@ -28,7 +28,7 @@ This page summarises the user-provided data required by the toolkit. The provide
 
 - If **has_electricity** is not provided, the POI will be assumed not to have electricity.
 
-- If **number_of_users** is not provided, it will be estimated using the demand model and population data.
+- If **number_of_users** is not provided, it will be estimated using the demand analysis and population data.
 
 - If **total_mbps** is not provided, it will be estimated from the number of users and the assumed bandwidth demand per user (demand analysis).
 

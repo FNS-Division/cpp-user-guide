@@ -14,7 +14,7 @@ _Figure: Solving a technology assignment problem_
 
 ![scenario](diagrams/scenarios-generic.drawio.svg)
 
-**1. Estimate demand.** The required throughput at each POI is estimated by the demand model (see the [Models](models.md) section). Demand informs the assignment in two ways: it influences which technology is best suited to a POI, since technologies differ in the throughput they can deliver, and higher throughput drives higher costs, which are a key factor in certain scenarios.
+**1. Estimate demand.** The required throughput at each POI is estimated by the demand analysis (see the [Models](models.md) section). Demand informs the assignment in two ways: it influences which technology is best suited to a POI, since technologies differ in the throughput they can deliver, and higher throughput drives higher costs, which are a key factor in certain scenarios.
 
 **2. Assess technology feasibility.** Not every technology can serve every POI. Each technology is evaluated against the conditions required for it to be viable at a given location. For example, cellular is only feasible if the POI falls within the coverage area of a cell site. This step determines the set of candidate technologies available for each POI.
 
@@ -54,7 +54,7 @@ The capacity objective counts the POIs whose assigned technology can meet their 
 $$
 c_{i,\,tech} =
 \begin{cases}
-1 & \text{if } Q_i \leq \texttt{max_throughput}_{tech} \\
+1 & \text{if } Q_i \leq \texttt{max\_throughput}_{tech} \\
 0 & \text{otherwise}
 \end{cases}
 $$
@@ -169,20 +169,23 @@ These are the scenario parameters:
 
 | Description | Example value |
 |------------|---------------|
+| Budget (USD) | _(none by default; optional)_ |
 | Project planning period (years) | 10 |
 | Demand per user (Mbps) | 2 |
 
 ### Purpose
 
-This scenario takes the perspective of an operator or funder whose aim is to connect every POI as cheaply as possible.
+This scenario takes the perspective of an operator or funder whose aim is to connect POIs as cheaply as possible.
 
-Unlike the profitability scenario, this scenario does not accept a budget. The objective is to minimise cost while connecting all POIs, so the connect-all requirement is essential: without it, the cheapest possible solution would be to connect nothing at all, since any connection adds cost.
+Without a budget, the goal is to connect every POI at the lowest possible cost.
+
+When a budget is supplied, POIs do not need to be all connected, and the question the model answers becomes: given the funds available, connect as many POIs as the funds allow, and do so at the lowest cost. This case is resolved in two stages, described under [Constraints](#constraints_1) below.
 
 ### Primary objective
 
-This scenario is a special case of the profitability objective in which revenues are set to zero, leaving only the present value of costs. The model minimises this quantity.
+The objective is the present value of the total cost of ownership implied by the technology assignment. Revenues play no part in this scenario.
 
-As before, costs are computed over the project planning period (see [Scenario parameters](#scenario-parameters)) and discounted to present value using the PVIFA at discount rate \(r\):
+As before, costs are computed over the project planning period (see [Scenario parameters](#scenario-parameters_1)) and discounted to present value using the PVIFA at discount rate \(r\):
 
 $$
 \text{PVIFA} = \frac{1 - (1 + r)^{-T}}{r}
@@ -198,17 +201,35 @@ $$
 \min \; f_{\text{primary}} = \text{PV}_{\text{costs}}
 $$
 
-Equivalently, this is the net present value objective of Scenario 1 with revenues fixed at zero.
-
 ### Constraints
 
-In addition to the shared constraints (at most one technology per POI, and the fibre relay dependencies) this scenario always requires that every POI be connected:
+In addition to the shared constraints (at most one technology per POI, and the fibre relay dependencies) this scenario applies one of the following, depending on the budget setting:
+
+**Without a budget**, every POI must be connected:
 
 $$
 \sum_{tech} X_{i,\,tech} = 1 \qquad \forall\, i
 $$
 
 This constraint is what prevents the trivial empty solution and forces the model to find the least-cost assignment that serves all POIs.
+
+**With a budget**, the connect-all requirement is dropped, and total spending may not exceed the budget specified in the [Scenario parameters](#scenario-parameters_1):
+
+$$
+\sum_{i}\sum_{tech} \gamma_{i,\,tech}\, X_{i,\,tech} \;\cdot\; T \;\leq\; B
+$$
+
+Note that the budget applies to total spending over the project period, undiscounted, whereas the objective above is discounted to present value.
+
+The budget alone is not enough to make the scenario meaningful, since spending nothing satisfies any cap. The model therefore first solves a preliminary problem to establish how much coverage the budget can buy: it maximises the number of connected POIs subject to the budget and all other constraints. The resulting optimum becomes a coverage target \(P^{*}\).
+
+The main optimisation then minimises the present value of costs subject to the budget and to a coverage floor:
+
+$$
+\sum_{i} Y_i \;\geq\; P^{*}
+$$
+
+where \(Y_i\) indicates whether POI \(i\) is connected. The net effect is that, among all assignments reaching the maximum coverage, the model selects the cheapest. The coverage target is also applied to the auxiliary solves used to rescale the objectives (see [Rescaling and combining the objectives](#rescaling-and-combining-the-objectives)).
 
 ## Scenario 3: Maximise number of connected users
 
@@ -228,7 +249,7 @@ A budget is required for this scenario to be meaningful. The objective is to rea
 
 ### Primary objective
 
-The objective is to maximise the total number of people reached across all connected POIs. Each POI carries an estimated user count from the demand model (see the [Models](models.md) section) which is by default the number of people within 1km. The objective sums these counts over the POIs the model chooses to connect:
+The objective is to maximise the total number of people reached across all connected POIs. Each POI carries an estimated user count from the demand analysis (see the [Models](models.md) section) which is by default the number of people within 1km. The objective sums these counts over the POIs the model chooses to connect:
 
 $$
 f_{\text{primary}} = \sum_{i} u_i \, Y_i
