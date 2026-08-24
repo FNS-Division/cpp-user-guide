@@ -1,6 +1,6 @@
 # Datasets
 
-This page summarises the user-provided data required by the toolkit. The provided data must conform to the standards below.
+This page summarises the user-provided data required by the platform. The provided data must conform to the standards below.
 
 ## Points of interest (POI)
 
