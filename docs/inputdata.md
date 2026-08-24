@@ -79,7 +79,7 @@ This page summarises the user-provided data required by the toolkit. The provide
 
 ## Mobile coverage
 
-**Example dataset:** [Download example-coverage.csv](datasets/example-mobilecoverage.xlsx) · [Download example-mobilecoverage.gpkg](datasets/example-mobilecoverage.gpkg)
+**Example dataset:** [Download example-coverage.csv](datasets/example-mobilecoverage.xlsx) · [Download example-mobilecoverage.gpkg](datasets/example-mobilecoverage.gpkg) · [Download example-mobilecoverage.tif](datasets/example-mobilecoverage.tif)
 
 **Accepted file formats:** `.csv`, `.xlsx`, `.geojson`, `.gpkg`, `.kml`, `.tif`, `.tiff`
 
@@ -96,6 +96,8 @@ This page summarises the user-provided data required by the toolkit. The provide
 
 - **`geometry`** must contain valid polygon or multipolygon geometries in the **WGS84** coordinate reference system.
 
-- If you submit a **raster file** through the platform, the pixels with coverage should have a value of `1`.
-
 - If you submit **vector data**, only include the polygons of areas **with** coverage.
+
+- If you submit a **raster file** (`.tif`/`.tiff`), it must have a **single band**, and pixels in areas **with** coverage must have a value of `1`. The platform UI will ask you to pick a single **`radio_type`** (e.g. 4G) for the whole raster.
+
+- If you need to submit **multiple coverage types** (e.g. 4G and 5G), submit **vector data** instead, with each coverage type as a separate row and its radio type in the **`radio_type`** column.
