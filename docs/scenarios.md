@@ -54,7 +54,7 @@ The capacity objective counts the POIs whose assigned technology can meet their 
 $$
 c_{i,\,tech} =
 \begin{cases}
-1 & \text{if } Q_i \leq \texttt{max\_throughput}_{tech} \\
+1 & \text{if } Q_i \leq \mathtt{max\_throughput}_{tech} \\
 0 & \text{otherwise}
 \end{cases}
 $$
