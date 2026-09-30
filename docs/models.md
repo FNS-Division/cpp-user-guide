@@ -45,7 +45,7 @@ Population data is automatically retrieved by the model from [WorldPop](https://
 | `mbps_demand_per_user` | Per-user bandwidth demand (Mbps) | 2 | Yes |
 | `user_rate` | Share of the local population counted as users (1 = entire population) | 0.25 | No |
 | `simultaneous_users_rate` | Share of users expected to be online at the same time, used to convert the user base into peak concurrent users | 0.10 | No |
-| `overlap_allowed` | Whether buffers around POIs may overlap; if `False`, overlapping areas are assigned to a single POI to avoid double-counting | False | No |
+| `overlap_allowed` | Whether buffers around POIs may overlap; if `False`, overlapping areas are assigned to a single POI to avoid double-counting | True | No |
 | `max_throughput_fiber` | Maximum achievable download speed via fibre (Mbps) | 15,000 | No |
 | `max_throughput_p2area` | Maximum achievable download speed via cellular (Mbps) | 900 | No |
 | `max_throughput_p2p` | Maximum achievable download speed via point-to-point microwave (Mbps) | 400 | No |
