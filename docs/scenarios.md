@@ -304,3 +304,56 @@ $$
 $$
 
 where \(\gamma_{i,\,tech}\) is the annual cost of serving POI \(i\) with technology \(tech\) (derived in the cost-function sections above), and \(T\) is the project planning period.
+
+## Scenario 5: Assign technologies by ranking
+
+### Scenario parameters
+
+| Description | Example value |
+|------------|---------------|
+| Budget (USD) | _(none by default; optional)_ |
+| Technology preference order | fibre > cellular > p2p > satellite |
+| Project planning period (years) | 10 |
+| Demand per user (Mbps) | 2 |
+
+### Purpose
+
+This scenario takes the perspective of a planner who has already decided which technologies they prefer, and wants the model to respect that preference rather than work it out from costs or revenues. It answers the question: *given my stated order of preference, which technology should each POI receive?*
+
+The typical use is a national strategy that favours connecting POIs with fibre wherever it is feasible, falling back to cellular, then point-to-point, and using satellite only where nothing else will reach. Unlike the preceding scenarios, the outcome is driven by policy preference rather than by financial optimisation.
+
+Preferences are expressed as a **ranking** over the technologies in use, where rank 1 is the most preferred. The ranking must cover every technology included in the analysis exactly once, using consecutive whole numbers starting at 1. If no ranking is supplied, the default order is fibre > cellular > p2p > satellite.
+
+### Primary objective
+
+Each technology is converted from its rank into a **preference score**, so that the most preferred technology carries the highest value. For \(M\) technologies in use, where \(R_{tech} \in \{1, \ldots, M\}\) is the rank of a technology:
+
+$$
+s_{tech} = M + 1 - R_{tech}
+$$
+
+With the default ranking of four technologies this gives fibre \(= 4\), cellular \(= 3\), p2p \(= 2\) and satellite \(= 1\). The objective is then to maximise the total preference score across all assignments:
+
+$$
+f_{\text{primary}} = \sum_{i}\sum_{tech} s_{tech} \, X_{i,\,tech}
+$$
+
+Note that \(s_{tech}\) depends only on the technology, not on the POI. Costs and revenues do not appear in the objective at all: they enter the scenario only through the budget constraint, when one is set. The practical consequence is that **without a budget the model assigns every POI its highest-ranked feasible technology**. The optimisation becomes substantive once a budget is introduced, as the model must then decide where to spend on preferred-but-costly technologies and where to accept a lower-ranked alternative.
+
+### Constraints
+
+In addition to the shared constraints (at most one technology per POI, and the fibre relay dependencies) this scenario applies one of the following, depending on the budget setting:
+
+**Without a budget**, every POI must be connected:
+
+$$
+\sum_{tech} X_{i,\,tech} = 1 \qquad \forall\, i
+$$
+
+**With a budget**, POIs need not all be connected, and total spending may not exceed the budget specified in the [Scenario parameters](#scenario-parameters_4):
+
+$$
+\sum_{i}\sum_{tech} \gamma_{i,\,tech}\, X_{i,\,tech} \;\cdot\; T \;\leq\; B
+$$
+
+where \(\gamma_{i,\,tech}\) is the annual cost of serving POI \(i\) with technology \(tech\), and \(T\) is the project planning period. Under a budget the model maximises total preference score within the cap.
