@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Data Validation - ITU Connectivity Planning Platform</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">ITU Connectivity Planning Platform</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../scenarios/" class="nav-link">Scenarios</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../models/" class="nav-link">Models</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../inputdata/" class="nav-link">Input Datasets</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./" class="nav-link active" aria-current="page">Data Validation</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../outputs/" class="nav-link">Model Outputs</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Interactive Capacity Building Tools</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="https://fns-division.github.io/CPP_interactive_navigator/" class="dropdown-item">CPP Navigator</a>
+</li>
+                                    
+<li>
+    <a href="../explorer/" class="dropdown-item">Technology Explorer</a>
+</li>
+                                    
+<li>
+    <a href="../technology-explorer/" class="dropdown-item">Technology Explorer Description</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../inputdata/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../outputs/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#data-validation" class="nav-link">Data validation</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#column-and-value-harmonisation" class="nav-link">Column and value harmonisation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#schema-enforcement" class="nav-link">Schema enforcement</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#geospatial-validation" class="nav-link">Geospatial validation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#gap-filling-and-imputation" class="nav-link">Gap filling and imputation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="data-validation">Data validation</h1>
+<p>Every file you upload is passed through an automated validation and standardisation pipeline before it is used in any analysis. The pipeline is category-aware: the checks applied to a point-of-interest file are not the same as those applied to a mobile coverage raster.</p>
+<p>The pipeline applies corrections to rescue an imperfect file, for example by correcting accented or inconsistent column headings, alternative spellings of a technology or a non-WGS84 projection. However, a dataset only reaches the models once it contains at least one record that satisfies every mandatory requirement for its category.</p>
+<h2 id="column-and-value-harmonisation">Column and value harmonisation</h2>
+<p>Column names are normalised before any other check: converted to lower case, stripped of accents and punctuation, with spaces converted to underscores (<code>Latitud Geográfica</code> → <code>latitud_geografica</code>). A dictionary of known aliases is then applied, so common exports work without manual editing. For example <code>latitude</code>, <code>latitud</code> → <strong><code>lat</code></strong>; <code>antenna_height_m</code> → <strong><code>antenna_height</code></strong>; <code>internet_availability</code> → <strong><code>is_connected</code></strong>.</p>
+<p>Values in controlled-vocabulary fields are mapped onto the levels documented in <a href="../inputdata/">Input Datasets</a>. For example, <code>LTE</code> → <strong><code>4G</code></strong> and <code>NR</code> → <strong><code>5G</code></strong> for <code>radio_type</code>, <code>FTTx</code> → <strong><code>fiber</code></strong> for <code>connectivity_type</code>, and <code>Yes</code>/<code>No</code>/<code>1</code>/<code>0</code> → <strong><code>True</code></strong>/<strong><code>False</code></strong> for the boolean fields.</p>
+<h2 id="schema-enforcement">Schema enforcement</h2>
+<ul>
+<li>Any <strong>mandatory or optional column that is absent</strong> is created and populated with nulls, so that downstream models always receive a consistent schema.</li>
+<li><strong>Additional columns you supply are preserved</strong>, not discarded, and travel through to the outputs.</li>
+<li>A <strong><code>dataset_id</code></strong> is generated for the upload, and a unique identifier (<code>poi_id</code> for points of interest, <code>ict_id</code> for cell sites and transmission nodes) is generated for every record.</li>
+<li><strong><code>country_code</code></strong> is set to the ISO 3166-1 alpha-3 code of the country selected for the analysis.</li>
+<li>For points of interest, any column that holds <strong>results from a previous CPP analysis</strong> (distances to infrastructure, coverage flags, cost and revenue fields, fibre path variables, and around 70 others) is stripped out. This means you can safely re-upload a CPP output file as an input without stale results contaminating the new analysis.</li>
+</ul>
+<h2 id="geospatial-validation">Geospatial validation</h2>
+<p>This is the most extensive part of the pipeline, and it applies to every category.</p>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Behaviour</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Coordinate reference system</td>
+<td>A file with no declared CRS is assumed to be <strong>WGS84 (EPSG:4326)</strong>. A file in any other CRS is <strong>reprojected to WGS84</strong> automatically.</td>
+</tr>
+<tr>
+<td>Geometry validity</td>
+<td>Every geometry is tested for being null, empty or topologically invalid (e.g. self-intersecting polygons). Invalid geometries are flagged and set to null rather than being allowed into the analysis.</td>
+</tr>
+<tr>
+<td>Geometry from text</td>
+<td>CSV and Excel files are scanned for a <code>geometry</code>, <code>wkt</code>, <code>geom_wkt</code>, <code>geometry_wkt</code> or <code>as_wkt</code> column and parsed into real geometry, so coverage polygons can be supplied as text.</td>
+</tr>
+<tr>
+<td>Coordinate extraction</td>
+<td>For point categories supplied as vector files, <code>lat</code>/<code>lon</code> are derived from the geometry: directly for <code>POINT</code>, and from the centroid for <code>MULTIPOINT</code>.</td>
+</tr>
+<tr>
+<td>Coordinate plausibility</td>
+<td><code>lat</code> and <code>lon</code> are coerced to numbers; anything that is not numeric, or that falls outside the valid range of <strong>−90 to 90</strong> and <strong>−180 to 180</strong>, is treated as missing. Records still missing coordinates are removed.</td>
+</tr>
+<tr>
+<td>Country boundary check</td>
+<td>The country's administrative boundary is retrieved from a world boundaries reference dataset, buffered in a locally estimated UTM projection, and every point is spatially joined against it. Points falling outside are removed.</td>
+</tr>
+<tr>
+<td>Deduplication</td>
+<td>Exact geographic duplicates are removed, by coordinates for points of interest and transmission nodes, and by coordinates <strong>and</strong> <code>radio_type</code> for cell sites. This means a co-located 4G and 5G site is correctly kept as two records.</td>
+</tr>
+</tbody>
+</table>
+<p>Coordinate errors are rarely obvious in a spreadsheet, but they are unmistakable on a map. Swapped, truncated or mistyped coordinates typically land in the sea:</p>
+<p><img alt="Points of interest flagged as outside the country boundary" src="../images/incorrect_locations.png" /></p>
+<p><em>Points in red fall outside the buffered national boundary and are removed; points in white are kept.</em></p>
+<p>Mobile coverage rasters are validated separately: the file must open as a valid raster, contain <strong>exactly one band</strong>, declare a <strong>coordinate reference system</strong>, and have positive width and height. A <strong><code>radio_type</code></strong> must also be selected in the interface. A raster without one is rejected, because the coverage layer could not otherwise be attributed to a technology.</p>
+<h2 id="gap-filling-and-imputation">Gap filling and imputation</h2>
+<p>Where a non-essential value is missing, the platform fills it using a documented rule rather than dropping the record.</p>
+<h3 id="points-of-interest">Points of interest</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>is_connected</code>, <code>connectivity_type</code></td>
+<td>If <strong>both</strong> are absent, connectivity is inferred by spatially joining each point against <a href="https://www.ookla.com/ookla-for-good/open-data">Ookla Open Data</a> performance tiles. A point intersecting a fixed tile is classified as fixed, then as <code>fiber</code> or <code>adsl</code> depending on whether the measured average download speed reaches <strong>100 Mbps</strong>. A point intersecting only a mobile tile is classified as <code>mobile</code>, and a point intersecting neither as not connected. The test is all-or-nothing: if either column contains <strong>any</strong> data, the inference is skipped for the whole dataset and the remaining nulls are left as they are.</td>
+</tr>
+<tr>
+<td><code>has_electricity</code></td>
+<td>Assumed <code>False</code> if not supplied.</td>
+</tr>
+<tr>
+<td><code>number_of_users</code></td>
+<td>Estimated from population data in the demand analysis.</td>
+</tr>
+<tr>
+<td><code>total_mbps</code></td>
+<td>Estimated from the number of users and the assumed bandwidth demand per user.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cell-sites">Cell sites</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>antenna_height</code></td>
+<td>Values above <strong>1,000 m</strong> are treated as data-entry errors and discarded. If your file contains <strong>no usable heights at all</strong> (the column is absent, empty or entirely non-numeric), every site is assigned the default of <strong>25 m</strong>. If it contains <em>some</em> valid heights, the missing ones are filled with the <strong>median of the valid heights in your own file</strong> rather than the default.</td>
+</tr>
+<tr>
+<td><code>radio_type</code></td>
+<td>Values outside <code>2G</code>/<code>3G</code>/<code>4G</code>/<code>5G</code> are set to <code>unknown</code> rather than guessed. Records with no <code>radio_type</code> at all are removed.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="transmission-nodes">Transmission nodes</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>transmission_medium</code></td>
+<td>Values that are missing, or outside <code>coaxial</code>, <code>copper</code>, <code>microwave</code> and <code>fiber</code>, are set to <code>unknown</code>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mobile-coverage">Mobile coverage</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>radio_type</code></td>
+<td>Values outside <code>2G</code>/<code>3G</code>/<code>4G</code>/<code>5G</code> are treated as missing, and the record is removed, since coverage cannot be modelled without a technology. For rasters, the <code>radio_type</code> chosen in the interface is applied to the whole layer.</td>
+</tr>
+</tbody>
+</table></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
