@@ -4,6 +4,7 @@ nav:
   - Scenarios: scenarios.md
   - Models: models.md
   - Input Datasets: inputdata.md
+  - Data Validation: datavalidation.md
   - Model Outputs: outputs.md
   - Interactive Capacity Building Tools:
     - CPP Navigator: https://fns-division.github.io/CPP_interactive_navigator/

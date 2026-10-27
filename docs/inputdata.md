@@ -2,6 +2,8 @@
 
 This page summarises the user-provided data required by the platform. The provided data must conform to the standards below.
 
+Every dataset you upload is automatically checked and standardised before it is used — see [Data validation](datavalidation.md) for the checks applied to each category.
+
 ## Points of interest (POI)
 
 **Example dataset:** [Download example-pointsofinterest.xlsx](datasets/example-pointsofinterest.xlsx) · [Download example-pointsofinterest.gpkg](datasets/example-pointsofinterest.gpkg)
@@ -12,7 +14,7 @@ This page summarises the user-provided data required by the platform. The provid
 |-------------|------|---------|----------|--------|-------------|
 | `lat` | float | 36.7538 | Yes* | | Latitude in WGS84 |
 | `lon` | float | 3.0588 | Yes* | | Longitude in WGS84 |
-| `connectivity_type` | string | fiber | No | `unknown`<br>`mobile`<br>`mobile_broadband`<br>`metro`<br>`fiber`<br>`wireless`<br>`satellite`<br>`wired` | Type of internet connectivity |
+| `connectivity_type` | string | fiber | No | `unknown`<br>`mobile`<br>`mobile_broadband`<br>`metro`<br>`fiber`<br>`adsl`<br>`wireless`<br>`satellite`<br>`wired` | Type of internet connectivity |
 | `country_code` | string | ESP | No | | ISO 3166-1 alpha-3 country code |
 | `dataset_id` | UUID | 987fcdeb-51a2-12d3 | No | | Dataset identifier (auto-generated if omitted) |
 | `has_electricity` | boolean | True | No | `True`<br>`False` | Whether the POI has electricity |
@@ -26,9 +28,11 @@ This page summarises the user-provided data required by the platform. The provid
 
 - **\*** Required unless the input is a GeoPackage (GPKG) or GeoJSON file containing valid geometry.
 
-- If **connectivity_type** or **is_connected** is not provided, connectivity status will be inferred using speed-test data from [Ookla Open Data](https://www.ookla.com/ookla-for-good/open-data).
+- If **both** **`connectivity_type`** and **`is_connected`** are absent, connectivity status is inferred using speed-test data from [Ookla Open Data](https://www.ookla.com/ookla-for-good/open-data). Supplying either column disables the inference for the whole dataset, so partially filled columns are left as they are — see [Data validation](datavalidation.md#points-of-interest).
 
-- If **has_electricity** is not provided, the POI will be assumed not to have electricity.
+- Values inferred from Ookla data are one of `fiber`, `adsl`, `fixed_unknown` or `mobile`. **`connectivity_type`** is not validated against the levels above, so any other value you supply is passed through to the outputs unchanged.
+
+- If **`has_electricity`** is not provided, the POI will be assumed not to have electricity.
 
 - If **number_of_users** is not provided, it will be estimated using the demand analysis and population data.
 
@@ -54,7 +58,7 @@ This page summarises the user-provided data required by the platform. The provid
 
 - **\*** Required unless the input is a GeoPackage (GPKG) or GeoJSON file containing valid geometry.
 
-- If **`antenna_height`** is not provided, a default height of **25 meters** will be assumed.
+- If **`antenna_height`** is not provided at all, a default height of **25 meters** is assumed. If it is provided for only *some* sites, the gaps are filled with the median height of the valid sites in your own file — see [Data validation](datavalidation.md#cell-sites).
 
 ## Transmission nodes
 
@@ -69,13 +73,15 @@ This page summarises the user-provided data required by the platform. The provid
 | `country_code` | string | DZA | No | | ISO 3166-1 alpha-3 country code |
 | `dataset_id` | UUID | 987fcdeb-51a2-12d3 | No | | Dataset identifier (auto-generated if omitted) |
 | `ict_id` | UUID | 123e4567-e89b-12d3 | No | | Node identifier (auto-generated if omitted) |
-| `transmission_medium` | string | fiber | No | `fiber`<br>`microwave`<br>`other` | Transmission medium |
+| `transmission_medium` | string | fiber | No | `fiber`<br>`microwave`<br>`copper`<br>`coaxial` | Transmission medium |
 
 **Notes:**
 
 - **\*** Required unless the input is a GeoPackage (GPKG) or GeoJSON file containing valid geometry.
 
-- If **`transmission_medium`** is not provided, `fiber` will be assumed.
+- If **`transmission_medium`** is missing or holds a value outside the levels above, it is recorded as `unknown` — see [Data validation](datavalidation.md#transmission-nodes).
+
+- **`transmission_medium`** is descriptive only and does not affect the modelling: every transmission node is treated as a potential fibre connection point regardless of its medium.
 
 ## Mobile coverage
 
@@ -94,7 +100,7 @@ This page summarises the user-provided data required by the platform. The provid
 
 - **\*** **`radio_type`** is automatically added through the CPP user interface using a drop down menu.
 
-- **`geometry`** must contain valid polygon or multipolygon geometries in the **WGS84** coordinate reference system.
+- **`geometry`** must contain valid polygon or multipolygon geometries. Data in another coordinate reference system is reprojected to **WGS84** automatically — see [Data validation](datavalidation.md#geospatial-validation).
 
 - If you submit **vector data**, only include the polygons of areas **with** coverage.
 
