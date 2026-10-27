@@ -32,6 +32,12 @@ This is the most extensive part of the pipeline, and it applies to every categor
 | Country boundary check | The country's administrative boundary is retrieved from a world boundaries reference dataset, buffered in a locally estimated UTM projection, and every point is spatially joined against it. Points falling outside are removed. |
 | Deduplication | Exact geographic duplicates are removed — by coordinates for points of interest and transmission nodes, and by coordinates **and** `radio_type` for cell sites, so a co-located 4G and 5G site is correctly kept as two records. |
 
+Coordinate errors are rarely obvious in a spreadsheet, but they are unmistakable on a map. Swapped, truncated or mistyped coordinates typically land in the sea:
+
+![Points of interest flagged as outside the country boundary](images/incorrect_locations.png)
+
+*Points in red fall outside the buffered national boundary and are removed; points in white are kept.*
+
 Mobile coverage rasters are validated separately: the file must open as a valid raster, contain **exactly one band**, declare a **coordinate reference system**, and have positive width and height. A **`radio_type`** must also be selected in the interface — a raster without one is rejected, because the coverage layer could not otherwise be attributed to a technology.
 
 ## Gap filling and imputation
