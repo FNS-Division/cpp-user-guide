@@ -2,9 +2,11 @@
 
 This page summarises the user-provided data required by the platform. The provided data must conform to the standards below.
 
-Every dataset you upload is automatically checked and standardised before it is used — see [Data validation](datavalidation.md) for the checks applied to each category.
+Every dataset you upload is automatically checked and standardised before it is used, as explained in the [Data validation](datavalidation.md) section.
 
 ## Points of interest (POI)
+
+The locations you want to connect, such as schools, health facilities or government offices. This is the central dataset of any analysis: demand is estimated at each POI, every technology is tested for feasibility at each POI, and the cost, revenue and scenario results are all reported per POI.
 
 **Example dataset:** [Download example-pointsofinterest.xlsx](datasets/example-pointsofinterest.xlsx) · [Download example-pointsofinterest.gpkg](datasets/example-pointsofinterest.gpkg)
 
@@ -40,6 +42,8 @@ Every dataset you upload is automatically checked and standardised before it is 
 
 ## Cell sites
 
+The locations of existing mobile network towers, with the radio technology each one carries. They are used in two ways: to approximate cellular coverage when no [mobile coverage](#mobile-coverage) layer is supplied and as the endpoints of candidate radio links in the [point-to-point model](models.md#point-to-point).
+
 **Example dataset:** [Download example-cellsites.xlsx](datasets/example-cellsites.xlsx) · [Download example-cellsites.gpkg](datasets/example-cellsites.gpkg)
 
 **Accepted file formats:** `.csv`, `.xlsx`, `.geojson`, `.gpkg`, `.kml`
@@ -61,6 +65,8 @@ Every dataset you upload is automatically checked and standardised before it is 
 - If **`antenna_height`** is not provided at all, a default height of **25 meters** is assumed. If it is provided for only *some* sites, the gaps are filled with the median height of the valid sites in your own file — see [Data validation](datavalidation.md#cell-sites).
 
 ## Transmission nodes
+
+The physical points at which the existing fibre network can be extended. The [fibre path model](models.md#fibre) treats them as the origins of the network it builds, routing along roads from these nodes to the POIs.
 
 **Example dataset:** [Download example-transmissionnode.xlsx](datasets/example-transmissionnode.xlsx) · [Download example-transmissionnode.gpkg](datasets/example-transmissionnode.gpkg)
 
@@ -84,6 +90,8 @@ Every dataset you upload is automatically checked and standardised before it is 
 - **`transmission_medium`** is descriptive only and does not affect the modelling: every transmission node is treated as a potential fibre connection point regardless of its medium.
 
 ## Mobile coverage
+
+The geographic area of the existing mobile network, by radio technology. These are the areas where service is already available. POIs are overlaid on this layer to determine which of them are already within cellular range.
 
 **Example dataset:** [Download example-coverage.csv](datasets/example-mobilecoverage.xlsx) · [Download example-mobilecoverage.gpkg](datasets/example-mobilecoverage.gpkg) · [Download example-mobilecoverage.tif](datasets/example-mobilecoverage.tif)
 
