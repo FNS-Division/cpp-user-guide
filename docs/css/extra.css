@@ -1,0 +1,23 @@
+/* Lead-in description shown under each dataset heading (Input Datasets page). */
+:root {
+  --cpp-callout-border: #2e6da4;
+  --cpp-callout-bg: #f3f7fb;
+}
+
+[data-bs-theme="dark"] {
+  --cpp-callout-border: #6ea8d8;
+  --cpp-callout-bg: rgba(110, 168, 216, 0.1);
+}
+
+blockquote {
+  border-left: 4px solid var(--cpp-callout-border);
+  background-color: var(--cpp-callout-bg);
+  padding: 0.75em 1em;
+  margin: 1em 0 1.25em 0;
+  font-size: 1em;
+  line-height: 1.6;
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}

@@ -15,5 +15,8 @@ theme: mkdocs
 markdown_extensions:
   - mdx_math
 
+extra_css:
+  - css/extra.css
+
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML

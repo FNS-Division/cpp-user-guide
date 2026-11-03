@@ -6,7 +6,7 @@ Every dataset you upload is automatically checked and standardised before it is 
 
 ## Points of interest (POI)
 
-The locations you want to connect, such as schools, health facilities or government offices. This is the central dataset of any analysis: demand is estimated at each POI, every technology is tested for feasibility at each POI, and the cost, revenue and scenario results are all reported per POI.
+> The locations you want to connect, such as schools, health facilities or government offices. This is the central dataset of any analysis: demand is estimated at each POI, every technology is tested for feasibility at each POI, and the cost, revenue and scenario results are all reported per POI.
 
 **Example dataset:** [Download example-pointsofinterest.xlsx](datasets/example-pointsofinterest.xlsx) · [Download example-pointsofinterest.gpkg](datasets/example-pointsofinterest.gpkg)
 
@@ -42,7 +42,7 @@ The locations you want to connect, such as schools, health facilities or governm
 
 ## Cell sites
 
-The locations of existing mobile network towers, with the radio technology each one carries. They are used in two ways: to approximate cellular coverage when no [mobile coverage](#mobile-coverage) layer is supplied and as the endpoints of candidate radio links in the [point-to-point model](models.md#point-to-point).
+> The locations of existing mobile network towers, with the radio technology each one carries. They are used in two ways: to approximate cellular coverage when no [mobile coverage](#mobile-coverage) layer is supplied and as the endpoints of candidate radio links in the [point-to-point model](models.md#point-to-point).
 
 **Example dataset:** [Download example-cellsites.xlsx](datasets/example-cellsites.xlsx) · [Download example-cellsites.gpkg](datasets/example-cellsites.gpkg)
 
@@ -66,7 +66,7 @@ The locations of existing mobile network towers, with the radio technology each 
 
 ## Transmission nodes
 
-The physical points at which the existing fibre network can be extended. The [fibre path model](models.md#fibre) treats them as the origins of the network it builds, routing along roads from these nodes to the POIs.
+> The physical points at which the existing fibre network can be extended. The [fibre path model](models.md#fibre) treats them as the origins of the network it builds, routing along roads from these nodes to the POIs.
 
 **Example dataset:** [Download example-transmissionnode.xlsx](datasets/example-transmissionnode.xlsx) · [Download example-transmissionnode.gpkg](datasets/example-transmissionnode.gpkg)
 
@@ -91,7 +91,7 @@ The physical points at which the existing fibre network can be extended. The [fi
 
 ## Mobile coverage
 
-The geographic area of the existing mobile network, by radio technology. These are the areas where service is already available. POIs are overlaid on this layer to determine which of them are already within cellular range.
+> The geographic area of the existing mobile network, by radio technology. These are the areas where service is already available. POIs are overlaid on this layer to determine which of them are already within cellular range.
 
 **Example dataset:** [Download example-coverage.csv](datasets/example-mobilecoverage.xlsx) · [Download example-mobilecoverage.gpkg](datasets/example-mobilecoverage.gpkg) · [Download example-mobilecoverage.tif](datasets/example-mobilecoverage.tif)
 
