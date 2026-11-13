@@ -34,7 +34,7 @@ Every dataset you upload is automatically checked and standardised before it is 
 
 - Values inferred from Ookla data are one of `fiber`, `adsl`, `fixed_unknown` or `mobile`. **`connectivity_type`** is not validated against the levels above, so any other value you supply is passed through to the outputs unchanged.
 
-- If **`has_electricity`** is not provided, the POI will be assumed not to have electricity.
+- If **`has_electricity`** is not provided, electrification status will be inferred from the dataset [Predictive mapping of the global power system using open data](https://zenodo.org/records/3628142). A POI is considered electrified if its location falls within a pixel marked as electrified in either `targets.tif` or `lv.tif` in that dataset.
 
 - If **number_of_users** is not provided, it will be estimated using the demand analysis and population data.
 
